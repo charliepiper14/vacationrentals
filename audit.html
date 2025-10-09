@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacation Rentals Jersey Shore - Google Ads Strategic Audit & Growth Roadmap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #162642 0%, #1a2d4f 100%);
+            color: white;
+            line-height: 1.5;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            height: 60px;
+        }
+        
+        .slide-number {
+            background: #cc5b27;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .main-title {
+            font-size: 3.2em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #cc5b27, #ff7c4c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.4em;
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #cc5b27;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #cc5b27;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #cc5b27;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #cc5b27, #ff7c4c);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .data-table {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table th {
+            background: #cc5b27;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .data-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .performance-table {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .performance-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .performance-table th {
+            background: #2c3e50;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 13px;
+            text-align: left;
+        }
+        
+        .performance-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+        }
+        
+        .account-vrlbi { background: #4CAF50; color: white; font-weight: bold; text-align: center; }
+        .account-vrocnj { background: #2196F3; color: white; font-weight: bold; text-align: center; }
+        .account-vrww { background: #E91E63; color: white; font-weight: bold; text-align: center; }
+        
+        .bullet-points {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .bullet-points li {
+            margin: 12px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 14px;
+        }
+        
+        .bullet-points li:before {
+            content: "▶";
+            color: #cc5b27;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .competitor-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(204, 91, 39, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .issue-box {
+            background: rgba(244, 67, 54, 0.2);
+            border: 2px solid #F44336;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .opportunity-box {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .warning-box {
+            background: rgba(255, 152, 0, 0.2);
+            border: 2px solid #FF9800;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .tier-box {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .tier-title {
+            color: #4CAF50;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .roi-visual {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+        }
+        
+        .roi-box {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 8px;
+        }
+        
+        .arrow {
+            font-size: 1.8em;
+            color: #cc5b27;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">01</div>
+        </div>
+        <div class="main-title">Vacation Rentals Jersey Shore</div>
+        <div class="subtitle">Strategic Google Ads Audit & 90-Day Growth Roadmap</div>
+        
+        <div class="highlight-box">
+            <h3>Multi-Account Portfolio Analysis: VRLBI • VROCNJ • VRWW</h3>
+            <p>Three Markets | One Vision: Dominate Jersey Shore Vacation Rental Search</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card" style="border-color: #4CAF50;">
+                <span class="stat-number" style="color: #4CAF50;">VRLBI</span>
+                <div class="stat-label">Long Beach Island<br>Top Performer</div>
+            </div>
+            <div class="stat-card" style="border-color: #2196F3;">
+                <span class="stat-number" style="color: #2196F3;">VROCNJ</span>
+                <div class="stat-label">Ocean City NJ<br>Growth Opportunity</div>
+            </div>
+            <div class="stat-card" style="border-color: #E91E63;">
+                <span class="stat-number" style="color: #E91E63;">VRWW</span>
+                <div class="stat-label">Wildwood<br>Needs Optimization</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">93K+</span>
+                <div class="stat-label">Total Customer Database<br>Across All Markets</div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <div style="font-size: 1.1em; margin-top: 20px;"><strong>Audit Period: July 11 - October 9, 2025 (90 Days)</strong></div>
+            <div style="opacity: 0.8; margin-top: 8px;">Peak Season Performance Analysis • Competitive Landscape • Scaling Strategy</div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Executive Summary -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">02</div>
+        </div>
+        <div class="section-title">Executive Summary: Critical Findings</div>
+        
+        <div class="issue-box">
+            <div class="tier-title" style="color: #F44336;">🚨 CRITICAL ISSUES IDENTIFIED</div>
+            <ul class="bullet-points">
+                <li><strong>VRWW Performance Crisis:</strong> CPA ranging $8.61-$23.20 (170% above target), immediate intervention required</li>
+                <li><strong>Budget Overspend:</strong> July exceeded monthly caps - VRWW: $670 over, VROCNJ: $70 remaining mid-month</li>
+                <li><strong>Brand Cannibalization:</strong> Strong brand campaign performance potentially stealing organic traffic</li>
+                <li><strong>Competitive Pressure:</strong> Airbnb (58% SIS) and VRBO (71% SIS) dominating auction landscape</li>
+                <li><strong>Account Handoff Impact:</strong> Management transition occurred during peak season (July), affecting optimization continuity</li>
+            </ul>
+        </div>
+
+        <div class="opportunity-box">
+            <div class="tier-title" style="color: #4CAF50;">✅ IMMEDIATE OPPORTUNITIES</div>
+            <ul class="bullet-points">
+                <li><strong>Quality Score Excellence:</strong> 96% of VRLBI keywords + 100% of VROCNJ/VRWW keywords scoring 8-10/10</li>
+                <li><strong>VRLBI Success Model:</strong> Achieving $1.73-$4.80 CPA - blueprint for scaling other accounts</li>
+                <li><strong>Google Ads Credit:</strong> $2,100 credit active for VROCNJ (spend $4,200 in 60 days)</li>
+                <li><strong>Untapped Keywords:</strong> 100+ location-specific terms with <$1 CPC not being targeted</li>
+                <li><strong>Customer Database:</strong> 93K VRLBI + 29K VRWW + 21K VROCNJ emails ready for remarketing</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <div class="tier-title" style="color: #FF9800;">⚠️ STRATEGIC CHALLENGES</div>
+            <ul class="bullet-points">
+                <li><strong>Seasonality Cliff:</strong> Peak 10-week season ending, inventory depleted for 2025</li>
+                <li><strong>Campaign Overlap:</strong> Multiple campaigns competing in same auctions, driving up costs</li>
+                <li><strong>Low Conversion Volume:</strong> Limited data preventing Google's machine learning optimization</li>
+                <li><strong>PMax Feed Quality:</strong> Limited product segmentation reducing targeting precision</li>
+            </ul>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card" style="border-color: #4CAF50;">
+                <span class="stat-number" style="color: #4CAF50;">$1.77</span>
+                <div class="stat-label">VRLBI Best CPA<br>(Target: <$10)</div>
+            </div>
+            <div class="stat-card" style="border-color: #2196F3;">
+                <span class="stat-number" style="color: #2196F3;">$9.50</span>
+                <div class="stat-label">VROCNJ CPA<br>(Needs: <$8)</div>
+            </div>
+            <div class="stat-card" style="border-color: #E91E63;">
+                <span class="stat-number" style="color: #E91E63;">$23.20</span>
+                <div class="stat-label">VRWW Peak CPA<br>(Critical Issue)</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">27%</span>
+                <div class="stat-label">Average Cost Savings<br>vs VRBO/Airbnb</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Account Performance Breakdown -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">03</div>
+        </div>
+        <div class="section-title">Individual Account Performance Analysis</div>
+        
+        <div class="performance-table">
+            <table>
+                <tr>
+                    <th>Account</th>
+                    <th>Market</th>
+                    <th>90-Day Spend</th>
+                    <th>Monthly Avg</th>
+                    <th>CPA Range</th>
+                    <th>Status</th>
+                    <th>Priority Action</th>
+                </tr>
+                <tr class="account-vrlbi">
+                    <td><strong>VRLBI</strong></td>
+                    <td>Long Beach Island</td>
+                    <td>~$10,800</td>
+                    <td>$3,600</td>
+                    <td style="color: #fff;">$1.73 - $4.80</td>
+                    <td style="background: #2E7D32;">EXCELLENT</td>
+                    <td>Scale & Maintain</td>
+                </tr>
+                <tr class="account-vrocnj">
+                    <td><strong>VROCNJ</strong></td>
+                    <td>Ocean City NJ</td>
+                    <td>~$13,500</td>
+                    <td>$4,500</td>
+                    <td style="color: #fff;">$6.86 - $14.78</td>
+                    <td style="background: #1565C0;">GOOD</td>
+                    <td>Optimize to <$8 CPA</td>
+                </tr>
+                <tr class="account-vrww">
+                    <td><strong>VRWW</strong></td>
+                    <td>Wildwood</td>
+                    <td>~$13,500</td>
+                    <td>$4,500</td>
+                    <td style="color: #fff;">$8.61 - $23.20</td>
+                    <td style="background: #C62828;">CRITICAL</td>
+                    <td>Emergency Restructure</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="three-column">
+            <div class="competitor-section" style="border-color: #4CAF50;">
+                <h4 style="color: #4CAF50; margin-bottom: 15px;">VRLBI - Long Beach Island</h4>
+                <div style="font-size: 13px; margin-bottom: 15px;">
+                    <strong>Target DMA:</strong> New York City (250-300 mile radius)<br>
+                    <strong>Zip Code:</strong> 08008<br>
+                    <strong>Monthly Cap:</strong> $6,000<br>
+                    <strong>Customer DB:</strong> 93,000 emails
+                </div>
+                <div style="color: #4CAF50; font-weight: bold; margin-bottom: 10px;">✅ BEST PRACTICES MODEL</div>
+                <ul class="bullet-points" style="font-size: 12px;">
+                    <li>PMax: $2.82 CPA (40% cheaper than search)</li>
+                    <li>Search: Higher volume at $7.80 CPA</li>
+                    <li>Quality Score: 96% of keywords 8-10/10</li>
+                    <li>470 conversions/week at $1.77 CPA</li>
+                    <li>Search Impression Share: 29% (stable)</li>
+                </ul>
+                <div style="margin-top: 10px; padding: 10px; background: rgba(76, 175, 80, 0.2); border-radius: 5px; font-size: 12px;">
+                    <strong>Success Factors:</strong> Long optimization history, strong brand recognition, NYC market reach, effective PMax campaign
+                </div>
+            </div>
+            
+            <div class="competitor-section" style="border-color: #2196F3;">
+                <h4 style="color: #2196F3; margin-bottom: 15px;">VROCNJ - Ocean City NJ</h4>
+                <div style="font-size: 13px; margin-bottom: 15px;">
+                    <strong>Target DMA:</strong> Philadelphia (250-300 mile radius)<br>
+                    <strong>Zip Code:</strong> 08226<br>
+                    <strong>Monthly Cap:</strong> $4,500<br>
+                    <strong>Customer DB:</strong> 21,000 emails
+                </div>
+                <div style="color: #2196F3; font-weight: bold; margin-bottom: 10px;">⚠️ OPTIMIZATION NEEDED</div>
+                <ul class="bullet-points" style="font-size: 12px;">
+                    <li>Overall CPA: $14.78 (above target)</li>
+                    <li>PMax: $13 CPA vs Search: $7.84 CPA</li>
+                    <li>Quality Score: 100% keywords 8-10/10</li>
+                    <li>54 conversions/week at $9.50 CPA</li>
+                    <li>Google Credit: $2,100 (60-day window)</li>
+                </ul>
+                <div style="margin-top: 10px; padding: 10px; background: rgba(33, 150, 243, 0.2); border-radius: 5px; font-size: 12px;">
+                    <strong>Key Issues:</strong> Budget reallocation needed, PMax underperforming, competitor penetration (HomeToGo, VacationCenter)
+                </div>
+            </div>
+            
+            <div class="competitor-section" style="border-color: #E91E63;">
+                <h4 style="color: #E91E63; margin-bottom: 15px;">VRWW - Wildwood</h4>
+                <div style="font-size: 13px; margin-bottom: 15px;">
+                    <strong>Target DMA:</strong> Philadelphia (250-300 mile radius)<br>
+                    <strong>Zip Code:</strong> 08260<br>
+                    <strong>Monthly Cap:</strong> $4,500<br>
+                    <strong>Customer DB:</strong> 29,000 emails
+                </div>
+                <div style="color: #E91E63; font-weight: bold; margin-bottom: 10px;">🚨 CRISIS MODE</div>
+                <ul class="bullet-points" style="font-size: 12px;">
+                    <li>Peak CPA: $23.20 (Demand Gen inflating)</li>
+                    <li>PMax without DG: $15 CPA (still high)</li>
+                    <li>Quality Score: 100% keywords 8-10/10</li>
+                    <li>56 conversions/week at $8.61 CPA</li>
+                    <li>Search campaigns paused due to cost</li>
+                </ul>
+                <div style="margin-top: 10px; padding: 10px; background: rgba(233, 30, 99, 0.2); border-radius: 5px; font-size: 12px;">
+                    <strong>Critical Problems:</strong> Demand Gen campaign failure, low conversion volume, budget exceeded by $670 in July, needs complete restructure
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Competitive Intelligence -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">04</div>
+        </div>
+        <div class="section-title">Competitive Landscape & Market Gaps</div>
+        
+        <div class="highlight-box">
+            <h3>Auction Insights: The Dominant Giants</h3>
+            <p><strong>VRBO: 71% Search Impression Share | Airbnb: 58% Search Impression Share</strong></p>
+        </div>
+
+        <div class="performance-table">
+            <table>
+                <tr>
+                    <th>Competitor Type</th>
+                    <th>Examples</th>
+                    <th>Threat Level</th>
+                    <th>Our SIS vs Them</th>
+                    <th>Strategy</th>
+                </tr>
+                <tr>
+                    <td><strong>National OTAs</strong></td>
+                    <td>Airbnb, VRBO</td>
+                    <td style="color: #F44336;">CRITICAL</td>
+                    <td>9-29% vs 58-71%</td>
+                    <td>Differentiate on "No Fees" USP</td>
+                </tr>
+                <tr>
+                    <td><strong>Aggregators</strong></td>
+                    <td>HomeToGo, VacationCenter, RentByOwner</td>
+                    <td style="color: #FF9800;">HIGH</td>
+                    <td>Penetrating OCNJ market</td>
+                    <td>Avoid direct competition</td>
+                </tr>
+                <tr>
+                    <td><strong>Local Competitors</strong></td>
+                    <td>Berger Realty (OCNJ), Shore Summer Rentals</td>
+                    <td style="color: #FFC107;">MEDIUM</td>
+                    <td>27-29% in branded</td>
+                    <td>Competitor targeting campaigns</td>
+                </tr>
+                <tr>
+                    <td><strong>Niche Players</strong></td>
+                    <td>Zach Shore Rentals, Fox OCNJ, Monihan</td>
+                    <td style="color: #4CAF50;">LOW</td>
+                    <td>Strong position</td>
+                    <td>Maintain defense</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="two-column">
+            <div>
+                <div class="section-title" style="font-size: 1.4em;">High-Value Keyword Opportunities</div>
+                <div class="data-table">
+                    <table>
+                        <tr><th>Keyword</th><th>Volume</th><th>CPC</th><th>Status</th></tr>
+                        <tr><td>ocean city nj rentals</td><td>2,700</td><td>$5.09</td><td style="color: #F44336;">❌ Underperforming</td></tr>
+                        <tr><td>wildwood nj oceanfront rentals</td><td>190</td><td>$0.28</td><td style="color: #FF9800;">⚠️ Not Targeted</td></tr>
+                        <tr><td>pet friendly vacation rentals wildwood</td><td>320</td><td>$0.30</td><td style="color: #FF9800;">⚠️ Limited</td></tr>
+                        <tr><td>cape may nj house rentals</td><td>230</td><td>$2.18</td><td style="color: #FF9800;">⚠️ Not Targeted</td></tr>
+                        <tr><td>brigantine beach nj rentals</td><td>180</td><td>$0.35</td><td style="color: #4CAF50;">✅ Opportunity</td></tr>
+                        <tr><td>lavallette nj rentals</td><td>75</td><td>$0.02</td><td style="color: #4CAF50;">✅ Low CPC Gold</td></tr>
+                        <tr><td>sea isle city nj rentals</td><td>190</td><td>$0.19</td><td style="color: #4CAF50;">✅ High Potential</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <div class="section-title" style="font-size: 1.4em;">Competitor Keyword Targeting</div>
+                <div class="data-table">
+                    <table>
+                        <tr><th>Target Term</th><th>Volume</th><th>Market</th></tr>
+                        <tr><td>berger realty ocean city nj</td><td>High</td><td>OCNJ Only</td></tr>
+                        <tr><td>airbnb lbi / lbi airbnb</td><td>Medium</td><td>VRLBI</td></tr>
+                        <tr><td>vrbo lbi / lbi vrbo</td><td>Medium</td><td>VRLBI</td></tr>
+                        <tr><td>airbnb wildwood nj</td><td>120</td><td>VRWW</td></tr>
+                        <tr><td>vrbo wildwood nj</td><td>Medium</td><td>VRWW</td></tr>
+                        <tr><td>vrbo ocean city nj</td><td>High</td><td>VROCNJ</td></tr>
+                        <tr><td>shore summer rentals</td><td>Low</td><td>All Markets</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="opportunity-box">
+            <div class="tier-title">MARKET GAP ANALYSIS</div>
+            <ul class="bullet-points">
+                <li><strong>Neighborhood-Specific Terms:</strong> 50+ location keywords (Surf City, Beach Haven, Holgate, Wildwood Crest, North Wildwood) with <$0.50 CPC</li>
+                <li><strong>Property Type Opportunities:</strong> "oceanfront," "beachfront," "pet friendly," "with pool" modifiers underutilized</li>
+                <li><strong>Intent-Based Terms:</strong> "last minute rentals," "weekend rentals," "mini week rentals" showing high conversion potential</li>
+                <li><strong>Competitor Brand Defense:</strong> Not bidding on competitor terms while they dominate our brand searches</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 5: Campaign Structure Analysis -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">05</div>
+        </div>
+        <div class="section-title">Campaign Architecture & Efficiency Issues</div>
+        
+        <div class="issue-box">
+            <div class="tier-title" style="color: #F44336;">STRUCTURAL PROBLEMS IDENTIFIED</div>
+            <ul class="bullet-points">
+                <li><strong>Campaign Overlap:</strong> "Last Minute" and "Generic" campaigns nearly identical, causing auction cannibalization</li>
+                <li><strong>PMax Brand Conflict:</strong> Performance Max campaigns competing with branded search campaigns</li>
+                <li><strong>Ad Copy Redundancy:</strong> Same ads across all thematic ad groups - missing tailored messaging opportunities</li>
+                <li><strong>Limited Asset Groups:</strong> PMax campaigns lack thematic asset group segmentation</li>
+                <li><strong>Budget Misallocation:</strong> Branded campaigns receiving excessive budget while cannibalizing organic</li>
+            </ul>
+        </div>
+
+        <div class="three-column">
+            <div class="competitor-section" style="border-color: #4CAF50;">
+                <h4 style="color: #4CAF50;">✅ WHAT'S WORKING</h4>
+                <ul class="bullet-points" style="font-size: 12px;">
+                    <li><strong>Quality Scores:</strong> 96-100% of keywords rated 8-10/10</li>
+                    <li><strong>Thematic Structure:</strong> Well-organized ad groups by property type, location, use case</li>
+                    <li><strong>Landing Page Alignment:</strong> Keywords properly matched to relevant landing pages</li>
+                    <li><strong>Match Type Mix:</strong> Broad, phrase, exact working well in branded campaigns (exact: $1.52, overall: $1.48 CPA)</li>
+                    <li><strong>Audience Lists:</strong> 143K total customer database ready for remarketing</li>
+                </ul>
+            </div>
+            
+            <div class="competitor-section" style="border-color: #FF9800;">
+                <h4 style="color: #FF9800;">⚠️ NEEDS IMPROVEMENT</h4>
+                <ul class="bullet-points" style="font-size: 12px;">
+                    <li><strong>PMax Feed Quality:</strong> Limited product segmentation reducing targeting precision</li>
+                    <li><strong>Conversion Tracking:</strong> Multiple conversion actions creating confusion, possible double-counting</li>
+                    <li><strong>Bid Strategies:</strong> Not optimized by theme - uniform CPA targets across diverse ad groups</li>
+                    <li><strong>Ad Extensions:</strong> Limited use of location extensions for neighborhood-specific targeting</li>
+                    <li><strong>Negative Keywords:</strong> Need regular audits to exclude address-specific searches</li>
+                </ul>
+            </div>
+            
+            <div class="competitor-section" style="border-color: #F44336;">
+                <h4 style="color: #F44336;">🚨 CRITICAL FIXES</h4>
+                <ul class="bullet-points" style="font-size: 12px;">
+                    <li><strong>VRWW Demand Gen:</strong> Pause immediately - inflating CPA to $23.20</li>
+                    <li><strong>Consolidate Campaigns:</strong> Merge overlapping "Last Minute" and "Generic" campaigns</li>
+                    <li><strong>PMax Brand Exclusions:</strong> Add branded terms to PMax negative keywords</li>
+                    <li><strong>Budget Caps Enforcement:</strong> Implement automated rules to prevent overspending</li>
+                    <li><strong>Campaign Diversification:</strong> VRWW over-reliant on single campaign type</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="performance-table">
+            <table>
+                <tr>
+                    <th>Campaign Type</th>
+                    <th>VRLBI</th>
+                    <th>VROCNJ</th>
+                    <th>VRWW</th>
+                    <th>Recommendation</th>
+                </tr>
+                <tr>
+                    <td><strong>Branded Search</strong></td>
+                    <td>$1.48 CPA ✅</td>
+                    <td>$8.70 CPA ⚠️</td>
+                    <td>Active ✅</td>
+                    <td>Cap at $500/mo to prevent organic cannibalization</td>
+                </tr>
+                <tr>
+                    <td><strong>Performance Max</strong></td>
+                    <td>$2.82 CPA ✅</td>
+                    <td>$13 CPA ⚠️</td>
+                    <td>$2.82 CPA ✅</td>
+                    <td>Add branded negative keywords, create thematic asset groups</td>
+                </tr>
+                <tr>
+                    <td><strong>Generic Search</strong></td>
+                    <td>$7.80 CPA ⚠️</td>
+                    <td>$7.84 CPA ⚠️</td>
+                    <td>Paused ❌</td>
+                    <td>Scale VRLBI model, fix VRWW with $20/day budget</td>
+                </tr>
+                <tr>
+                    <td><strong>Competitor Targeting</strong></td>
+                    <td>Not Active</td>
+                    <td>Berger Only</td>
+                    <td>Not Active</td>
+                    <td>Launch across all accounts with location-specific terms</td>
+                </tr>
+                <tr>
+                    <td><strong>DSA Campaigns</strong></td>
+                    <td>Not Active</td>
+                    <td>Planned</td>
+                    <td>Not Active</td>
+                    <td>Test with $20/day budget per account</td>
+                </tr>
+                <tr>
+                    <td><strong>Demand Gen</strong></td>
+                    <td>Not Active</td>
+                    <td>Not Active</td>
+                    <td>Inflating CPA 🚨</td>
+                    <td>Pause VRWW immediately, test others after Q1 2026</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Slide 6: 90-Day Action Plan - Month 1 -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">06</div>
+        </div>
+        <div class="section-title">90-Day Growth Roadmap: Month 1 (Weeks 1-4)</div>
+        
+        <div class="highlight-box">
+            <h3>Month 1 Focus: Emergency Stabilization & Foundation</h3>
+            <p>Priority: Fix VRWW Crisis, Optimize Budget Allocation, Launch Quick Wins</p>
+        </div>
+
+        <div class="roi-visual">
+            <div class="roi-box" style="border: 2px solid #F44336;">
+                <h4 style="color: #F44336;">Week 1</h4>
+                <div style="font-size: 13px;">Emergency Fixes</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="roi-box" style="border: 2px solid #FF9800;">
+                <h4 style="color: #FF9800;">Week 2</h4>
+                <div style="font-size: 13px;">Campaign Restructure</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="roi-box" style="border: 2px solid #FFC107;">
+                <h4 style="color: #FFC107;">Week 3</h4>
+                <div style="font-size: 13px;">New Campaign Launches</div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="roi-box" style="border: 2px solid #4CAF50;">
+                <h4 style="color: #4CAF50;">Week 4</h4>
+                <div style="font-size: 13px;">Optimization & Scale</div>
+            </div>
+        </div>
+
+        <div class="two-column">
+            <div>
+                <div class="issue-box">
+                    <div class="tier-title" style="color: #F44336;">WEEK 1-2: EMERGENCY ACTIONS</div>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>VRWW Crisis Response:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Immediately pause Demand Gen campaign</li>
+                                <li>Reactivate Search campaigns at $20/day budget</li>
+                                <li>Reallocate to PMax-focused strategy</li>
+                                <li>Target CPA: <$10 within 2 weeks</li>
+                            </ul>
+                        </li>
+                        <li><strong>Budget Cap Enforcement:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>VRLBI: $6,000/month hard cap</li>
+                                <li>VROCNJ: $4,500/month (leverage $2,100 credit)</li>
+                                <li>VRWW: $4,500/month with daily monitoring</li>
+                            </ul>
+                        </li>
+                        <li><strong>Conversion Tracking Audit:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Verify no double-counting in GTM/GA4</li>
+                                <li>Consolidate to primary conversion actions</li>
+                                <li>Set up enhanced conversions</li>
+                            </ul>
+                        </li>
+                        <li><strong>Brand Campaign Optimization:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Cap all branded campaigns at $500/month</li>
+                                <li>Monitor organic traffic impact</li>
+                                <li>Expand geographic targeting to full DMA</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="opportunity-box">
+                    <div class="tier-title" style="color: #4CAF50;">WEEK 3-4: QUICK WIN LAUNCHES</div>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>Competitor Targeting Campaigns:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>VRLBI: "airbnb lbi," "vrbo lbi," "zach shore rentals"</li>
+                                <li>VROCNJ: "berger realty," "vrbo ocean city nj"</li>
+                                <li>VRWW: "airbnb wildwood," "vrbo wildwood nj"</li>
+                                <li>Budget: $10/day per account</li>
+                            </ul>
+                        </li>
+                        <li><strong>DSA Campaign Launch:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>All accounts: $20/day test budget</li>
+                                <li>Target entire website initially</li>
+                                <li>Monitor search terms closely</li>
+                            </ul>
+                        </li>
+                        <li><strong>Neighborhood Expansion:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>VRLBI: Surf City, Beach Haven, Holgate keywords</li>
+                                <li>VRWW: Wildwood Crest, North Wildwood, Diamond Beach</li>
+                                <li>VROCNJ: Gold Coast, The Gardens targeting</li>
+                            </ul>
+                        </li>
+                        <li><strong>Remarketing Lists Setup:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Upload 143K customer database</li>
+                                <li>Create audience segments by market</li>
+                                <li>Launch customer match campaigns</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">$13,500</span>
+                <div class="stat-label">Month 1 Total Budget<br>Across 3 Accounts</div>
+            </div>
+            <div class="stat-card" style="border-color: #4CAF50;">
+                <span class="stat-number" style="color: #4CAF50;"><$8</span>
+                <div class="stat-label">Target Portfolio CPA<br>By End of Month 1</div>
+            </div>
+            <div class="stat-card" style="border-color: #2196F3;">
+                <span class="stat-number" style="color: #2196F3;">5</span>
+                <div class="stat-label">New Campaigns<br>To Launch</div>
+            </div>
+            <div class="stat-card" style="border-color: #FF9800;">
+                <span class="stat-number" style="color: #FF9800;">$2,100</span>
+                <div class="stat-label">VROCNJ Google Credit<br>To Leverage</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: 90-Day Action Plan - Months 2-3 -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">07</div>
+        </div>
+        <div class="section-title">Months 2-3: Optimization & Pre-Season Preparation</div>
+        
+        <div class="two-column">
+            <div>
+                <div class="warning-box">
+                    <div class="tier-title" style="color: #FF9800;">MONTH 2 (Weeks 5-8): DATA ANALYSIS & REFINEMENT</div>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>Performance Review & Optimization:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Analyze Week 1-4 campaign performance data</li>
+                                <li>Identify winning keywords, ads, and audience segments</li>
+                                <li>Pause underperforming campaigns/ad groups</li>
+                                <li>Reallocate budget to top performers</li>
+                            </ul>
+                        </li>
+                        <li><strong>Ad Copy & Creative Refresh:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Create thematic ad variations for each ad group</li>
+                                <li>Test "27% Savings" vs "No Fees" messaging</li>
+                                <li>Implement responsive search ad best practices</li>
+                                <li>A/B test landing page headlines</li>
+                            </ul>
+                        </li>
+                        <li><strong>PMax Asset Group Expansion:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Create separate asset groups by property type</li>
+                                <li>Segment by location (beachfront, bay, inland)</li>
+                                <li>Add audience signals from customer database</li>
+                                <li>Test video assets if available</li>
+                            </ul>
+                        </li>
+                        <li><strong>Search Console Integration:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Connect all accounts to Search Console</li>
+                                <li>Analyze organic vs paid cannibalization</li>
+                                <li>Identify SEO opportunity keywords</li>
+                                <li>Adjust branded campaign strategy accordingly</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="opportunity-box">
+                    <div class="tier-title" style="color: #4CAF50;">MONTH 3 (Weeks 9-12): SCALE FOR 2026 SEASON</div>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>Pre-Season Ramp Up:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Increase budgets 20-30% for post-Christmas booking surge</li>
+                                <li>Historically strongest period for next-year bookings</li>
+                                <li>Target families planning 2026 vacations</li>
+                                <li>Emphasize "Book Early" messaging</li>
+                            </ul>
+                        </li>
+                        <li><strong>Advanced Campaign Types:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Video campaigns (if creative assets available)</li>
+                                <li>Discovery campaigns targeting vacation planning</li>
+                                <li>Hotel targeting campaigns (VRWW market test)</li>
+                                <li>Similar audience expansion</li>
+                            </ul>
+                        </li>
+                        <li><strong>Seasonal Messaging:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>2026 season dates: June 27 - August 29</li>
+                                <li>"Reserve Your 2026 Week Now" campaigns</li>
+                                <li>Early bird incentive promotions</li>
+                                <li>Retarget 2025 guests for repeat bookings</li>
+                            </ul>
+                        </li>
+                        <li><strong>Automation & Scaling:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Implement smart bidding where sufficient data</li>
+                                <li>Set up automated rules for budget pacing</li>
+                                <li>Create performance alerts and monitoring</li>
+                                <li>Document SOPs for ongoing management</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="performance-table">
+            <table>
+                <tr>
+                    <th>Month</th>
+                    <th>Focus</th>
+                    <th>Budget</th>
+                    <th>Target CPA</th>
+                    <th>Expected Conv.</th>
+                    <th>Key Milestones</th>
+                </tr>
+                <tr>
+                    <td><strong>Month 1</strong></td>
+                    <td>Emergency Fixes & Foundation</td>
+                    <td>$13,500</td>
+                    <td><$8.00</td>
+                    <td>~1,700</td>
+                    <td>VRWW stabilized, 5 new campaigns live</td>
+                </tr>
+                <tr>
+                    <td><strong>Month 2</strong></td>
+                    <td>Optimization & Data Analysis</td>
+                    <td>$13,500</td>
+                    <td><$7.00</td>
+                    <td>~1,950</td>
+                    <td>Ad copy refresh, PMax expansion, SC integration</td>
+                </tr>
+                <tr>
+                    <td><strong>Month 3</strong></td>
+                    <td>Pre-Season Scale & Automation</td>
+                    <td>$16,500</td>
+                    <td><$6.50</td>
+                    <td>~2,550</td>
+                    <td>20-30% budget increase, advanced campaigns, SOPs</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 20px;">
+            <h3>Critical Success Factors</h3>
+            <p><strong>Inventory Management:</strong> Peak season over for 2025. All campaigns should shift to 2026 booking focus starting late November.<br>
+            <strong>Off-Season Strategy:</strong> Maintain 40-50% budget reduction Nov-May, focus on remarketing and brand awareness.<br>
+            <strong>Seasonality Considerations:</strong> June-August booking surge = highest opportunity for year-over-year growth.</p>
+        </div>
+    </div>
+
+    <!-- Slide 8: Budget Allocation & Projections -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">08</div>
+        </div>
+        <div class="section-title">Optimized Budget Allocation & Performance Projections</div>
+        
+        <div class="performance-table">
+            <table>
+                <tr>
+                    <th>Account</th>
+                    <th>Current Allocation</th>
+                    <th>Current CPA</th>
+                    <th>Proposed Allocation</th>
+                    <th>Target CPA</th>
+                    <th>Expected Monthly Conv.</th>
+                </tr>
+                <tr class="account-vrlbi">
+                    <td><strong>VRLBI</strong></td>
+                    <td>$3,600/month<br>(26.7% portfolio)</td>
+                    <td>$1.77 - $4.80</td>
+                    <td><strong>$5,400/month</strong><br>(36% portfolio)</td>
+                    <td><strong>$4.50</strong></td>
+                    <td><strong>1,200</strong></td>
+                </tr>
+                <tr class="account-vrocnj">
+                    <td><strong>VROCNJ</strong></td>
+                    <td>$4,500/month<br>(33.3% portfolio)</td>
+                    <td>$6.86 - $14.78</td>
+                    <td><strong>$5,100/month</strong><br>(34% portfolio)</td>
+                    <td><strong>$7.50</strong></td>
+                    <td><strong>680</strong></td>
+                </tr>
+                <tr class="account-vrww">
+                    <td><strong>VRWW</strong></td>
+                    <td>$4,500/month<br>(33.3% portfolio)</td>
+                    <td>$8.61 - $23.20</td>
+                    <td><strong>$4,500/month</strong><br>(30% portfolio)</td>
+                    <td><strong>$9.00</strong></td>
+                    <td><strong>500</strong></td>
+                </tr>
+                <tr style="background: rgba(204, 91, 39, 0.3);">
+                    <td><strong>TOTAL</strong></td>
+                    <td><strong>$12,600/mo</strong></td>
+                    <td><strong>Weighted Avg</strong></td>
+                    <td><strong>$15,000/mo</strong></td>
+                    <td><strong>$6.30</strong></td>
+                    <td><strong>2,380</strong></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="three-column">
+            <div class="competitor-section" style="border-color: #4CAF50;">
+                <h4 style="color: #4CAF50;">VRLBI - Scale Strategy</h4>
+                <div style="font-size: 13px; margin-bottom: 10px;">
+                    <strong>Rationale:</strong> Best performer deserves largest share
+                </div>
+                <div class="data-table">
+                    <table>
+                        <tr><th>Campaign Type</th><th>Allocation</th></tr>
+                        <tr><td>PMax</td><td>$2,700 (50%)</td></tr>
+                        <tr><td>Generic Search</td><td>$1,620 (30%)</td></tr>
+                        <tr><td>Branded Search</td><td>$540 (10%)</td></tr>
+                        <tr><td>Competitor</td><td>$270 (5%)</td></tr>
+                        <tr><td>DSA</td><td>$270 (5%)</td></tr>
+                    </table>
+                </div>
+                <div style="margin-top: 10px; font-size: 12px; color: #4CAF50;">
+                    <strong>Expected Impact:</strong> 1,200 conversions/mo at $4.50 CPA = $5,400 revenue efficiency leader
+                </div>
+            </div>
+            
+            <div class="competitor-section" style="border-color: #2196F3;">
+                <h4 style="color: #2196F3;">VROCNJ - Optimize Strategy</h4>
+                <div style="font-size: 13px; margin-bottom: 10px;">
+                    <strong>Rationale:</strong> Leverage $2,100 credit, reduce PMax, boost Search
+                </div>
+                <div class="data-table">
+                    <table>
+                        <tr><th>Campaign Type</th><th>Allocation</th></tr>
+                        <tr><td>Generic Search</td><td>$2,040 (40%)</td></tr>
+                        <tr><td>PMax</td><td>$1,530 (30%)</td></tr>
+                        <tr><td>Branded Search</td><td>$765 (15%)</td></tr>
+                        <tr><td>Competitor (Berger)</td><td>$510 (10%)</td></tr>
+                        <tr><td>DSA</td><td>$255 (5%)</td></tr>
+                    </table>
+                </div>
+                <div style="margin-top: 10px; font-size: 12px; color: #2196F3;">
+                    <strong>Expected Impact:</strong> 680 conversions/mo at $7.50 CPA = $5,100 + credit utilization
+                </div>
+            </div>
+            
+            <div class="competitor-section" style="border-color: #E91E63;">
+                <h4 style="color: #E91E63;">VRWW - Rebuild Strategy</h4>
+                <div style="font-size: 13px; margin-bottom: 10px;">
+                    <strong>Rationale:</strong> Conservative budget until CPA stabilizes under $10
+                </div>
+                <div class="data-table">
+                    <table>
+                        <tr><th>Campaign Type</th><th>Allocation</th></tr>
+                        <tr><td>PMax</td><td>$2,250 (50%)</td></tr>
+                        <tr><td>Generic Search</td><td>$1,350 (30%)</td></tr>
+                        <tr><td>Branded Search</td><td>$450 (10%)</td></tr>
+                        <tr><td>Competitor</td><td>$225 (5%)</td></tr>
+                        <tr><td>DSA</td><td>$225 (5%)</td></tr>
+                    </table>
+                </div>
+                <div style="margin-top: 10px; font-size: 12px; color: #E91E63;">
+                    <strong>Expected Impact:</strong> 500 conversions/mo at $9.00 CPA = stability focus, scale in Q1 2026
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card" style="border-color: #4CAF50;">
+                <span class="stat-number" style="color: #4CAF50;">19%</span>
+                <div class="stat-label">Portfolio Budget Increase<br>(Current vs Proposed)</div>
+            </div>
+            <div class="stat-card" style="border-color: #2196F3;">
+                <span class="stat-number" style="color: #2196F3;">2,380</span>
+                <div class="stat-label">Expected Monthly Conversions<br>(All Accounts Combined)</div>
+            </div>
+            <div class="stat-card" style="border-color: #FF9800;">
+                <span class="stat-number" style="color: #FF9800;">$6.30</span>
+                <div class="stat-label">Weighted Avg Portfolio CPA<br>(40% improvement vs current)</div>
+            </div>
+            <div class="stat-card" style="border-color: #9C27B0;">
+                <span class="stat-number" style="color: #9C27B0;">$15K</span>
+                <div class="stat-label">Total Monthly Ad Spend<br>(Optimized Allocation)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Risk Assessment & Mitigation -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">09</div>
+        </div>
+        <div class="section-title">Risk Assessment & Mitigation Strategies</div>
+        
+        <div class="performance-table">
+            <table>
+                <tr>
+                    <th>Risk Category</th>
+                    <th>Specific Risk</th>
+                    <th>Impact</th>
+                    <th>Probability</th>
+                    <th>Mitigation Strategy</th>
+                </tr>
+                <tr>
+                    <td><strong>Seasonality</strong></td>
+                    <td>2025 inventory depleted, low demand until Christmas</td>
+                    <td style="color: #F44336;">HIGH</td>
+                    <td style="color: #FF9800;">CERTAIN</td>
+                    <td>Shift all messaging to 2026 bookings, reduce budgets 40-50% Nov-Dec</td>
+                </tr>
+                <tr>
+                    <td><strong>Budget Compliance</strong></td>
+                    <td>Historical overspending in peak months</td>
+                    <td style="color: #FF9800;">MEDIUM</td>
+                    <td style="color: #FF9800;">MEDIUM</td>
+                    <td>Automated budget rules, daily monitoring, portfolio-wide caps</td>
+                </tr>
+                <tr>
+                    <td><strong>Competitive Pressure</strong></td>
+                    <td>VRBO/Airbnb increasing impression share</td>
+                    <td style="color: #FF9800;">MEDIUM</td>
+                    <td style="color: #F44336;">HIGH</td>
+                    <td>Quality Score advantage (8-10/10), USP differentiation, long-tail keywords</td>
+                </tr>
+                <tr>
+                    <td><strong>Conversion Tracking</strong></td>
+                    <td>Possible double-counting, multiple actions</td>
+                    <td style="color: #FFC107;">LOW</td>
+                    <td style="color: #FF9800;">MEDIUM</td>
+                    <td>GTM audit Week 1, consolidate to primary conversion, verify accuracy</td>
+                </tr>
+                <tr>
+                    <td><strong>VRWW Account</strong></td>
+                    <td>Continued underperformance despite fixes</td>
+                    <td style="color: #FF9800;">MEDIUM</td>
+                    <td style="color: #FFC107;">LOW</td>
+                    <td>Conservative budget, replicate VRLBI model, geographic analysis</td>
+                </tr>
+                <tr>
+                    <td><strong>Organic Cannibalization</strong></td>
+                    <td>Paid brand campaigns hurting SEO traffic</td>
+                    <td style="color: #FFC107;">LOW</td>
+                    <td style="color: #FF9800;">MEDIUM</td>
+                    <td>Search Console integration, $500/mo brand caps, monitor GA4 data</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="two-column">
+            <div>
+                <div class="issue-box">
+                    <div class="tier-title" style="color: #F44336;">CRITICAL MONITORING METRICS</div>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>Daily Budget Pacing:</strong> Ensure no account exceeds monthly cap</li>
+                        <li><strong>CPA Thresholds:</strong> Alert if any campaign exceeds $12 CPA for 3+ days</li>
+                        <li><strong>Quality Score Tracking:</strong> Maintain 8+ scores across 95% of keywords</li>
+                        <li><strong>Impression Share:</strong> Track competitive pressure changes weekly</li>
+                        <li><strong>Search Term Audits:</strong> Review bi-weekly for irrelevant/address searches</li>
+                        <li><strong>Conversion Rate Trends:</strong> Detect inventory/demand issues early</li>
+                        <li><strong>Geographic Performance:</strong> Identify if DMA targeting is optimal</li>
+                    </ul>
+                </div>
+                
+                <div class="warning-box" style="margin-top: 15px;">
+                    <div class="tier-title" style="color: #FF9800;">SUCCESS PROBABILITY ANALYSIS</div>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>VRLBI Scaling (>90% confidence):</strong> Proven model, excellent historical performance</li>
+                        <li><strong>VROCNJ Optimization (75% confidence):</strong> Good foundation, needs reallocation</li>
+                        <li><strong>VRWW Recovery (60% confidence):</strong> Structural issues fixable but market challenges</li>
+                        <li><strong>Overall Portfolio (80% confidence):</strong> VRLBI carries portfolio to success</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="opportunity-box">
+                    <div class="tier-title" style="color: #4CAF50;">CONTINGENCY PLANS</div>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>If VRWW CPA stays >$12:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Reduce budget to $3,000/month</li>
+                                <li>Reallocate savings to VRLBI</li>
+                                <li>Focus VRWW on branded + remarketing only</li>
+                            </ul>
+                        </li>
+                        <li><strong>If seasonal demand drops sharply:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Accelerate budget reduction to 60%</li>
+                                <li>Pause all non-essential campaigns</li>
+                                <li>Focus on 2026 early bird campaigns</li>
+                            </ul>
+                        </li>
+                        <li><strong>If Google credit not captured (VROCNJ):</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Increase daily budget to $100 Week 3-4</li>
+                                <li>Launch additional keyword expansion</li>
+                                <li>Accept slightly higher CPA temporarily</li>
+                            </ul>
+                        </li>
+                        <li><strong>If competitor pressure intensifies:</strong>
+                            <ul style="margin-left: 20px; margin-top: 5px;">
+                                <li>Increase competitor targeting budget 50%</li>
+                                <li>Launch defensive brand protection</li>
+                                <li>Test hotel keyword interception (VRWW)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tier-box" style="margin-top: 15px;">
+                    <div class="tier-title">PERFORMANCE ESCALATION PROTOCOL</div>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>Green Status:</strong> All CPAs within target, proceed with plan</li>
+                        <li><strong>Yellow Status:</strong> 1 account >20% over CPA target for 5+ days → tactical adjustments</li>
+                        <li><strong>Red Status:</strong> 2+ accounts over target OR any account >50% over → strategic pivot required</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Final Recommendations -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">10</div>
+        </div>
+        <div class="main-title" style="font-size: 2.5em;">Strategic Recommendations</div>
+        <div class="subtitle">Immediate Action Plan for Q4 2025 & Q1 2026</div>
+        
+        <div class="highlight-box">
+            <h3>Executive Recommendation: APPROVED FOR IMMEDIATE IMPLEMENTATION</h3>
+            <div class="two-column" style="text-align: left;">
+                <div>
+                    <ul class="bullet-points">
+                        <li>VRWW Emergency Fix: Pause Demand Gen, reactivate Search at $20/day</li>
+                        <li>Budget Reallocation: Increase VRLBI to $5,400/mo (proven winner)</li>
+                        <li>Competitor Defense: Launch targeting campaigns across all markets</li>
+                        <li>Quality Score Advantage: Leverage 8-10/10 scores vs competitors</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="bullet-points">
+                        <li>Remarketing Activation: Deploy 143K customer database</li>
+                        <li>Brand Cannibalization Fix: Cap branded at $500/mo, monitor organic</li>
+                        <li>VROCNJ Credit Strategy: $100/day to capture $2,100 bonus</li>
+                        <li>2026 Focus Shift: Transition all messaging post-Christmas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="performance-table">
+            <table>
+                <tr>
+                    <th style="background: #cc5b27;">Performance Metric</th>
+                    <th>Current State</th>
+                    <th>Month 1 Target</th>
+                    <th>Month 3 Target</th>
+                    <th>% Improvement</th>
+                </tr>
+                <tr>
+                    <td><strong>Portfolio CPA</strong></td>
+                    <td>$10.50 (weighted)</td>
+                    <td>$8.00</td>
+                    <td>$6.30</td>
+                    <td style="color: #4CAF50;"><strong>-40%</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Monthly Conversions</strong></td>
+                    <td>~1,500</td>
+                    <td>~1,700</td>
+                    <td>~2,380</td>
+                    <td style="color: #4CAF50;"><strong>+59%</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Monthly Ad Spend</strong></td>
+                    <td>$12,600</td>
+                    <td>$13,500</td>
+                    <td>$15,000</td>
+                    <td style="color: #4CAF50;"><strong>+19%</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>VRLBI Performance</strong></td>
+                    <td>$4.80 CPA</td>
+                    <td>$4.50 CPA</td>
+                    <td>$4.00 CPA</td>
+                    <td style="color: #4CAF50;"><strong>-17%</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>VROCNJ Performance</strong></td>
+                    <td>$9.50 CPA</td>
+                    <td>$8.50 CPA</td>
+                    <td>$7.50 CPA</td>
+                    <td style="color: #4CAF50;"><strong>-21%</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>VRWW Performance</strong></td>
+                    <td>$23.20 CPA</td>
+                    <td>$12.00 CPA</td>
+                    <td>$9.00 CPA</td>
+                    <td style="color: #4CAF50;"><strong>-61%</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Quality Score Avg</strong></td>
+                    <td>8.7/10</td>
+                    <td>8.8/10</td>
+                    <td>9.0/10</td>
+                    <td style="color: #4CAF50;"><strong>Maintain Excellence</strong></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card" style="border-color: #4CAF50;">
+                <span class="stat-number" style="color: #4CAF50;">59%</span>
+                <div class="stat-label">Conversion Volume Increase<br>(Month 3 vs Current)</div>
+            </div>
+            <div class="stat-card" style="border-color: #2196F3;">
+                <span class="stat-number" style="color: #2196F3;">40%</span>
+                <div class="stat-label">CPA Improvement<br>(Portfolio Efficiency)</div>
+            </div>
+            <div class="stat-card" style="border-color: #FF9800;">
+                <span class="stat-number" style="color: #FF9800;">19%</span>
+                <div class="stat-label">Budget Increase<br>(Conservative Scaling)</div>
+            </div>
+            <div class="stat-card" style="border-color: #E91E63;">
+                <span class="stat-number" style="color: #E91E63;">$2,100</span>
+                <div class="stat-label">Google Credit Bonus<br>(VROCNJ Opportunity)</div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <div style="font-size: 1.4em; margin-bottom: 20px;">
+                <strong>RECOMMENDATION: APPROVED FOR IMMEDIATE EXECUTION</strong>
+            </div>
+            <div style="font-size: 1.1em;">
+                Conservative 19% budget increase → 59% conversion growth → 40% efficiency gain<br>
+                <strong>Business Model: 27% cost advantage vs OTAs | 143K customer database | Proven VRLBI success model</strong><br>
+                <strong>Expected Q1 2026 Impact: Position for peak season domination | 2,380 monthly conversions | $6.30 portfolio CPA</strong>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
