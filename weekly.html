@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Performance Update - Oct 6-13, 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #162642 0%, #1a2d4f 100%);
+            color: white;
+            line-height: 1.5;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            height: 60px;
+        }
+        
+        .slide-number {
+            background: #cc5b27;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .main-title {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #cc5b27, #ff7c4c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            text-align: center;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #cc5b27;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #cc5b27;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #cc5b27;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        .trend-indicator {
+            font-size: 0.9em;
+            margin-top: 8px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+        
+        .trend-up {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+        
+        .trend-down {
+            background: rgba(244, 67, 54, 0.2);
+            color: #F44336;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #cc5b27, #ff7c4c);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .performance-table {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .performance-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .performance-table th {
+            background: #cc5b27;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .performance-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+        }
+        
+        .performance-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .account-vrlbi { background: #4CAF50; color: white; font-weight: bold; text-align: center; }
+        .account-vrocnj { background: #2196F3; color: white; font-weight: bold; text-align: center; }
+        .account-vrww { background: #E91E63; color: white; font-weight: bold; text-align: center; }
+        
+        .bullet-points {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .bullet-points li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 14px;
+        }
+        
+        .bullet-points li:before {
+            content: "▶";
+            color: #cc5b27;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .optimization-box {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .action-box {
+            background: rgba(255, 152, 0, 0.2);
+            border: 2px solid #FF9800;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status-excellent {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .status-good {
+            background: #2196F3;
+            color: white;
+        }
+        
+        .status-warning {
+            background: #FF9800;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title & Overview -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">01</div>
+        </div>
+        <div class="main-title">Weekly Performance Update</div>
+        <div class="subtitle">October 6-13, 2025 vs September 28 - October 5, 2025</div>
+        
+        <div class="highlight-box">
+            <h3>🎯 Key Takeaway: Major Efficiency Breakthrough</h3>
+            <p style="font-size: 1.1em;">VRWW restructure delivered <strong>60% CPA reduction</strong> | VROCNJ optimization showing <strong>30% improvement</strong><br>
+            Portfolio CPA improved to <strong>$3.19</strong> while managing off-season volume decline</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number">$514</span>
+                <div class="stat-label">Total Spend</div>
+                <div class="trend-indicator trend-down">↓ 48% WoW</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">161</span>
+                <div class="stat-label">Total Conversions</div>
+                <div class="trend-indicator trend-down">↓ 40% WoW</div>
+            </div>
+            <div class="stat-card" style="border-color: #4CAF50;">
+                <span class="stat-number" style="color: #4CAF50;">$3.19</span>
+                <div class="stat-label">Portfolio CPA</div>
+                <div class="trend-indicator trend-up">↓ 14% Better</div>
+            </div>
+            <div class="stat-card" style="border-color: #FF9800;">
+                <span class="stat-number" style="color: #FF9800;">Off-Season</span>
+                <div class="stat-label">Expected Volume Drop<br>Efficiency Focus</div>
+            </div>
+        </div>
+
+        <div class="performance-table">
+            <table>
+                <tr>
+                    <th>Account</th>
+                    <th>Conversions</th>
+                    <th>WoW Change</th>
+                    <th>Cost</th>
+                    <th>WoW Change</th>
+                    <th>CPA</th>
+                    <th>Status</th>
+                </tr>
+                <tr class="account-vrlbi">
+                    <td><strong>VRLBI</strong></td>
+                    <td>115</td>
+                    <td>↓ 48%</td>
+                    <td>$157</td>
+                    <td>↓ 51%</td>
+                    <td><strong>$1.36</strong></td>
+                    <td><span class="status-badge status-excellent">EXCELLENT</span></td>
+                </tr>
+                <tr class="account-vrocnj">
+                    <td><strong>VROCNJ</strong></td>
+                    <td>23</td>
+                    <td>↓ 26%</td>
+                    <td>$242</td>
+                    <td>↓ 47%</td>
+                    <td><strong>$10.20</strong></td>
+                    <td><span class="status-badge status-warning">NEAR TARGET</span></td>
+                </tr>
+                <tr class="account-vrww">
+                    <td><strong>VRWW</strong></td>
+                    <td>23</td>
+                    <td style="color: #4CAF50;">↑ 35%</td>
+                    <td>$115</td>
+                    <td>↓ 48%</td>
+                    <td><strong>$5.05</strong></td>
+                    <td><span class="status-badge status-good">BREAKTHROUGH</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Slide 2: Account Performance Breakdown -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">02</div>
+        </div>
+        <div class="section-title">Individual Account Analysis</div>
+        
+        <div class="two-column">
+            <div>
+                <div class="optimization-box" style="border-color: #4CAF50;">
+                    <h4 style="color: #4CAF50; margin-bottom: 15px;">✅ VRLBI - Long Beach Island</h4>
+                    <div class="stats-grid" style="margin: 15px 0;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; color: #4CAF50; font-weight: bold;">$1.36</div>
+                            <div style="font-size: 12px; opacity: 0.9;">CPA (↓6% WoW)</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; color: #4CAF50; font-weight: bold;">115</div>
+                            <div style="font-size: 12px; opacity: 0.9;">Conversions</div>
+                        </div>
+                    </div>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>Elite performer</strong> - CPA improved further to $1.36</li>
+                        <li>Volume decline expected during off-season</li>
+                        <li>Efficiency maintained despite lower search volume</li>
+                        <li>Blueprint model for other accounts</li>
+                    </ul>
+                </div>
+
+                <div class="optimization-box" style="border-color: #E91E63; background: rgba(233, 30, 99, 0.2);">
+                    <h4 style="color: #E91E63; margin-bottom: 15px;">🔥 VRWW - Wildwood (Major Win)</h4>
+                    <div class="stats-grid" style="margin: 15px 0;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; color: #E91E63; font-weight: bold;">$5.05</div>
+                            <div style="font-size: 12px; opacity: 0.9;">CPA (↓60% WoW!)</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; color: #E91E63; font-weight: bold;">23</div>
+                            <div style="font-size: 12px; opacity: 0.9;">Conv. (↑35%)</div>
+                        </div>
+                    </div>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>Breakthrough performance</strong> - from $12.65 to $5.05</li>
+                        <li>Restructure strategy delivering results</li>
+                        <li>Now well below $10 threshold</li>
+                        <li>Conversions up 35% despite lower spend</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="optimization-box" style="border-color: #2196F3; background: rgba(33, 150, 243, 0.2);">
+                    <h4 style="color: #2196F3; margin-bottom: 15px;">⚡ VROCNJ - Ocean City (Strong Progress)</h4>
+                    <div class="stats-grid" style="margin: 15px 0;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; color: #2196F3; font-weight: bold;">$10.20</div>
+                            <div style="font-size: 12px; opacity: 0.9;">CPA (↓30% WoW)</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; color: #2196F3; font-weight: bold;">23</div>
+                            <div style="font-size: 12px; opacity: 0.9;">Conversions</div>
+                        </div>
+                    </div>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>Strong improvement</strong> - down from $14.57</li>
+                        <li>Just $0.20 above $10 threshold</li>
+                        <li>Optimization strategy working</li>
+                        <li>$2,100 Google credit still available</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(255, 152, 0, 0.2); border: 2px solid #FF9800; border-radius: 8px; padding: 15px; margin-top: 15px;">
+                    <h4 style="color: #FF9800; margin-bottom: 10px;">📊 Week-on-Week Insights</h4>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>Off-season impact confirmed:</strong> Volume down 40% as expected for October</li>
+                        <li><strong>Efficiency gained:</strong> Portfolio CPA improved 14% despite lower volume</li>
+                        <li><strong>Budget discipline:</strong> Spend reduced 48% while maintaining lead quality</li>
+                        <li><strong>Strategic wins:</strong> VRWW and VROCNJ restructures both delivering results</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Optimizations Completed -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">03</div>
+        </div>
+        <div class="section-title">Optimizations Completed This Week</div>
+        
+        <div class="optimization-box">
+            <h4 style="color: #4CAF50; margin-bottom: 15px;">✅ COMPLETED ACTIONS</h4>
+            <ul class="bullet-points">
+                <li><strong>VRWW Campaign Restructure:</strong>
+                    <ul style="margin-left: 20px; margin-top: 5px; list-style: circle;">
+                        <li>Rebalanced budget allocation away from underperforming ad groups</li>
+                        <li>Tightened targeting to high-converting audience segments</li>
+                        <li>Result: 60% CPA reduction to $5.05 (well below $10 target)</li>
+                    </ul>
+                </li>
+                <li><strong>VROCNJ Campaign Optimization:</strong>
+                    <ul style="margin-left: 20px; margin-top: 5px; list-style: circle;">
+                        <li>Shifted budget from PMax to better-performing Search campaigns</li>
+                        <li>Implemented bid adjustments based on device and location performance</li>
+                        <li>Result: 30% CPA improvement to $10.20 (nearly at $10 threshold)</li>
+                    </ul>
+                </li>
+                <li><strong>Budget Management:</strong>
+                    <ul style="margin-left: 20px; margin-top: 5px; list-style: circle;">
+                        <li>Applied off-season budget reductions across all accounts</li>
+                        <li>Maintained spend discipline with daily monitoring</li>
+                        <li>48% spend reduction while improving efficiency</li>
+                    </ul>
+                </li>
+                <li><strong>Performance Monitoring:</strong>
+                    <ul style="margin-left: 20px; margin-top: 5px; list-style: circle;">
+                        <li>Set up automated CPA threshold alerts</li>
+                        <li>Implemented daily budget pacing reports</li>
+                        <li>Enhanced conversion tracking verification</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="two-column">
+            <div class="action-box">
+                <h4 style="color: #FF9800; margin-bottom: 15px;">🎯 PRIORITY ACTIONS FOR NEXT WEEK</h4>
+                <ul class="bullet-points" style="font-size: 13px;">
+                    <li><strong>VROCNJ Final Push:</strong> Fine-tune to get below $10 threshold</li>
+                    <li><strong>Competitor Campaigns:</strong> Launch Tuesday across all 3 accounts</li>
+                    <li><strong>DSA Test Campaigns:</strong> Deploy Wednesday at $20/day per account</li>
+                    <li><strong>Customer Match Setup:</strong> Begin uploading 143K database segments</li>
+                    <li><strong>Search Console Integration:</strong> Connect for organic cannibalization analysis</li>
+                </ul>
+            </div>
+            
+            <div class="action-box" style="background: rgba(204, 91, 39, 0.2); border-color: #cc5b27;">
+                <h4 style="color: #cc5b27; margin-bottom: 15px;">📋 PENDING CLIENT INPUTS</h4>
+                <ul class="bullet-points" style="font-size: 13px;">
+                    <li><strong>Clarity Sheet Completion:</strong> Business figures for ROI calculations (Whitney back this week)</li>
+                    <li><strong>ZIP Code Lists:</strong> Geo heatmap data for precision targeting</li>
+                    <li><strong>VROCNJ Credit Strategy:</strong> Timeline for deploying $2,100 Google credit</li>
+                    <li><strong>Weekly Call:</strong> Wednesday 9am NY time - review detailed metrics and Q&A</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="stats-grid" style="margin-top: 30px;">
+            <div class="stat-card" style="border-color: #4CAF50;">
+                <span class="stat-number" style="color: #4CAF50;">2/3</span>
+                <div class="stat-label">Accounts At/Below<br>Target CPA</div>
+            </div>
+            <div class="stat-card" style="border-color: #2196F3;">
+                <span class="stat-number" style="color: #2196F3;">60%</span>
+                <div class="stat-label">VRWW CPA<br>Improvement</div>
+            </div>
+            <div class="stat-card" style="border-color: #FF9800;">
+                <span class="stat-number" style="color: #FF9800;">5</span>
+                <div class="stat-label">New Campaigns<br>Launching This Week</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">$3.19</span>
+                <div class="stat-label">Portfolio CPA<br>Excellent Efficiency</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Next Steps & Outlook -->
+    <div class="slide">
+        <div class="slide-header">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+            <div class="slide-number">04</div>
+        </div>
+        <div class="section-title">Week Ahead Roadmap</div>
+        
+        <div class="highlight-box">
+            <h3>This Week's Focus: Launch New Campaign Types + Final VROCNJ Optimization</h3>
+            <p>Building on VRWW breakthrough to expand reach and capture competitor traffic</p>
+        </div>
+
+        <div class="performance-table">
+            <table>
+                <tr>
+                    <th>Day</th>
+                    <th>Action</th>
+                    <th>Account(s)</th>
+                    <th>Expected Impact</th>
+                </tr>
+                <tr>
+                    <td><strong>Monday</strong></td>
+                    <td>VROCNJ bid strategy adjustments</td>
+                    <td>VROCNJ</td>
+                    <td>Push CPA below $10 threshold</td>
+                </tr>
+                <tr>
+                    <td><strong>Tuesday</strong></td>
+                    <td>Competitor targeting campaigns launch</td>
+                    <td>All 3 accounts</td>
+                    <td>$10/day per account, capture competitor searches</td>
+                </tr>
+                <tr>
+                    <td><strong>Wednesday</strong></td>
+                    <td>DSA test campaigns launch + Weekly call</td>
+                    <td>All 3 accounts</td>
+                    <td>$20/day per account, long-tail keyword discovery</td>
+                </tr>
+                <tr>
+                    <td><strong>Thursday</strong></td>
+                    <td>Customer match list upload begins</td>
+                    <td>VRLBI first</td>
+                    <td>Remarketing foundation for 93K database</td>
+                </tr>
+                <tr>
+                    <td><strong>Friday</strong></td>
+                    <td>Search Console integration setup</td>
+                    <td>All 3 accounts</td>
+                    <td>Organic vs paid traffic analysis</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="two-column">
+            <div>
+                <div class="optimization-box">
+                    <h4 style="color: #4CAF50; margin-bottom: 15px;">📈 GROWTH OPPORTUNITIES</h4>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>VRLBI Scaling:</strong> Elite performer ready for expanded budget when demand increases</li>
+                        <li><strong>VRWW Momentum:</strong> Breakthrough creates opportunity to test additional campaigns</li>
+                        <li><strong>Competitor Capture:</strong> Target searches for Airbnb, VRBO, Berger Realty</li>
+                        <li><strong>Neighborhood Expansion:</strong> Low-CPC location terms (Surf City, Beach Haven, etc.)</li>
+                        <li><strong>2026 Positioning:</strong> Build remarketing audiences for post-Christmas booking surge</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="action-box">
+                    <h4 style="color: #FF9800; margin-bottom: 15px;">⚠️ MONITORING PRIORITIES</h4>
+                    <ul class="bullet-points" style="font-size: 13px;">
+                        <li><strong>Off-Season Trends:</strong> Continue to expect volume decline through December</li>
+                        <li><strong>VROCNJ Threshold:</strong> Monitor daily to maintain sub-$10 CPA</li>
+                        <li><strong>New Campaign Learning:</strong> Give competitor/DSA campaigns 7-10 days for data</li>
+                        <li><strong>Budget Discipline:</strong> Maintain caps during slow season</li>
+                        <li><strong>Quality Score:</strong> Ensure 8-10/10 scores maintained across all campaigns</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 30px;">
+            <h3>🎯 Key Takeaways for Duane</h3>
+            <div style="text-align: left; max-width: 900px; margin: 15px auto;">
+                <ul class="bullet-points" style="font-size: 15px;">
+                    <li><strong>Major Win:</strong> VRWW restructure exceeded expectations with 60% CPA reduction to $5.05</li>
+                    <li><strong>Strong Progress:</strong> VROCNJ improved 30% to $10.20, final push this week to break $10</li>
+                    <li><strong>Elite Performance:</strong> VRLBI continues as blueprint at $1.36 CPA</li>
+                    <li><strong>Efficiency Focus:</strong> Portfolio CPA improved to $3.19 despite expected off-season volume decline</li>
+                    <li><strong>Next Phase:</strong> 5 new campaigns launching this week to expand reach and defend against competitors</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; font-size: 1.1em;">
+            <strong>Looking forward to Wednesday's call to review detailed metrics and answer any questions!</strong>
+        </div>
+    </div>
+</body>
+</html>
