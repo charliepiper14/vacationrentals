@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VRJS Portfolio Performance Review | Apr 29 - May 12, 2026</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+}
+.container { max-width: 1200px; margin: 0 auto; background: white; }
+
+.header {
+  background: linear-gradient(135deg, #162642 0%, #1a3354 100%);
+  color: white;
+  padding: 40px 80px;
+}
+.logo-container { margin-bottom: 28px; }
+.logo-container img { height: 56px; width: auto; }
+.header h1 { font-size: 40px; font-weight: 700; margin-bottom: 8px; color: white; }
+.header .subtitle { font-size: 19px; color: #d0d8e8; font-weight: 300; }
+.header .date-range { font-size: 15px; color: #cc5b27; font-weight: 600; margin-top: 8px; }
+
+.section { padding: 56px 80px; border-bottom: 1px solid #e0e0e0; }
+.section-alt { background: #f8f9fa; }
+.section-dark { background: linear-gradient(135deg, #162642 0%, #1a3354 100%); color: white; }
+
+h2 {
+  font-size: 30px; color: #162642; margin-bottom: 28px; font-weight: 700;
+  border-bottom: 3px solid #cc5b27; padding-bottom: 12px;
+}
+.section-dark h2 { color: white; }
+h3 { font-size: 21px; color: #162642; margin-top: 36px; margin-bottom: 18px; font-weight: 600; }
+.section-dark h3 { color: #cc5b27; }
+h4 { font-size: 16px; color: #162642; margin-top: 22px; margin-bottom: 10px; font-weight: 600; }
+
+.banner { padding: 24px 28px; border-radius: 10px; margin: 22px 0; text-align: center; }
+.banner h3 { margin: 0 0 8px 0; font-size: 22px; }
+.banner p { font-size: 16px; margin: 0; }
+.banner-success { background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; }
+.banner-success h3 { color: white; }
+.banner-warning { background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%); color: #2d2d2d; }
+.banner-warning h3 { color: #2d2d2d; }
+.banner-danger { background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); color: white; }
+.banner-danger h3 { color: white; }
+.banner-info { background: linear-gradient(135deg, #162642 0%, #1a3354 100%); color: white; border: 2px solid #cc5b27; }
+.banner-info h3 { color: #cc5b27; }
+
+.insight { padding: 18px 22px; margin: 18px 0; border-radius: 6px; }
+.insight-orange { background: #fff8f0; border-left: 4px solid #cc5b27; }
+.insight-orange strong { color: #cc5b27; }
+.insight-green { background: #f0fff4; border-left: 4px solid #28a745; }
+.insight-green strong { color: #28a745; }
+.insight-red { background: #fff5f5; border-left: 4px solid #dc3545; }
+.insight-red strong { color: #dc3545; }
+.insight-blue { background: #f0f8ff; border-left: 4px solid #17a2b8; }
+.insight-blue strong { color: #17a2b8; }
+.section-dark .insight { background: rgba(255,255,255,0.07); border-left: 4px solid #cc5b27; }
+.section-dark .insight strong { color: #cc5b27; }
+.section-dark .insight p, .section-dark .insight li { color: #d0d8e8; }
+
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; margin: 24px 0; }
+.metric-card {
+  background: white; padding: 22px; border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #cc5b27;
+}
+.section-dark .metric-card { background: rgba(255,255,255,0.08); border-left-color: #cc5b27; }
+.metric-label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; font-weight: 600; }
+.section-dark .metric-label { color: #99aacc; }
+.metric-value { font-size: 32px; font-weight: 700; color: #162642; margin-bottom: 4px; }
+.section-dark .metric-value { color: white; }
+.badge { font-size: 12px; font-weight: 600; display: inline-block; padding: 3px 9px; border-radius: 4px; }
+.badge-pos { background: #d4edda; color: #155724; }
+.badge-neg { background: #f8d7da; color: #721c24; }
+.badge-warn { background: #fff3cd; color: #856404; }
+.badge-neu { background: #e2e3e5; color: #383d41; }
+
+.account-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 22px 28px; border-radius: 10px; margin-bottom: 26px; color: white;
+}
+.account-name { font-size: 26px; font-weight: 700; }
+.account-sub { font-size: 13px; margin-top: 4px; opacity: 0.85; }
+.account-cpa { font-size: 44px; font-weight: 700; }
+.account-cpa-label { font-size: 12px; text-transform: uppercase; opacity: 0.8; }
+
+.campaign-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 18px; margin: 22px 0; }
+.campaign-card { background: #f8f9fa; padding: 22px; border-radius: 10px; border: 2px solid #e0e0e0; }
+.campaign-card.winner { border-color: #28a745; border-width: 3px; }
+.campaign-card.concern { border-color: #dc3545; border-width: 2px; }
+.campaign-card.caution { border-color: #ffc107; border-width: 2px; }
+.campaign-name { font-size: 16px; font-weight: 700; color: #162642; margin-bottom: 14px; }
+.campaign-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.cm-label { font-size: 10px; color: #777; text-transform: uppercase; margin-bottom: 3px; }
+.cm-val { font-size: 19px; font-weight: 700; color: #162642; }
+.cm-val.green { color: #28a745; }
+.cm-val.red { color: #dc3545; }
+.cm-val.amber { color: #856404; }
+.campaign-note { margin-top: 13px; font-size: 12px; color: #666; }
+.campaign-note.green { color: #155724; font-weight: 600; }
+.campaign-note.red { color: #721c24; }
+.campaign-note.amber { color: #856404; }
+
+.status { display: inline-block; padding: 4px 12px; border-radius: 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; }
+.status-excellent { background: #d4edda; color: #155724; }
+.status-good { background: #d1ecf1; color: #0c5460; }
+.status-warning { background: #fff3cd; color: #856404; }
+.status-critical { background: #f8d7da; color: #721c24; }
+.status-monitor { background: #e2e3e5; color: #383d41; }
+
+.table-wrap { overflow-x: auto; margin: 18px 0; }
+table { width: 100%; border-collapse: collapse; }
+th { background: #162642; color: white; padding: 12px 14px; text-align: left; font-size: 12px; text-transform: uppercase; font-weight: 600; }
+td { padding: 11px 14px; border-bottom: 1px solid #e8e8e8; font-size: 14px; }
+tr:hover { background: #f8f9fa; }
+tr.hl { background: #fff8f0; font-weight: 600; }
+tr.hl-green { background: #f0fff4; }
+tr.hl-red { background: #fff5f5; }
+.section-dark table th { background: rgba(255,255,255,0.15); }
+.section-dark table td { color: #d0d8e8; border-bottom-color: rgba(255,255,255,0.08); }
+.section-dark tr:hover { background: rgba(255,255,255,0.05); }
+
+.blist { list-style: none; margin: 12px 0; }
+.blist li { padding-left: 22px; position: relative; margin-bottom: 10px; line-height: 1.7; }
+.blist li:before { content: ""; position: absolute; left: 0; top: 12px; width: 7px; height: 2px; background: #cc5b27; }
+.section-dark .blist li { color: #d0d8e8; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
+.three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin: 20px 0; }
+
+.next-block { background: rgba(255,255,255,0.06); padding: 22px; border-radius: 10px; margin: 18px 0; border-left: 4px solid #cc5b27; }
+.next-block-lbi { border-left-color: #28a745; }
+.next-block-ww { border-left-color: #17a2b8; }
+.next-block-ocnj { border-left-color: #6f42c1; }
+.next-label { font-weight: 700; font-size: 15px; margin-bottom: 12px; }
+.label-lbi { color: #28a745; }
+.label-ww { color: #17a2b8; }
+.label-ocnj { color: #6f42c1; }
+
+.attribution-note {
+  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+  color: white; padding: 22px 26px; border-radius: 10px; margin: 22px 0;
+  border-left: 6px solid #cc5b27;
+}
+.attribution-note strong { font-size: 16px; display: block; margin-bottom: 8px; color: #ffd6b8; }
+.attribution-note p { font-size: 15px; line-height: 1.7; }
+
+.footer { background: #162642; color: white; padding: 28px 80px; text-align: center; font-size: 13px; }
+.footer a { color: #cc5b27; text-decoration: none; }
+
+@media(max-width:768px){
+  .section,.header,.footer { padding: 36px 24px; }
+  .metric-grid,.campaign-grid,.two-col,.three-col { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-container">
+    <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Heathmedia">
+  </div>
+  <h1>Bi-Weekly Performance Review</h1>
+  <div class="subtitle">Vacation Rentals Jersey Shore - Portfolio</div>
+  <div class="date-range">April 29 - May 12, 2026 &nbsp;|&nbsp; Compared to April 15 - April 28, 2026</div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="section section-alt">
+  <h2>Executive Summary</h2>
+
+  <div class="banner banner-info">
+    <h3>All Three Accounts Inside Individual Targets | Portfolio CPA $3.07, 2.4% Over Blended Target</h3>
+    <p>Each individual account held inside its target this period: VRLBI at $1.57 (37% under $2.50), VRWW at $6.81 (3% under $7.00), VROCNJ at $8.74 (13% under $10.00). The portfolio blended at $3.07 sits 2.4% over the $3.00 target, driven by a portfolio-wide conversion rate softening that hit all three accounts in lockstep. The drop is consistent with the late-April to mid-May seasonal pattern in vacation rentals, plus retrospective conversion attribution which made the prior period baseline restate stronger than reported on our last call. The action plan rotates from budget scaling to asset health and negative keyword hygiene.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">Portfolio CPA</div>
+      <div class="metric-value" style="color:#856404;">$3.07</div>
+      <span class="badge badge-warn">2.4% over $3.00 target</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Total Conversions</div>
+      <div class="metric-value">435.05</div>
+      <span class="badge badge-neg">-42.7% vs restated prior</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Total Spend</div>
+      <div class="metric-value">$1,335.89</div>
+      <span class="badge badge-pos">-16.9% vs prior</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Accounts Inside Target</div>
+      <div class="metric-value" style="color:#28a745;">3 of 3</div>
+      <span class="badge badge-pos">Individual targets all held</span>
+    </div>
+  </div>
+
+  <div class="attribution-note">
+    <strong>Important Context: Prior Period Has Been Retrospectively Restated</strong>
+    <p>Between our last call and today, Google has continued to attribute conversions back to the prior period (Apr 15-28). On the last call we reported the prior period at 613 conversions and $2.62 CPA. The platform now shows 760 conversions and $2.12 CPA for the same window. This is a normal post-period attribution lift and is consistent across all three accounts. The implication is that the current period figures shown today will also continue to lift over the next 14 to 30 days as the same attribution effect catches up. The honest read on this period therefore sits somewhere between the headline numbers and what the next deck will show.</p>
+  </div>
+
+  <h3>Portfolio Snapshot</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Account</th><th>Spend</th><th>Conv</th><th>CPA</th><th>CPA vs Restated Prior</th><th>Target</th><th>Headroom</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr class="hl-green">
+          <td><strong>VRLBI</strong></td><td>$519.73</td><td>330.21</td><td style="color:#28a745;font-weight:700;">$1.57</td>
+          <td><span class="badge badge-neg">+75.0% vs $0.90</span></td>
+          <td>$2.50</td><td>37% under</td><td><span class="status status-excellent">Inside Target</span></td>
+        </tr>
+        <tr>
+          <td><strong>VRWW</strong></td><td>$353.00</td><td>51.86</td><td style="color:#856404;font-weight:700;">$6.81</td>
+          <td><span class="badge badge-neg">+5.5% vs $6.45</span></td>
+          <td>$7.00</td><td>3% under</td><td><span class="status status-good">Inside Target</span></td>
+        </tr>
+        <tr>
+          <td><strong>VROCNJ</strong></td><td>$463.16</td><td>52.98</td><td style="color:#28a745;font-weight:700;">$8.74</td>
+          <td><span class="badge badge-neg">+55.2% vs $5.63</span></td>
+          <td>$10.00</td><td>13% under</td><td><span class="status status-good">Inside Target</span></td>
+        </tr>
+        <tr class="hl">
+          <td><strong>PORTFOLIO</strong></td><td><strong>$1,335.89</strong></td><td><strong>435.05</strong></td><td style="color:#856404;font-weight:700;"><strong>$3.07</strong></td>
+          <td><span class="badge badge-neg">+45.1% vs $2.12</span></td>
+          <td><strong>$3.00</strong></td><td>2.4% over</td><td><span class="status status-warning">Marginal</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>The Portfolio Story This Period</h3>
+  <div class="insight insight-blue">
+    <strong>Portfolio-Wide CVR Softening, Same Auction Conditions, Same Volume</strong>
+    <p style="margin-top:10px;">All three accounts saw conversion rate drop in the 40 to 55 percent relative range this period, while spend, clicks, and cost per click stayed broadly flat or improved. VRLBI Generic CVR went from 35.13% to 18.17%, VROCNJ Generic from 12.38% to 6.86%, VRWW Generic from 8.57% to 6.72%. PMax dropped on the same pattern in all three accounts. This is the strongest synchronised CVR signal we have seen across the portfolio in this engagement. The auction is unchanged. Volume is unchanged. Quality of the click matched against what is available is the variable.</p>
+  </div>
+
+  <div class="insight insight-green">
+    <strong>Auction Position and Costs Improved Across the Board</strong>
+    <p style="margin-top:10px;">Cost per click dropped 15.6% on VRWW Generic, 19.2% on VROCNJ Generic, and held at $0.42 on VRLBI Generic. Impression share rose on both VRLBI Generic (26.89% to 27.47%) and VROCNJ Generic (13.93% to 14.27%). Top of page rates held above 90% across all three accounts. The platform is rewarding our quality with cheaper auctions, and budget caps continued to bind on the two accounts where we want scale (VRLBI Generic at 99.7% utilisation, VROCNJ PMax at 98.5%). The infrastructure is healthy. The conversion rate is the variable to fix.</p>
+  </div>
+
+  <div class="insight insight-orange">
+    <strong>Plan for the Next Two Weeks: Asset Health Before Budget Scale</strong>
+    <p style="margin-top:10px;">Last week the plan was to scale VRLBI Generic from $22.50 to $27 and VROCNJ PMax from $20 to $24. Pushing more budget into a 40 to 55 percent CVR drop locks in worse CPA. The correct sequence is reversed for this fortnight: refresh PMax assets and Generic ad strength on all three accounts, apply the negatives that have been outstanding, and hold daily caps where they are. When CVR signal recovers above prior levels we step into the scaling plan from a stronger foundation. Pre-Memorial Day prep for the high-volume booking window starting late May into June.</p>
+  </div>
+</div>
+
+<!-- VRLBI SECTION -->
+<div class="section">
+  <div class="account-header" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+    <div>
+      <div class="account-name">VRLBI - Long Beach Island</div>
+      <div class="account-sub">$1.57 CPA | 37% Under Target | CVR Softened But Strongest Account in Portfolio Remains Strongest</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="account-cpa-label">Cost Per Lead</div>
+      <div class="account-cpa">$1.57</div>
+    </div>
+  </div>
+
+  <div class="banner banner-success">
+    <h3>$1.57 CPA - 37% Under Target | Budget Caps Continue to Bind at 98%+ Utilisation</h3>
+    <p>VRLBI delivered 330 conversions on essentially the same spend as the prior period ($519.73 vs $521.81). CPA at $1.57 sits firmly inside the $2.50 target with 37% headroom. Generic at $2.31 and PMax at $1.06 are both inside target individually. Both campaigns continue to bind at budget: Generic at 99.7% of cap, PMax at 97.9% of cap. The conversion rate softening is real and matches the portfolio pattern, but VRLBI remains the strongest performer with the clearest scaling lever once asset health is addressed.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">14-Day Spend</div>
+      <div class="metric-value">$519.73</div>
+      <span class="badge badge-neu">-0.4% vs prior</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Conversions</div>
+      <div class="metric-value">330.21</div>
+      <span class="badge badge-neg">-43.1% vs restated prior</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Blended CPA</div>
+      <div class="metric-value" style="color:#28a745;">$1.57</div>
+      <span class="badge badge-pos">37% under $2.50 target</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Budget Utilisation</div>
+      <div class="metric-value" style="color:#856404;">98.8%</div>
+      <span class="badge badge-warn">Both campaigns capped</span>
+    </div>
+  </div>
+
+  <h3>Campaign Performance</h3>
+  <div class="campaign-grid">
+    <div class="campaign-card winner">
+      <div class="campaign-name">PMax - HM-VRLBI-PMax-03.03.25 <span class="status status-good">Inside Target</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$205.62</div></div>
+        <div><div class="cm-label">Conv</div><div class="cm-val">194.30</div></div>
+        <div><div class="cm-label">CPA</div><div class="cm-val green">$1.06</div></div>
+      </div>
+      <div class="campaign-note green">CPA up from $0.69 restated prior | CVR 22.86% (was 35.78%) | Clicks 850 (held) | Budget util 97.9% | Opt score 80.24% | Flagged: limited by budget</div>
+    </div>
+    <div class="campaign-card caution">
+      <div class="campaign-name">Generic - HM-VRLBI-Generic-21.02.25 <span class="status status-warning">Asset Health</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$314.11</div></div>
+        <div><div class="cm-label">Conv</div><div class="cm-val">135.91</div></div>
+        <div><div class="cm-label">CPA</div><div class="cm-val amber">$2.31</div></div>
+      </div>
+      <div class="campaign-note amber">CPA up from $1.14 restated prior | CVR 18.17% (was 35.13%) | Lost IS budget 63.19% | Lost IS rank 9.34% (was 7.60%) | Opt score 58.76% | Flagged: limited by budget, ad strength poor</div>
+    </div>
+  </div>
+
+  <h3>Impression Share - Generic Campaign</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>Current</th><th>Prior</th><th>Change</th><th>Implication</th></tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f0fff4;">
+          <td>Search Impression Share</td><td style="color:#28a745;font-weight:700;">27.47%</td><td>26.89%</td>
+          <td><span class="badge badge-pos">+0.58pp</span></td>
+          <td>Reach holding steady at top of page</td>
+        </tr>
+        <tr>
+          <td>Lost IS (Budget)</td><td>63.19%</td><td>65.50%</td>
+          <td><span class="badge badge-pos">-2.31pp</span></td>
+          <td>Still capped but slight easing. Budget remains the largest constraint.</td>
+        </tr>
+        <tr style="background:#fff8f0;">
+          <td><strong>Lost IS (Rank)</strong></td><td><strong>9.34%</strong></td><td>7.60%</td>
+          <td><span class="badge badge-warn">+1.74pp</span></td>
+          <td><strong>Ticked up. Ad strength is poor flag from last week is the cause.</strong></td>
+        </tr>
+        <tr>
+          <td>Conversion Rate</td><td>18.17%</td><td>35.13%</td>
+          <td><span class="badge badge-neg">-16.96pp</span></td>
+          <td>Portfolio-wide CVR softening. Asset refresh is the lever.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Device Performance</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Device</th><th>Spend</th><th>Conversions</th><th>CPA</th><th>CVR</th><th>vs Prior CPA</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Mobile</strong></td><td>$266.73</td><td>172.25</td><td style="color:#28a745;font-weight:700;">$1.55</td><td>16.72%</td><td>was $0.73 (+112.3%)</td></tr>
+        <tr class="hl-green"><td><strong>Desktop</strong></td><td>$246.63</td><td>151.96</td><td style="color:#28a745;font-weight:700;">$1.62</td><td>28.19%</td><td>was $1.17 (+38.5%)</td></tr>
+        <tr><td>Tablet</td><td>$6.38</td><td>6.00</td><td style="color:#28a745;font-weight:700;">$1.06</td><td>20.69%</td><td>was $1.38 (-23.2%)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight insight-blue">
+    <strong>Mobile and Desktop Reversed This Period</strong>
+    <p style="margin-top:10px;">Desktop CVR at 28.19% now sits above mobile CVR at 16.72%, reversing the established portfolio pattern. CPA is essentially tied at $1.55 vs $1.62. The +10 to +15% mobile bid modifier planned last week needs to be held back until the next period to confirm whether this is a one-fortnight anomaly or a structural shift. Desktop running ahead may also reflect a quieter mid-month window when more bookings happen during desktop research time.</p>
+  </div>
+
+  <h3>Auction Intelligence</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Competitor</th><th>Impression Share</th><th>Top of Page</th><th>Overlap Rate</th><th>Position Above Us</th></tr></thead>
+      <tbody>
+        <tr class="hl-green"><td><strong>VRLBI (You)</strong></td><td><strong>26.76%</strong></td><td style="color:#28a745;font-weight:700;"><strong>96.56%</strong></td><td>-</td><td>-</td></tr>
+        <tr><td>vrbo.com</td><td style="color:#dc3545;">72.57%</td><td>91.49%</td><td>88.36%</td><td>77.49%</td></tr>
+        <tr><td>airbnb.com</td><td style="color:#dc3545;">65.72%</td><td>88.94%</td><td>82.83%</td><td>57.31%</td></tr>
+        <tr><td>vacationrenter.com</td><td>32.93%</td><td>77.38%</td><td>42.80%</td><td>37.93%</td></tr>
+        <tr><td>hometogo.com</td><td>16.58%</td><td>58.30%</td><td>22.69%</td><td>25.84%</td></tr>
+        <tr><td>seegersgrouplbi.com</td><td>&lt;10%</td><td>82.42%</td><td>16.57%</td><td>40.26%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:6px;">Top of page rate at 96.56% held strong. IS above HomeToGo at 16.58% and approaching VacationRenter's 32.93%. Local competitor Seegers Group still outranks us in 40% of shared auctions despite small IS.</p>
+
+  <h3>Search Term Watch</h3>
+  <div class="insight insight-orange">
+    <strong>Outstanding Negatives Now Six Periods Overdue, Plus PMax Attribution Confirmed Hiding</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Top 10 zero-conversion terms at term level pulled $154 of the $314 Generic spend. The terms are the brand-defining ones ("lbi rentals" $62.41 / 172 clicks, "vacation rentals lbi" $36.51 / 120 clicks). The strong overlap suggests PMax is taking credit for conversions Generic Search drove the click for. This is structural rather than a quality issue.</li>
+      <li>By owner term: "lbi rent by owner" $1.22 / 2 clicks. Standing by-owner list still needs applying.</li>
+      <li>Realty terms: "lbi realty summer rentals" $0.33, "lbi realty rentals" impressions, "anderson agency lbi" impressions. Standing realty list needs application.</li>
+      <li>VRBO leakage: "lbi vrbo" $2.76 / 5 clicks, "vrbo long beach island" $1.34 / 1 click, plus five more VRBO geo variants surfacing. Combined VRBO bleed $4.20 across seven variants.</li>
+      <li>2026 forward demand $19.61 across eight terms: "lbi rentals 2026" $10.76, "long beach island rentals 2026" $2.72, "lbi rentals summer 2026" $2.34, "lbi summer rentals 2026" $1.95. Healthy in-market signals, retain.</li>
+    </ul>
+  </div>
+
+  <div class="insight insight-orange">
+    <strong>VRLBI Action Plan</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Hold daily budgets at $22.50 Generic and $15 PMax this fortnight. The "limited by budget" flags are real but pushing more spend into a 48% CVR drop on Generic locks in worse CPA. Budget scaling comes once asset health is restored and CVR signal recovers above prior levels.</li>
+      <li>Refresh Generic ad strength assets. Opt score 58.76% with the "ad strength poor" status flag is the clearest issue on the account. Target lifting opt score above 65% and pushing Rank Lost IS back below 8% from the current 9.34%. Add five fresh headlines targeting 2026 forward demand and shoulder-week supply messaging.</li>
+      <li>Refresh PMax assets. The CVR drop from 35.78% to 22.86% on PMax signals asset signal fatigue. Refresh creative variants, audience signals, and search themes. Match the playbook that worked on VROCNJ PMax recovery in March.</li>
+      <li>Apply the standing by-owner, realty, and VRBO geo negatives this week. Six periods overdue.</li>
+      <li>Mobile bid modifier delayed. Desktop now outperforms mobile on CVR (28.19% vs 16.72%). Hold off on the +10 to +15% mobile modifier from last week's plan until the next period confirms whether this is a one-fortnight anomaly.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- VRWW SECTION -->
+<div class="section section-alt">
+  <div class="account-header" style="background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);">
+    <div>
+      <div class="account-name">VRWW - Wildwood</div>
+      <div class="account-sub">$6.81 CPA | 3% Under Target | Held-Spend Discipline Worked as Planned</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="account-cpa-label">Cost Per Lead</div>
+      <div class="account-cpa">$6.81</div>
+    </div>
+  </div>
+
+  <div class="banner banner-success">
+    <h3>$6.81 CPA - 3% Under Target | Spend Pulled Back 40% on Held-Spend Stance, CPA Held Within 6% of Prior</h3>
+    <p>VRWW spent $353.00 against $589.79 in the prior period as planned (the hold-spend discipline given the inventory-driven CVR diagnosis). Conversions came in at 51.86 against the restated 91.38, with CPA at $6.81 sitting 3% inside the $7.00 target. Both campaigns are now flagged "bidding strategy constrained", suggesting the tCPA targets are binding too tight given the inventory match reality. CPC improved 15.6% on Generic to $0.49 and 14.6% on PMax to $0.48, meaning the auction is materially cheaper. With the calendar-aware approach about to go in, this account is positioned for a stronger next fortnight.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">14-Day Spend</div>
+      <div class="metric-value">$353.00</div>
+      <span class="badge badge-pos">-40.1% vs prior</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Conversions</div>
+      <div class="metric-value">51.86</div>
+      <span class="badge badge-neg">-43.2% vs restated prior</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Blended CPA</div>
+      <div class="metric-value">$6.81</div>
+      <span class="badge badge-warn">3% under $7.00 target</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Generic Avg CPC</div>
+      <div class="metric-value" style="color:#28a745;">$0.49</div>
+      <span class="badge badge-pos">Down 15.6% from $0.58</span>
+    </div>
+  </div>
+
+  <h3>Campaign Performance</h3>
+  <div class="campaign-grid">
+    <div class="campaign-card winner">
+      <div class="campaign-name">PMax - HM-VRWW-PMax-03.03.25 <span class="status status-good">Inside Target</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$170.17</div></div>
+        <div><div class="cm-label">Conv</div><div class="cm-val">26.67</div></div>
+        <div><div class="cm-label">CPA</div><div class="cm-val green">$6.38</div></div>
+      </div>
+      <div class="campaign-note green">CPA up from $6.19 restated prior (+3.1%) | CVR 7.45% (was 8.99%) | CPC $0.48 (was $0.56, -14.6%) | Opt score 85.13% | Flagged: bidding strategy constrained | Budget util 60.8%</div>
+    </div>
+    <div class="campaign-card caution">
+      <div class="campaign-name">Generic - HM-VRWW-Generic <span class="status status-warning">Just Over</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$182.83</div></div>
+        <div><div class="cm-label">Conv</div><div class="cm-val">25.19</div></div>
+        <div><div class="cm-label">CPA</div><div class="cm-val amber">$7.26</div></div>
+      </div>
+      <div class="campaign-note amber">CPA up from $6.74 restated prior (+7.6%) | CVR 6.72% (was 8.57%) | CPC $0.49 (was $0.58, -15.6%) | Search IS 20.86% (was 24.56%) | Opt score 74.37% | Flagged: bidding strategy constrained, search volume limited</div>
+    </div>
+  </div>
+
+  <h3>Impression Share - Generic Campaign</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>Current</th><th>Prior</th><th>Change</th><th>Implication</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Search Impression Share</td><td>20.86%</td><td>24.56%</td>
+          <td><span class="badge badge-neg">-3.70pp</span></td>
+          <td>Reach contracted with the held-spend stance. Expected.</td>
+        </tr>
+        <tr style="background:#f0fff4;">
+          <td>Lost IS (Budget)</td><td style="color:#28a745;font-weight:700;">0.00%</td><td>0.00%</td>
+          <td><span class="badge badge-pos">No change</span></td>
+          <td>Budget not the constraint. Bidding strategy constraint flag is the lever.</td>
+        </tr>
+        <tr>
+          <td>Lost IS (Rank)</td><td>79.14%</td><td>75.44%</td>
+          <td><span class="badge badge-warn">+3.70pp</span></td>
+          <td>Slight rank drift during hold period. Asset refresh would help.</td>
+        </tr>
+        <tr>
+          <td>Conversion Rate</td><td>6.72%</td><td>8.57%</td>
+          <td><span class="badge badge-neg">-1.85pp</span></td>
+          <td>Inventory match weakening on peak weeks. Calendar-aware bidding addresses this.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Device Performance</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Device</th><th>Spend</th><th>Conversions</th><th>CPA</th><th>CVR</th><th>vs Prior CPA</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Mobile</strong></td><td>$225.09</td><td>31.77</td><td>$7.08</td><td>6.24%</td><td>was $6.18 (+14.6%)</td></tr>
+        <tr class="hl-green"><td><strong>Desktop</strong></td><td>$124.90</td><td>18.09</td><td style="color:#28a745;font-weight:700;">$6.90</td><td>8.57%</td><td>was $6.94 (-0.6%)</td></tr>
+        <tr><td>Tablet</td><td>$3.01</td><td>2.00</td><td style="color:#28a745;font-weight:700;">$1.50</td><td>15.38%</td><td>broke zero-conv streak</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight insight-blue">
+    <strong>Desktop Now Outperforms Mobile, Tablet Returned Conversions</strong>
+    <p style="margin-top:10px;">Same device reversal as VRLBI this period. Desktop CVR 8.57% sits above mobile CVR 6.24%, with desktop CPA marginally better at $6.90. Tablet returned 2 conversions on $3.01 spend, breaking last period's zero-conversion pattern. Both signals support holding the planned bid modifier moves and watching one more period for confirmation.</p>
+  </div>
+
+  <h3>Auction Intelligence</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Competitor</th><th>Impression Share</th><th>Top of Page</th><th>Overlap Rate</th><th>Position Above Us</th></tr></thead>
+      <tbody>
+        <tr class="hl-green"><td><strong>VRWW (You)</strong></td><td><strong>20.86%</strong></td><td style="color:#28a745;font-weight:700;"><strong>90.18%</strong></td><td>-</td><td>-</td></tr>
+        <tr><td>vrbo.com</td><td style="color:#dc3545;">72.47%</td><td>92.12%</td><td>76.49%</td><td>75.20%</td></tr>
+        <tr><td>airbnb.com</td><td style="color:#dc3545;">67.81%</td><td>90.52%</td><td>70.60%</td><td>60.75%</td></tr>
+        <tr><td>vacationrenter.com</td><td>38.92%</td><td>77.23%</td><td>37.13%</td><td>44.16%</td></tr>
+        <tr><td>booking.com</td><td>29.28%</td><td>78.91%</td><td>29.74%</td><td>44.87%</td></tr>
+        <tr><td>hometogo.com</td><td>28.11%</td><td>70.19%</td><td>30.08%</td><td>46.40%</td></tr>
+        <tr><td>experiencevacationrentals.com</td><td>18.32%</td><td>84.88%</td><td>21.54%</td><td>61.32%</td></tr>
+        <tr><td>shoresummerrentals.com</td><td>&lt;10%</td><td style="color:#dc3545;font-weight:700;">96.28%</td><td>15.24%</td><td>78.67%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:6px;">IS pulled back to 20.86% (was 24.56%) reflecting the held-spend stance. Top of page at 90.18% still strong. ShoreSummerRentals continues to outrank us in 78.67% of shared auctions on a small IS.</p>
+
+  <h3>Search Term Watch</h3>
+  <div class="insight insight-orange">
+    <strong>Under-25 Variants Surfacing as Impressions, By-Owner Almost Cleared</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Under-25 variants all impression-only this period: "wildwood house rentals for 18 year olds" 5 impressions, "wildwood rentals for 18 year olds" 4 impressions, "hotels in wildwood that rent to 18 year olds" 3 impressions. Negation should land before any of these convert into a click.</li>
+      <li>By-owner: "wildwood crest rentals by owner" $0.05 / 1 click (was $1.38 / 2 clicks last period). Almost cleared. Add to standing by-owner list.</li>
+      <li>Top zero-conversion terms at term level (PMax attribution caveat applies): "wildwood rentals" $46.57 / 79 clicks, "vacation rentals wildwood" $19.78 / 56 clicks, "wildwood vacation rentals" $8.13 / 19 clicks. Top 10 zero-conv combined $100.84.</li>
+      <li>Experience Vacation Rentals: "experience vacation rentals wildwood" 3 impressions. Apply competitor negative.</li>
+      <li>2026 forward demand $6.84 across six terms. Healthy retention signals to retain.</li>
+    </ul>
+  </div>
+
+  <div class="insight insight-orange">
+    <strong>VRWW Action Plan</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Build the calendar-aware bidding now that the booking availability snapshot is in hand. Suppress bids on queries flagged with check-in dates 7/11 to 8/8 where availability is below 25%. Lean into the shoulder weeks where supply still meets demand: late June, mid-August onward.</li>
+      <li>Refresh ad copy toward last-minute and price-sensitive messaging. Wildwood is the most price-sensitive market in the portfolio and books latest. Headlines should feature available weeks, last-minute offers, and budget-friendly framing to better match what is in stock.</li>
+      <li>Loosen tCPA targets to address the "bidding strategy constrained" flag on both campaigns. PMax at $6.38 against $7.00 target sits inside but the constraint flag suggests the algorithm is being held back. Widen tCPA by 10 to 15% to allow more auction participation.</li>
+      <li>Negate the three under-25 variants today before any of them convert into clicks. Add "wildwood crest rentals by owner" and "experience vacation rentals wildwood" to standing exclusion lists.</li>
+      <li>Hold daily budgets flat at $25 Generic and $20 PMax. Inventory-driven CVR plus the bidding constraint flag means scaling does not solve the issue. Adjust strategy before adjusting spend.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- VROCNJ SECTION -->
+<div class="section">
+  <div class="account-header" style="background: linear-gradient(135deg, #6f42c1 0%, #5a32a3 100%);">
+    <div>
+      <div class="account-name">VROCNJ - Ocean City NJ</div>
+      <div class="account-sub">$8.74 CPA | 13% Under Target | CVR Softening Mirrors Wildwood Pattern | Berger Continues to Settle</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="account-cpa-label">Cost Per Lead</div>
+      <div class="account-cpa">$8.74</div>
+    </div>
+  </div>
+
+  <div class="banner banner-warning">
+    <h3>$8.74 CPA - 13% Under Target | CVR Softening Across Both Campaigns Mirrors Wildwood Pattern</h3>
+    <p>VROCNJ delivered 53 conversions at $8.74 CPA. Still inside the $10.00 target by 13%, but a clear CVR softening across both campaigns from the strong restated prior. Generic Last Minute (including DSAs) at $10.37 sits marginally over target. PMax at $7.90 sits inside but the budget cap remains binding at 98.5% utilisation with Lost IS Budget deepening to 5.68%. CPC improved 19.2% on Generic to $0.71, meaning the auction is meaningfully cheaper. Berger Realty IS continues to settle (22.23% to 18.58%) and now outranks us in only 50.16% of overlap auctions (was 59.05%). Quality of the click against inventory is the variable to address.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">14-Day Spend</div>
+      <div class="metric-value">$463.16</div>
+      <span class="badge badge-pos">-6.5% vs prior</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Conversions</div>
+      <div class="metric-value">52.98</div>
+      <span class="badge badge-neg">-39.8% vs restated prior</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Blended CPA</div>
+      <div class="metric-value" style="color:#28a745;">$8.74</div>
+      <span class="badge badge-pos">13% under $10.00 target</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Berger Position Above Us</div>
+      <div class="metric-value" style="color:#28a745;">50.16%</div>
+      <span class="badge badge-pos">Down from 59.05% last period</span>
+    </div>
+  </div>
+
+  <h3>Campaign Performance</h3>
+  <div class="campaign-grid">
+    <div class="campaign-card winner">
+      <div class="campaign-name">PMax - HM-VROCNJ-PMax-03.03.25 <span class="status status-good">Inside Target</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$275.88</div></div>
+        <div><div class="cm-label">Conv</div><div class="cm-val">34.93</div></div>
+        <div><div class="cm-label">CPA</div><div class="cm-val green">$7.90</div></div>
+      </div>
+      <div class="campaign-note green">CPA up from $4.87 restated prior | CVR 6.78% (was 11.10%) | Budget util 98.5% | Lost IS budget 5.68% (was 4.53%) | Opt score 81.67% | Flagged: limited by budget</div>
+    </div>
+    <div class="campaign-card caution">
+      <div class="campaign-name">Generic Last Minute (incl DSA) <span class="status status-warning">Marginal Over</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$187.28</div></div>
+        <div><div class="cm-label">Conv</div><div class="cm-val">18.05</div></div>
+        <div><div class="cm-label">CPA</div><div class="cm-val amber">$10.37</div></div>
+      </div>
+      <div class="campaign-note amber">CPA up from $7.12 restated prior | CVR 6.86% (was 12.38%) | CPC $0.71 (was $0.88, -19.2%) | Search IS 14.27% (was 13.93%) | Opt score 66.31% | Flagged: limited by budget</div>
+    </div>
+  </div>
+
+  <h3>DSA Ad Group Performance - Three Weeks In</h3>
+  <div class="insight insight-green">
+    <strong>DSA Pet Friendly Continuing to Scale, Last Minute Offers Now Active</strong>
+    <p style="margin-top:10px;">DSA Pet Friendly delivered $5.95 / 10 clicks this period, up from $3.90 / 8 clicks last period. The Pet Friendly category continues to lead the DSA group volume as expected from the SEO foundation. DSA Last Minute Offers served for the first time at $1.55 / 1 click. DSA All Rentals Site Wide pulled back to $0.08 / 1 click. The structural answer to pet friendly query variability (nine separate pet friendly query variants surfaced this period) is clearly the right one. Worth adding dedicated budget pressure to Pet Friendly in the next fortnight.</p>
+  </div>
+
+  <h3>Impression Share - Generic Campaign</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>Current</th><th>Prior</th><th>Change</th><th>Implication</th></tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f0fff4;">
+          <td>Search Impression Share</td><td style="color:#28a745;font-weight:700;">14.27%</td><td>13.93%</td>
+          <td><span class="badge badge-pos">+0.34pp</span></td>
+          <td>Slight uplift. Quality work paying off.</td>
+        </tr>
+        <tr>
+          <td>Lost IS (Budget)</td><td>3.04%</td><td>3.27%</td>
+          <td><span class="badge badge-pos">-0.23pp</span></td>
+          <td>Budget cap broadly resolved on Generic.</td>
+        </tr>
+        <tr>
+          <td>Lost IS (Rank)</td><td>82.69%</td><td>82.80%</td>
+          <td><span class="badge badge-neu">-0.11pp</span></td>
+          <td>Rank wall held flat. Opt score work still to do.</td>
+        </tr>
+        <tr>
+          <td>Conversion Rate</td><td>6.86%</td><td>12.38%</td>
+          <td><span class="badge badge-neg">-5.52pp</span></td>
+          <td>CVR softening matches Wildwood pattern. Inventory match worth checking.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Device Performance</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Device</th><th>Spend</th><th>Conversions</th><th>CPA</th><th>CVR</th><th>vs Prior CPA</th></tr></thead>
+      <tbody>
+        <tr class="hl-green"><td><strong>Mobile</strong></td><td>$220.61</td><td>34.95</td><td style="color:#28a745;font-weight:700;">$6.31</td><td>7.52%</td><td>was $4.36 (+44.7%)</td></tr>
+        <tr><td><strong>Desktop</strong></td><td>$216.04</td><td>17.04</td><td style="color:#856404;">$12.68</td><td>6.36%</td><td>was $6.36 (+99.4%)</td></tr>
+        <tr><td>Tablets</td><td>$26.22</td><td>1.00</td><td style="color:#dc3545;">$26.22</td><td>2.22%</td><td>broke zero-conv streak</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight insight-blue">
+    <strong>Mobile Still Wins, Tablet Broke the Zero-Conversion Pattern</strong>
+    <p style="margin-top:10px;">Mobile CPA at $6.31 remains the most efficient device. Desktop CPA doubled on this period, which is the bigger device-level signal to investigate. Tablet returned 1 conversion on 45 clicks at $26.22 CPA. The case for full -100% tablet suppression weakens with that one conversion. Recommend moderating to -50% to -75% bid modifier rather than full cut to preserve signal while reducing waste.</p>
+  </div>
+
+  <h3>Berger Realty - Continued Competitive Improvement</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Competitor</th><th>Impression Share</th><th>Top of Page</th><th>Overlap Rate</th><th>Position Above Us</th></tr></thead>
+      <tbody>
+        <tr class="hl-green"><td><strong>VROCNJ (You)</strong></td><td><strong>14.13%</strong></td><td style="color:#28a745;font-weight:700;"><strong>90.75%</strong></td><td>-</td><td>-</td></tr>
+        <tr><td>vrbo.com</td><td style="color:#dc3545;">71.72%</td><td>89.35%</td><td>86.77%</td><td>78.98%</td></tr>
+        <tr><td>airbnb.com</td><td style="color:#dc3545;">58.02%</td><td>85.64%</td><td>69.21%</td><td>51.23%</td></tr>
+        <tr><td>vacationrenter.com</td><td>24.33%</td><td>72.81%</td><td>15.44%</td><td>32.97%</td></tr>
+        <tr class="hl"><td><strong>bergerrealty.com</strong></td><td style="color:#28a745;font-weight:700;">18.58%</td><td>98.00%</td><td>52.76%</td><td style="color:#28a745;font-weight:700;">50.16%</td></tr>
+        <tr><td>hometogo.com</td><td>18.04%</td><td>66.11%</td><td>15.52%</td><td>22.40%</td></tr>
+        <tr><td>holidayhomes.com</td><td>15.37%</td><td>80.66%</td><td>13.74%</td><td>43.21%</td></tr>
+        <tr><td>rentbyowner.com</td><td>11.98%</td><td>59.46%</td><td>15.61%</td><td>17.39%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight insight-green">
+    <strong>Closing the Gap on Berger Realty</strong>
+    <p style="margin-top:10px;">Berger IS settled further from 22.23% to 18.58%, continuing the trend from 31.75% three periods ago. More importantly, Berger now outranks us in only 50.16% of overlap auctions (was 59.05%). That is an 8.89pp improvement in our competitive position. Berger top of page still at 98.00% so they remain a strong placer when they enter the auction, but they are entering fewer auctions and beating us less often. The dedicated Berger competitor campaign approved for VROCNJ remains a real lever for the next fortnight.</p>
+  </div>
+
+  <h3>Search Term Watch</h3>
+  <div class="insight insight-orange">
+    <strong>Realty and Realtor Variants Continue to Surface</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Top 10 zero-conversion terms at term level pulled $98.22 of the $187.28 Generic spend (PMax attribution caveat applies). "Ocean city nj rentals" $33.33 / 53 clicks remains the largest single term.</li>
+      <li>Realty and realtor variants: "fox realtor ocean city nj" 4 impressions, "long and foster ocean city nj" 4 impressions, "ocean city realty rentals" $0.46 / 1 click, "ocean city nj realty" 2 impressions, "fox ocnj rentals" 2 impressions, "ocean city nj rental companies" 5 impressions, "ocean city nj rental agencies" 4 impressions. Apply the standing realty exclusion list this week.</li>
+      <li>Maryland leakage: "vacation rentals ocean city md" 3 impressions. Apply MD negative.</li>
+      <li>Pet friendly query diversity: nine distinct pet friendly query variants surfaced this period, combined $4.60 zero-conv at term level. DSA Pet Friendly is the right structural answer.</li>
+      <li>2026 forward demand $3.67 across seven terms. Retain.</li>
+    </ul>
+  </div>
+
+  <div class="insight insight-orange">
+    <strong>VROCNJ Action Plan</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Hold PMax daily budget at $20 this fortnight. Last week's plan was to step to $24. The CVR drop from 11.10% to 6.78% means pushing more budget into a softened conversion period locks in worse CPA. Wait for CVR signal back above 9% before scaling.</li>
+      <li>Refresh PMax assets and audience signals. The CVR drop matches the PMax fatigue pattern flagged in the early April deck. Refresh creative variants, audience signals, and search themes. Same playbook that recovered VROCNJ PMax in March.</li>
+      <li>Add dedicated budget pressure to DSA Pet Friendly within the Generic Last Minute envelope. The nine distinct pet friendly query variants this period support a stronger DSA Pet Friendly allocation.</li>
+      <li>Tablet bid modifier moderated to -50% to -75% rather than full -100%. The 1 conversion this period breaks the zero-conv pattern enough to preserve signal at a reduced bid.</li>
+      <li>Apply the standing negatives: fox, fox roach, long and foster, ocean city realty, rental agencies, rental companies, fox realtor, Maryland.</li>
+      <li>Build the Berger Realty competitor campaign this fortnight. Berger continues to settle, position above us dropped from 59% to 50%. The window is open and the dedicated campaign was approved at the last review.</li>
+      <li>Ask: is OCNJ seeing the same inventory match pressure as Wildwood on the 7/11 to 8/8 weeks? CVR drop pattern matches Wildwood almost exactly. An updated OCNJ availability snapshot would help confirm.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- STRATEGIC NEXT STEPS -->
+<div class="section section-dark">
+  <h2>Strategic Plan - Next Two Weeks</h2>
+
+  <div class="insight">
+    <strong>Overall Priority: Asset Health and Negative Keyword Hygiene Before Budget Scale</strong>
+    <p>Three of three accounts inside individual targets. Portfolio blended 2.4% over the $3.00 target. The CVR softening across all three accounts in lockstep is the central signal, and the response is asset refresh, opt score lift, and the standing negatives list that has been rolling forward. Last week's plan to scale VRLBI Generic and VROCNJ PMax is paused. Budget scaling resumes once CVR recovers above prior levels. Memorial Day weekend (May 23 to 25) typically kicks off the next demand wave for these markets and the foundation work this fortnight positions all three accounts for that window.</p>
+  </div>
+
+  <div class="next-block next-block-lbi">
+    <div class="next-label label-lbi">VRLBI - Priority Actions</div>
+    <ul class="blist">
+      <li>Hold daily budgets at $22.50 Generic and $15 PMax this fortnight. Both flagged limited by budget but pushing into a 48% CVR drop locks in worse CPA. Re-enter the scale plan when Generic CVR returns above 25% and PMax above 30%.</li>
+      <li>Refresh Generic ad strength assets. Opt score 58.76% with "ad strength poor" flag. Add five fresh headlines targeting 2026 forward demand and shoulder-week supply. Target opt score above 65% and Rank Lost IS below 8%.</li>
+      <li>Refresh PMax creative, audience signals, and search themes. CVR drop from 35.78% to 22.86% signals asset fatigue. Same playbook used on VROCNJ PMax recovery in March.</li>
+      <li>Apply the standing by-owner, realty, and VRBO geo negatives this week. Six periods overdue. Treat as hygiene priority.</li>
+      <li>Mobile bid modifier held back. Desktop now outperforms mobile on CVR. Confirm with one more period before applying any modifier.</li>
+    </ul>
+  </div>
+
+  <div class="next-block next-block-ocnj">
+    <div class="next-label label-ocnj">VROCNJ - Priority Actions</div>
+    <ul class="blist">
+      <li>Hold PMax daily budget at $20 this fortnight. Last week's plan to step to $24 is paused. CVR drop from 11.10% to 6.78% means scaling locks in worse CPA. Re-enter scale plan when PMax CVR recovers above 9%.</li>
+      <li>Refresh PMax assets and audience signals. Match the playbook that worked on VROCNJ PMax recovery in March.</li>
+      <li>Tablet bid modifier moderated to -50% to -75% rather than -100% suppression. The 1 conversion this period at $26.22 breaks the zero-conv pattern enough to preserve signal at a reduced bid.</li>
+      <li>Add dedicated budget pressure to DSA Pet Friendly within Generic Last Minute envelope. Nine distinct pet friendly query variants surfaced this period.</li>
+      <li>Apply the standing negatives: fox, fox roach, long and foster, ocean city realty, rental agencies, rental companies, Maryland.</li>
+      <li>Build the Berger Realty competitor campaign this fortnight. Berger continues to settle (22.23% to 18.58% IS), position above us dropped from 59% to 50%. The window is open.</li>
+    </ul>
+  </div>
+
+  <div class="next-block next-block-ww">
+    <div class="next-label label-ww">VRWW - Priority Actions</div>
+    <ul class="blist">
+      <li>Build calendar-aware bidding using the booking availability snapshot. Suppress bids on queries flagged with check-in dates 7/11 to 8/8 where availability is below 25%. Lean into late June and mid-August onward where supply still meets demand.</li>
+      <li>Refresh ad copy toward last-minute and price-sensitive messaging. Wildwood is the most price-sensitive market and books latest. Headlines should feature available weeks, last-minute offers, and budget-friendly framing.</li>
+      <li>Loosen tCPA targets to address the "bidding strategy constrained" flag on both campaigns. Widen by 10 to 15% to allow more auction participation given the inventory reality.</li>
+      <li>Negate the three under-25 variants today: "wildwood house rentals for 18 year olds", "wildwood rentals for 18 year olds", "hotels in wildwood that rent to 18 year olds". All surfaced as impressions this period.</li>
+      <li>Add "wildwood crest rentals by owner" and "experience vacation rentals wildwood" to standing exclusion lists.</li>
+      <li>Hold daily budgets flat at $25 Generic and $20 PMax. Inventory-driven CVR plus the bidding strategy constrained flag means strategy adjustment comes before spend adjustment.</li>
+    </ul>
+  </div>
+
+  <h3>Demand Gen YouTube Launch Track</h3>
+  <div class="insight">
+    <strong>End of May Launch Window Remains the Target</strong>
+    <p>Strategy and structure document for the Demand Gen YouTube build is being finalised for review ahead of launch. Content guide assessment on the existing YouTube creative assets is in flight and will land with recommendations on what is reusable and where a refresh would lift performance. Geo-targeting across the three markets (LBI, Wildwood, OCNJ), frequency settings, and the retargeting flow into late August are all scoped. The audience capture mechanism that Duane and Whitney described from prior summers is exactly what Demand Gen is built for. Targeting the launch ahead of Memorial Day weekend to capture the early summer in-market audience.</p>
+  </div>
+
+  <h3>Items to Confirm With You</h3>
+  <div class="insight">
+    <strong>Three Items for the Call</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>OCNJ availability snapshot. The CVR drop pattern on VROCNJ this period mirrors Wildwood almost exactly. An updated booking availability snapshot for OCNJ would confirm whether the same inventory match issue is in play, and would let us extend the calendar-aware bidding approach to a second account.</li>
+      <li>May, June, and July lead volume baselines from 2025 Google paid. Following the LBI 862 / VRWW 294 / VROCNJ 124 annual figures shared previously, monthly baselines would let us pace each account against the right benchmark heading into peak season.</li>
+      <li>Video content refresh plan. Confirming what is in flight from your side for the YouTube Demand Gen launch so the content guide and production timeline align.</li>
+    </ul>
+  </div>
+
+  <h3>Success Metrics for Next Report</h3>
+  <ul class="blist">
+    <li>VRLBI: Asset refresh complete on both campaigns. Generic opt score above 65%, Rank Lost IS below 8%. CVR recovered above 25% on Generic and 30% on PMax. By-owner and VRBO negatives applied and absent from search terms.</li>
+    <li>VRWW: Calendar-aware bidding live. Last-minute ad copy variants tested. tCPA loosened on both campaigns. CVR stabilising as inventory match improves on shoulder weeks. CPA inside $7.00.</li>
+    <li>VROCNJ: PMax asset refresh complete. CVR recovered above 9%. Berger Realty competitor campaign live. Tablet bid modifier applied at moderated level. Generic opt score lifted from 66.31%.</li>
+    <li>Portfolio: Blended CPA back inside $3.00. All three account CVRs recovered toward prior baselines. Demand Gen YouTube launch on track for end of May.</li>
+  </ul>
+
+  <h3>Portfolio Budget Pacing</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Account</th><th>Monthly Ceiling</th><th>14-Day Spend</th><th>Projected Monthly</th><th>Utilisation</th></tr></thead>
+      <tbody style="color:#d0d8e8;">
+        <tr>
+          <td><strong>VRLBI</strong></td><td>Up to $7,000</td><td>$519.73</td><td>approx. $1,151</td>
+          <td style="color:#ffc107;font-weight:700;">16%</td>
+        </tr>
+        <tr>
+          <td><strong>VRWW</strong></td><td>Up to $3,400</td><td>$353.00</td><td>approx. $782</td>
+          <td style="color:#ffc107;font-weight:700;">23%</td>
+        </tr>
+        <tr>
+          <td><strong>VROCNJ</strong></td><td>Up to $2,800</td><td>$463.16</td><td>approx. $1,026</td>
+          <td style="color:#ffc107;font-weight:700;">37%</td>
+        </tr>
+        <tr style="background:rgba(204,91,39,0.2);">
+          <td><strong>PORTFOLIO</strong></td><td><strong>$13,200</strong></td><td><strong>$1,335.89</strong></td><td><strong>approx. $2,959</strong></td>
+          <td style="color:#ffc107;font-weight:700;"><strong>22%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="insight">
+    <strong>Headroom Holds for the Late May Re-Scale</strong>
+    <p>Portfolio at 22% of available monthly budget. Once asset health is restored and CVR signal recovers, the budget headroom that supported the original scaling plan is still there. The two known scaling levers (VRLBI Generic and VROCNJ PMax) will come back into play. Holding back this fortnight protects CPA discipline during a period when seasonality and retrospective attribution combine to make the comparison harder.</p>
+  </div>
+</div>
+
+<!-- KEY METRICS SUMMARY -->
+<div class="section section-alt">
+  <h2>Key Metrics Summary</h2>
+  <div class="metric-grid">
+    <div class="metric-card" style="border-left-color:#28a745;">
+      <div class="metric-label">VRLBI CPA</div>
+      <div class="metric-value" style="color:#28a745;">$1.57</div>
+      <span class="badge badge-pos">37% under $2.50 target</span>
+    </div>
+    <div class="metric-card" style="border-left-color:#17a2b8;">
+      <div class="metric-label">VRWW CPA</div>
+      <div class="metric-value" style="color:#856404;">$6.81</div>
+      <span class="badge badge-pos">3% under $7.00 target</span>
+    </div>
+    <div class="metric-card" style="border-left-color:#6f42c1;">
+      <div class="metric-label">VROCNJ CPA</div>
+      <div class="metric-value" style="color:#28a745;">$8.74</div>
+      <span class="badge badge-pos">13% under $10.00 target</span>
+    </div>
+    <div class="metric-card" style="border-left-color:#cc5b27;">
+      <div class="metric-label">Portfolio CPA</div>
+      <div class="metric-value" style="color:#856404;">$3.07</div>
+      <span class="badge badge-warn">2.4% over $3.00 target</span>
+    </div>
+  </div>
+
+  <div style="background:white;padding:24px;border-radius:10px;margin-top:24px;border:2px solid #162642;">
+    <h3 style="margin-top:0;color:#162642;">Period Summary</h3>
+    <p style="font-size:16px;line-height:1.9;">This period delivered a portfolio CPA of $3.07 against the $3.00 blended target, sitting 2.4% over. All three accounts held inside their individual targets: VRLBI at $1.57 (37% under), VRWW at $6.81 (3% under), and VROCNJ at $8.74 (13% under). The portfolio-wide signal is a synchronised conversion rate drop across all three accounts, with VRLBI Generic going from 35.13% to 18.17%, VROCNJ Generic from 12.38% to 6.86%, and VRWW Generic from 8.57% to 6.72%. Same auction conditions, same volume of clicks, cheaper cost per click on all three accounts. The variable is post-click match between intent and inventory.</p>
+    <p style="font-size:16px;line-height:1.9;margin-top:15px;"><strong>VRLBI</strong> remains the strongest performer at $1.57 CPA, with both campaigns binding at budget caps above 97% utilisation. The "ad strength poor" flag from last week and an opt score of 58.76% on Generic point to the asset health work as the clear priority. Last week's plan to scale Generic to $27 and PMax to $18 is paused this fortnight in favour of asset refresh and the long-overdue negatives application.</p>
+    <p style="font-size:16px;line-height:1.9;margin-top:15px;"><strong>VRWW</strong> at $6.81 CPA proved that the held-spend stance worked exactly as planned. Spend pulled back 40% on the inventory diagnosis, CPA only drifted 5.5% relative, and the account stayed inside target. With the booking availability snapshot now in hand, the next two weeks deliver the calendar-aware bidding, last-minute focused ad copy, and tCPA loosening that the diagnosis pointed to. The auction is the cheapest it has been in this engagement.</p>
+    <p style="font-size:16px;line-height:1.9;margin-top:15px;"><strong>VROCNJ</strong> at $8.74 CPA sits 13% inside target with a CVR softening pattern that mirrors Wildwood almost exactly. Berger Realty continues to settle and now outranks us in only 50.16% of overlap auctions (was 59.05% last period). PMax is flagged limited by budget at 98.5% utilisation but scaling into the CVR drop locks in worse CPA. The Berger competitor campaign build remains the standout opportunity for the next fortnight, alongside PMax asset refresh and the long-standing negatives application.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>Report prepared by Heathmedia | Google Ads Performance Marketing</p>
+  <p style="margin-top:8px;">Questions? <a href="mailto:info@leadguru.com">info@leadguru.com</a></p>
+  <p style="margin-top:12px;font-size:11px;color:#666;">2026 Heathmedia. All rights reserved.</p>
+</div>
+
+</div>
+</body>
+</html>
