@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VRJS Portfolio — May 2026 Performance Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#162642;
+    --navy-2:#1d3253;
+    --navy-deep:#0f1c33;
+    --orange:#cc5b27;
+    --orange-soft:#e07a47;
+    --paper:#f7f4ef;
+    --paper-2:#efeae1;
+    --ink:#162642;
+    --muted:#5c6b82;
+    --line:#dfd8cc;
+    --green:#2f7d54;
+    --red:#b5462f;
+    --amber:#b7842a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Archivo',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .deck{max-width:1180px;margin:0 auto;padding:0 22px}
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--orange);font-weight:700;margin-bottom:14px;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.05;color:var(--navy)}
+  h2{font-size:clamp(28px,4vw,46px);letter-spacing:-.01em;margin-bottom:8px}
+  h3{font-size:22px}
+  p{color:var(--muted);font-size:15.5px;max-width:62ch}
+  strong{color:var(--ink);font-weight:600}
+
+  /* ---------- COVER ---------- */
+  .cover{
+    background:
+      radial-gradient(120% 90% at 88% -10%, rgba(204,91,39,.22), transparent 55%),
+      linear-gradient(160deg,var(--navy-deep),var(--navy) 60%,var(--navy-2));
+    color:#fff;border-bottom:none;padding:0;
+  }
+  .cover-inner{max-width:1180px;margin:0 auto;padding:54px 22px 70px;position:relative;overflow:hidden}
+  .cover-grid{
+    position:absolute;inset:0;opacity:.06;
+    background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);
+    background-size:46px 46px;pointer-events:none;
+  }
+  .brandbar{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
+  .wordmark{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-weight:600;font-size:21px;color:#fff;letter-spacing:.01em}
+  .wm-mark{width:30px;height:30px;border-radius:7px;background:var(--orange);display:grid;place-items:center;font-size:15px;font-weight:900;color:#fff;font-family:'Archivo'}
+  .wm-mark span{transform:translateY(-1px)}
+  .brandbar .tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600}
+  .cover-head{position:relative;z-index:2;margin-top:78px}
+  .cover-head .kic{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--orange-soft);font-weight:700;margin-bottom:18px}
+  .cover-head h1{color:#fff;font-size:clamp(40px,6.4vw,76px);font-weight:600;letter-spacing:-.02em}
+  .cover-head h1 em{font-style:italic;color:var(--orange-soft);font-weight:400}
+  .cover-sub{margin-top:22px;color:rgba(255,255,255,.72);font-size:17px;max-width:54ch}
+  .cover-meta{display:flex;gap:30px;flex-wrap:wrap;margin-top:40px;position:relative;z-index:2}
+  .cover-meta div{border-left:2px solid var(--orange);padding-left:14px}
+  .cover-meta .l{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:600}
+  .cover-meta .v{font-size:16px;color:#fff;font-weight:600;margin-top:3px}
+
+  /* ---------- ATTRIBUTION STRIP ---------- */
+  .context{background:var(--paper-2)}
+  .context .row{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+  .context .lift{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+  .lift .chip{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 14px;min-width:118px}
+  .lift .chip .acc{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .lift .chip .num{font-family:'Fraunces',serif;font-size:21px;color:var(--green);font-weight:600;margin-top:3px}
+  .lift .chip small{color:var(--muted);font-size:11px}
+
+  /* ---------- METRIC CARDS ---------- */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 18px;position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--orange)}
+  .card.lbi::before{background:var(--orange)}
+  .card.ww::before{background:var(--navy-2)}
+  .card.ocnj::before{background:var(--amber)}
+  .card.port::before{background:var(--green)}
+  .card .acc{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .card .cpa{font-family:'Fraunces',serif;font-size:40px;font-weight:600;color:var(--navy);margin:6px 0 2px;line-height:1}
+  .card .vt{font-size:12.5px;font-weight:600;color:var(--green)}
+  .card .vt.over{color:var(--red)}
+  .card .sub{font-size:12.5px;color:var(--muted);margin-top:11px;border-top:1px solid var(--line);padding-top:10px}
+  .card .sub b{color:var(--ink)}
+
+  /* ---------- COMPARISON TABLE ---------- */
+  table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  thead th{background:var(--navy);color:#fff;text-align:right;padding:13px 16px;font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+  thead th:first-child{text-align:left}
+  tbody td{padding:12px 16px;text-align:right;border-top:1px solid var(--line);color:var(--ink)}
+  tbody td:first-child{text-align:left;font-weight:600}
+  tbody tr:nth-child(even){background:#fbf9f5}
+  tbody tr.total td{background:var(--paper-2);font-weight:700;border-top:2px solid var(--navy)}
+  .pos{color:var(--green);font-weight:600}
+  .neg{color:var(--red);font-weight:600}
+  .flat{color:var(--muted)}
+
+  /* ---------- CONSTRAINT ---------- */
+  .constraint{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;border-bottom:none}
+  .constraint h2{color:#fff}
+  .constraint .eyebrow{color:var(--orange-soft)}
+  .constraint p{color:rgba(255,255,255,.78)}
+  .constraint .lead{font-family:'Fraunces',serif;font-size:clamp(22px,2.6vw,30px);color:#fff;max-width:24ch;font-weight:500;line-height:1.2;margin:6px 0 26px}
+  .ev{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+  .ev .e{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:13px;padding:18px}
+  .ev .e .big{font-family:'Fraunces',serif;font-size:30px;color:var(--orange-soft);font-weight:600}
+  .ev .e .lab{font-size:13px;color:rgba(255,255,255,.72);margin-top:6px;line-height:1.4}
+
+  /* ---------- ACCOUNT PANELS ---------- */
+  .acct{display:grid;grid-template-columns:200px 1fr;gap:30px;align-items:start;padding:30px;background:#fff;border:1px solid var(--line);border-radius:16px;margin-top:22px}
+  .acct .side .tagn{font-family:'Fraunces',serif;font-size:26px;color:var(--navy);font-weight:600}
+  .acct .side .mkt{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+  .acct .side .micro{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding:9px 0}
+  .acct .side .micro b{color:var(--ink);font-size:15px;font-family:'Fraunces',serif}
+  .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:6px;margin-bottom:10px}
+  .badge.win{background:#e4f0e9;color:var(--green)}
+  .badge.driver{background:#fbe7da;color:var(--orange)}
+  .badge.watch{background:#f6ecd5;color:var(--amber)}
+  .acct .body h3{margin-bottom:8px}
+  .acct .body .what{font-size:14.5px;color:var(--muted);margin-bottom:14px}
+  .acct .learn{background:var(--paper-2);border-radius:10px;padding:13px 15px;border-left:3px solid var(--orange)}
+  .acct .learn .l{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:4px}
+  .acct .learn p{font-size:14px;color:var(--ink)}
+
+  /* ---------- LISTS ---------- */
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:14px}
+  ul.clean{list-style:none}
+  ul.clean li{position:relative;padding-left:24px;margin-bottom:14px;font-size:15px;color:var(--ink)}
+  ul.clean li::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;background:var(--orange);border-radius:2px;transform:rotate(45deg)}
+  ul.clean li b{font-weight:600}
+  ul.clean li span{display:block;color:var(--muted);font-size:13.5px;margin-top:2px}
+
+  /* ---------- DEMAND GEN ---------- */
+  .dg{background:linear-gradient(160deg,var(--orange),#b94e20);color:#fff;border-bottom:none}
+  .dg h2{color:#fff}.dg .eyebrow{color:rgba(255,255,255,.8)}.dg p{color:rgba(255,255,255,.9)}
+  .dg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  .dg-grid .b{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:13px;padding:18px}
+  .dg-grid .b .t{font-family:'Fraunces',serif;font-size:17px;font-weight:600;margin-bottom:6px}
+  .dg-grid .b p{font-size:13.5px;color:rgba(255,255,255,.88)}
+  .dg-time{display:flex;align-items:center;gap:10px;margin-top:24px;flex-wrap:wrap;font-size:13.5px;color:rgba(255,255,255,.95);font-weight:600}
+  .dg-time .pill{background:#fff;color:var(--orange);padding:6px 13px;border-radius:20px;font-weight:700}
+
+  /* ---------- NEED ---------- */
+  .need .ask{display:grid;grid-template-columns:34px 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:20px;margin-top:16px}
+  .need .ask .n{font-family:'Fraunces',serif;font-size:26px;color:var(--orange);font-weight:600;line-height:1}
+  .need .ask h3{font-size:18px;margin-bottom:5px}
+  .need .ask p{font-size:14px}
+  .need .ask .due{font-size:12px;font-weight:700;color:var(--orange);letter-spacing:.05em;text-transform:uppercase;margin-top:7px}
+
+  footer{background:var(--navy-deep);color:rgba(255,255,255,.6);text-align:center;padding:30px;font-size:13px}
+  footer .wm-mark{display:inline-grid;vertical-align:middle;margin-right:8px}
+
+  @media(max-width:880px){
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .context .row,.twocol{grid-template-columns:1fr}
+    .ev,.dg-grid{grid-template-columns:1fr}
+    .acct{grid-template-columns:1fr}
+    table{font-size:12.5px}
+    thead th,tbody td{padding:10px}
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="cover-inner">
+    <div class="cover-grid"></div>
+    <div class="brandbar">
+      <div class="wordmark"><span class="wm-mark"><span>H</span></span> Heathmedia</div>
+      <div class="tag">Vacation Rentals Jersey Shore</div>
+    </div>
+    <div class="cover-head">
+      <div class="kic">Monthly Performance Review</div>
+      <h1>May <em>2026.</em></h1>
+      <p class="cover-sub">Portfolio inside target across all three accounts. Engines proven, efficiency banked, and a peak-season window opening with budget left in reserve.</p>
+    </div>
+    <div class="cover-meta">
+      <div><div class="l">Period</div><div class="v">May vs April 2026</div></div>
+      <div><div class="l">Accounts</div><div class="v">VRLBI · VRWW · VROCNJ</div></div>
+      <div><div class="l">Blended CPA</div><div class="v">$2.23 · 26% under target</div></div>
+      <div><div class="l">Prepared for</div><div class="v">Duane &amp; Whitney</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ATTRIBUTION CONTEXT -->
+<section class="context">
+  <div class="deck">
+    <div class="row">
+      <div>
+        <div class="eyebrow">Read this first</div>
+        <h2>April has restated upward</h2>
+        <p>Conversions keep maturing after each review. The April numbers we presented on the last call have since climbed materially, so this month is measured against a higher, fully-settled base. May will do the same over the next two to four weeks, so today's figures are the floor, not the ceiling.</p>
+      </div>
+      <div>
+        <div class="lift">
+          <div class="chip"><div class="acc">VRLBI</div><div class="num">+17.6%</div><small>972.88 to 1,143.70 conv</small></div>
+          <div class="chip"><div class="acc">VROCNJ</div><div class="num">+7.3%</div><small>156.00 to 167.35 conv</small></div>
+          <div class="chip"><div class="acc">VRWW</div><div class="num">+3.4%</div><small>210.77 to 217.94 conv</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO SNAPSHOT -->
+<section>
+  <div class="deck">
+    <div class="eyebrow">Portfolio snapshot</div>
+    <h2>All three accounts under target</h2>
+    <p>Blended CPA held at $2.23 against the $3.00 portfolio target. Spend was deliberately lighter than April while the engines recalibrated, and efficiency improved against the originally-reported April CPA of $2.47.</p>
+
+    <div class="cards">
+      <div class="card lbi">
+        <div class="acc">VRLBI</div>
+        <div class="cpa">$1.12</div>
+        <div class="vt">55% under $2.50 target</div>
+        <div class="sub"><b>1,090</b> conv · <b>$1,223</b> spend · the volume driver</div>
+      </div>
+      <div class="card ww">
+        <div class="acc">VRWW</div>
+        <div class="cpa">$5.08</div>
+        <div class="vt">27% under $7.00 target</div>
+        <div class="sub"><b>182</b> conv · <b>$926</b> spend · PMax in the engine seat</div>
+      </div>
+      <div class="card ocnj">
+        <div class="acc">VROCNJ</div>
+        <div class="cpa">$6.83</div>
+        <div class="vt">32% under $10.00 target</div>
+        <div class="sub"><b>150</b> conv · <b>$1,023</b> spend · Generic win, PMax resetting</div>
+      </div>
+      <div class="card port">
+        <div class="acc">Portfolio</div>
+        <div class="cpa">$2.23</div>
+        <div class="vt">26% under $3.00 target</div>
+        <div class="sub"><b>1,422</b> conv · <b>$3,172</b> spend · inside target</div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Account</th><th>Spend</th><th>Spend Δ</th><th>Conv</th><th>Conv Δ*</th><th>CPA</th><th>Target</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>VRLBI</td><td>$1,222.78</td><td class="pos">+11.6%</td><td>1,090.08</td><td class="neg">-4.7%</td><td>$1.12</td><td>$2.50</td></tr>
+        <tr><td>VRWW</td><td>$926.41</td><td class="neg">-19.5%</td><td>182.48</td><td class="neg">-16.3%</td><td>$5.08</td><td>$7.00</td></tr>
+        <tr><td>VROCNJ</td><td>$1,022.70</td><td class="neg">-4.0%</td><td>149.65</td><td class="neg">-10.6%</td><td>$6.83</td><td>$10.00</td></tr>
+        <tr class="total"><td>Portfolio</td><td>$3,171.89</td><td class="neg">-4.2%</td><td>1,422.21</td><td class="neg">-7.0%</td><td>$2.23</td><td>$3.00</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12.5px;margin-top:10px">*Conversion change is measured against the restated April base. Because April is fully matured and May is not, these declines understate true performance and will narrow as May settles. Against the April figures originally reported, portfolio conversions are up 6.2%.</p>
+  </div>
+</section>
+
+<!-- THE BIGGEST CONSTRAINT -->
+<section class="constraint">
+  <div class="deck">
+    <div class="eyebrow">The biggest constraint right now</div>
+    <h2>Budget, not performance</h2>
+    <p class="lead">The engines are proven under target. We are capping them at the budget line just as peak demand arrives.</p>
+    <p>Every account is comfortably inside its CPA target, yet portfolio spend fell 4% in May and large blocks of impression share are being surrendered to budget. The bottleneck is no longer rank, copy, or bidding. It is how much budget we deploy into the highest-intent window of the year. June is the last big-budget month before the planned July and August step-downs on LBI and Wildwood, so the deployment decision is now.</p>
+    <div class="ev">
+      <div class="e"><div class="big">61.85%</div><div class="lab">VRLBI Generic impression share lost to budget, at a $1.60 CPA that is 36% under target</div></div>
+      <div class="e"><div class="big">83.96%</div><div class="lab">VROCNJ PMax impression share lost to budget, headroom held behind a recalibrating engine</div></div>
+      <div class="e"><div class="big">-4.2%</div><div class="lab">Portfolio spend month on month, under-deployed against a proven sub-target funnel</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DID -->
+<section>
+  <div class="deck">
+    <div class="eyebrow">What we did in May</div>
+    <h2>The work behind the numbers</h2>
+    <div class="twocol">
+      <ul class="clean">
+        <li><b>LBI ad strength fix landed</b><span>Headlines and descriptions refreshed. Lost impression share to rank collapsed and LBI Generic moved into the strongest auction position of the engagement.</span></li>
+        <li><b>Wildwood calendar-aware bidding installed</b><span>PMax took the engine seat with loosened tCPA. The constraint flag cleared and PMax now carries 73% of account conversions.</span></li>
+        <li><b>Ocean City budget cap cleared</b><span>Generic Last Minute, including the DSA ad groups, broke through. Lost IS to budget fell from 17.39% to 0.11%.</span></li>
+      </ul>
+      <ul class="clean">
+        <li><b>Penny scaling on constrained campaigns</b><span>Small daily steps on 48 to 72 hour intervals across the three budget-limited campaigns to scale without CPA shock.</span></li>
+        <li><b>Negative keyword sweeps across all three accounts</b><span>By-owner, realty and competitor-agency terms on LBI and OCNJ, realty and under-25 variants on Wildwood.</span></li>
+        <li><b>Demand Gen architecture built</b><span>Full campaign structure, audience signals and three concepts per market staged and ready to upload the day creative arrives.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOUNT STORIES -->
+<section>
+  <div class="deck">
+    <div class="eyebrow">What happened &amp; what we learned</div>
+    <h2>Account by account</h2>
+
+    <!-- LBI -->
+    <div class="acct">
+      <div class="side">
+        <div class="tagn">VRLBI</div>
+        <div class="mkt">Long Beach Island</div>
+        <span class="badge driver">Volume driver</span>
+        <div class="micro"><b>$1.12</b> CPA · 55% under target</div>
+        <div class="micro"><b>1,090</b> conversions</div>
+        <div class="micro"><b>+11.6%</b> spend, scaled cleanly</div>
+      </div>
+      <div class="body">
+        <h3>Rank solved, budget now the ceiling</h3>
+        <p class="what">The ad strength fix did exactly what it was meant to. Lost IS to rank on Generic sits at 7.73% and PMax rank pressure eased from 87.25% to 81.86%. PMax remains the engine at a $0.78 CPA with conversions up 10.9%. The apparent conversion-rate dip on Generic is the attribution lag, not a funnel problem: clicks landed instantly, up 15.6%, while conversions are still maturing.</p>
+        <div class="learn"><div class="l">What we learned</div><p>With rank fixed, the only thing holding LBI back is budget. Generic still surrenders 61.85% of impression share to budget at a CPA 36% under target. This is the single largest unrealised opportunity in the portfolio and the clearest place to push in June.</p></div>
+      </div>
+    </div>
+
+    <!-- WW -->
+    <div class="acct">
+      <div class="side">
+        <div class="tagn">VRWW</div>
+        <div class="mkt">Wildwood</div>
+        <span class="badge driver">PMax engine seat</span>
+        <div class="micro"><b>$5.08</b> CPA · 27% under target</div>
+        <div class="micro"><b>182</b> conversions</div>
+        <div class="micro"><b>$4.55</b> PMax CPA, 35% under</div>
+      </div>
+      <div class="body">
+        <h3>PMax carries, Generic is the soft spot</h3>
+        <p class="what">The calendar-aware bidding install is compounding. PMax delivered 9.1% more conversions on flat spend at a $4.55 CPA and now drives 73% of the account. The back half of May ran 71% more conversions than the first half, a strong shape into June. The drag is Generic: conversions roughly halved, conv rate fell to 6.29% and CPA at $6.51 is the only campaign over its target, now flagged search-volume and bidding limited.</p>
+        <div class="learn"><div class="l">What we learned</div><p>PMax was not refreshed and ran clean, which confirms the engine is healthy. The work on Wildwood is Generic-specific: rebuild query coverage and conv rate rather than touch what is already winning.</p></div>
+      </div>
+    </div>
+
+    <!-- OCNJ -->
+    <div class="acct">
+      <div class="side">
+        <div class="tagn">VROCNJ</div>
+        <div class="mkt">Ocean City NJ</div>
+        <span class="badge watch">Scale gated</span>
+        <div class="micro"><b>$6.83</b> CPA · 32% under target</div>
+        <div class="micro"><b>150</b> conversions</div>
+        <div class="micro"><b>-26%</b> Generic CPA to $6.35</div>
+      </div>
+      <div class="body">
+        <h3>A clear Generic win, with PMax mid-reset</h3>
+        <p class="what">Generic Last Minute, including the DSA ad groups, is the standout: the budget cap cleared completely, CPA fell 26% to $6.35 and conversions rose 10.5% on 18% less spend. The offsetting move to flag is PMax, down 20.4% in conversions at a $7.14 CPA on 6.7% more spend. That is the late-May asset-refresh recalibration window plus attribution lag, but the swing is real and it pulled the blended CPA up. Computers were the weak device at a $9.69 CPA, near the target ceiling.</p>
+        <div class="learn"><div class="l">What we learned</div><p>PMax holds 83.96% of impression share back behind budget, so the headroom for the agreed June step-up is enormous, but it only unlocks once the refresh stabilises. OCNJ is the account to push hardest in June, and the one where Demand Gen reach matters most given the computer-side softness.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMAND GEN -->
+<section class="dg">
+  <div class="deck">
+    <div class="eyebrow">On the horizon</div>
+    <h2>Demand Gen launch</h2>
+    <p>The 12-month awareness and remarketing play. Three concepts per market across all required aspect ratios, capturing in-market summer audiences and building the pool we retarget straight through to the January 2027 booking surge.</p>
+    <div class="dg-grid">
+      <div class="b"><div class="t">Three concepts, three markets</div><p>Home Away from Home, Skip Booking Fees, and Location and Attractions across LBI, Wildwood and Ocean City.</p></div>
+      <div class="b"><div class="t">Architecture ready now</div><p>Campaign structure, zip-level geo, in-market and look-alike signals built and staged to upload the day creative lands.</p></div>
+      <div class="b"><div class="t">Feeds everything downstream</div><p>View plus landing-page visit both build the audience, turning curiosity into the remarketing pool for the next 12 months.</p></div>
+    </div>
+    <div class="dg-time">
+      <span class="pill">Filming in progress</span> Creative delivery on or around <span class="pill">June 15</span> launch ready the day assets arrive
+    </div>
+  </div>
+</section>
+
+<!-- JUNE PRIORITIES -->
+<section>
+  <div class="deck">
+    <div class="eyebrow">What's coming in June</div>
+    <h2>The last big push month</h2>
+    <div class="twocol">
+      <ul class="clean">
+        <li><b>Scale Ocean City aggressively</b><span>Confirm the PMax refresh is bedding in, then penny-scale into the 83.96% budget headroom. The agreed priority account given Berger pressure.</span></li>
+        <li><b>Push LBI Generic budget</b><span>Deploy into the 61.85% impression share lost to budget at a sub-target CPA, before the planned July step-down.</span></li>
+        <li><b>Rebuild Wildwood Generic</b><span>Query coverage and conv rate, while PMax continues to carry the account.</span></li>
+      </ul>
+      <ul class="clean">
+        <li><b>Demand Gen live around June 15</b><span>Traffic the creative across all three markets and aspect ratios the day it arrives, then begin the audience build.</span></li>
+        <li><b>Berger competitor campaign</b><span>Confirm live and reading. Branded targeting plus a URL-matched audience layer against their auction surge.</span></li>
+        <li><b>DSA to AI Max migration window opens</b><span>Voluntary migration available in June ahead of Google's September auto-migration. We will plan the OCNJ move deliberately.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE NEED -->
+<section class="need">
+  <div class="deck">
+    <div class="eyebrow">What we need from you</div>
+    <h2>To keep June moving</h2>
+    <div class="ask">
+      <div class="n">1</div>
+      <div>
+        <h3>Demand Gen creative delivery</h3>
+        <p>Filming is underway. The campaigns are built and waiting, so we go live the day the edits land across all three markets and ratios.</p>
+        <div class="due">Target: on or around June 15</div>
+      </div>
+    </div>
+    <div class="ask">
+      <div class="n">2</div>
+      <div>
+        <h3>Confirm the Ocean City budget step-up</h3>
+        <p>You flagged wanting more spend on Ocean City for June. A confirmed June figure lets us pace the scale-up and drop the Berger campaign into a funded account rather than holding back.</p>
+        <div class="due">Helpful by: end of first week of June</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="wm-mark"><span>H</span></span> Heathmedia · VRJS Portfolio · May 2026 Performance Review · Prepared by Charles
+</footer>
+
+</body>
+</html>
