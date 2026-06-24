@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StackAdapt Launch Guide · Vacation Rentals Jersey Shore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#162642;--navy-2:#1f3357;--orange:#cc5b27;--orange-soft:#e07a45;
+    --paper:#f7f5f1;--card:#ffffff;--ink:#1a1f29;--slate:#5a6577;
+    --line:#e3ddd2;--line-strong:#cbc3b4;
+    --action:#cc5b27;--action-bg:#fcf1ea;--handle:#162642;--handle-bg:#eef1f6;
+    --tech:#37618a;--tech-bg:#eaf0f7;
+    --shadow:0 1px 2px rgba(22,38,66,.06),0 10px 28px rgba(22,38,66,.07);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:0 26px}
+  a{color:var(--orange)}
+
+  header.hero{background:var(--navy);color:#eef1f6;padding:52px 0 44px;position:relative;overflow:hidden}
+  header.hero::after{content:"";position:absolute;right:-100px;top:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(204,91,39,.32),transparent 62%)}
+  .brandline{font-family:'Archivo';text-transform:uppercase;letter-spacing:.26em;font-size:11px;font-weight:700;color:var(--orange-soft);margin:0 0 16px}
+  header.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(30px,5vw,48px);line-height:1.05;margin:0 0 16px;max-width:17ch}
+  header.hero p.lead{margin:0;max-width:60ch;color:#c8d0dd;font-size:16.5px}
+  .prepared{margin-top:26px;font-size:13px;color:#9fa9bb}
+  .prepared b{color:#fff;font-weight:600}
+
+  nav.toc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:30px auto 0;box-shadow:var(--shadow)}
+  nav.toc h4{margin:0 0 10px;font-family:'Archivo';font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--slate)}
+  nav.toc ol{margin:0;padding-left:0;list-style:none;counter-reset:t;display:grid;grid-template-columns:1fr 1fr;gap:6px 26px}
+  nav.toc li{counter-increment:t;font-size:14px}
+  nav.toc li a{color:var(--navy);text-decoration:none;display:flex;gap:9px;padding:3px 0}
+  nav.toc li a::before{content:counter(t,upper-alpha);font-family:'Fraunces',serif;font-weight:700;color:var(--orange);min-width:16px}
+  nav.toc li a:hover{color:var(--orange)}
+
+  section{padding:38px 0;border-bottom:1px solid var(--line)}
+  .kicker{font-family:'Archivo';text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:700;color:var(--orange);margin:0 0 7px}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(22px,3.2vw,30px);color:var(--navy);margin:0 0 4px;line-height:1.12}
+  .sub{color:var(--slate);margin:8px 0 20px;max-width:70ch}
+  h3{font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:var(--navy);margin:26px 0 8px}
+  p{margin:0 0 13px}
+
+  .pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:6px}
+  .pill.you{background:var(--action-bg);color:var(--action)}
+  .pill.us{background:var(--handle-bg);color:var(--handle)}
+
+  .callout{border-radius:12px;padding:16px 18px;margin:16px 0;border:1px solid var(--line);border-left-width:4px;background:var(--card);box-shadow:var(--shadow)}
+  .callout .ch{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+  .callout .ch .pill{margin:0}
+  .callout .ch h4{margin:0;font-size:15px;font-family:'Archivo';font-weight:700;color:var(--navy)}
+  .callout p{margin:0;font-size:14.5px;color:var(--ink)}
+  .callout p+p{margin-top:9px}
+  .callout.you{border-left-color:var(--action)}
+  .callout.us{border-left-color:var(--handle)}
+  .callout.tech{border-left-color:var(--tech);background:var(--tech-bg);border-color:#d6e2f0}
+  .callout.tech h4{color:var(--tech)}
+
+  ol.steps{counter-reset:s;list-style:none;padding:0;margin:16px 0;display:grid;gap:10px}
+  ol.steps li{counter-increment:s;display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 16px}
+  ol.steps li::before{content:counter(s);font-family:'Fraunces',serif;font-weight:700;color:#fff;background:var(--navy);width:27px;height:27px;border-radius:8px;display:grid;place-items:center;flex:none;font-size:13px;margin-top:1px}
+  ol.steps li b{color:var(--navy)}
+  ol.steps li .d{font-size:13.5px;color:var(--slate);display:block;margin-top:2px}
+  code{background:#eef0f4;padding:1px 7px;border-radius:5px;font-size:13px;color:var(--navy);font-family:'Archivo';font-weight:600}
+
+  ul.clean{list-style:none;padding:0;margin:12px 0}
+  ul.clean li{position:relative;padding-left:22px;margin:9px 0;font-size:14.5px}
+  ul.clean li::before{content:"";position:absolute;left:4px;top:10px;width:6px;height:6px;border-radius:50%;background:var(--orange)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+  .mcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;box-shadow:var(--shadow)}
+  .mcard h4{margin:0 0 8px;font-family:'Fraunces',serif;font-weight:600;color:var(--navy);font-size:17px}
+  .mcard h4 b{color:var(--orange)}
+  .mcard .kv{font-size:13.5px;color:var(--ink);margin:4px 0}
+  .mcard .kv span{color:var(--slate)}
+
+  table.spec{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  table.spec th{background:#fbfaf7;text-align:left;color:var(--navy);font-weight:700;padding:10px 14px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--line-strong)}
+  table.spec td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.spec tr:last-child td{border-bottom:none}
+  table.spec td:first-child{font-weight:600;color:var(--navy);width:34%}
+
+  .chk{display:flex;gap:12px;align-items:flex-start;padding:11px 14px;background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0}
+  .chk .box{width:19px;height:19px;border:2px solid var(--line-strong);border-radius:5px;flex:none;margin-top:1px}
+  .chk .t{font-size:14.5px}
+  .chk .t b{color:var(--navy)}
+  .chk .who{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-left:6px;padding:1px 7px;border-radius:5px}
+  .chk .who.you{background:var(--action-bg);color:var(--action)}
+  .chk .who.us{background:var(--handle-bg);color:var(--handle)}
+
+  .pill.done{background:#eaf3ed;color:#3f7d58}
+  .callout.done{border-left-color:#3f7d58;background:#f4f9f6;border-color:#d7e8de}
+  .callout.done h4{color:#2f6b48}
+  .chk .box.on{background:#3f7d58;border-color:#3f7d58;position:relative}
+  .chk .box.on::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(43deg)}
+  .donetag{font-family:'Archivo';font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#3f7d58;background:#eaf3ed;padding:2px 8px;border-radius:6px;vertical-align:middle;margin-left:8px}
+
+  footer{padding:34px 0 64px;color:var(--slate);font-size:13px}
+  .sign{font-family:'Fraunces',serif;color:var(--navy);font-weight:600;font-size:16px;margin-top:6px}
+
+  @media(max-width:640px){
+    nav.toc ol{grid-template-columns:1fr}
+    .grid2{grid-template-columns:1fr}
+    table.spec td:first-child{width:42%}
+  }
+  @media print{
+    body{background:#fff}
+    header.hero{background:var(--navy)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .callout,.mcard,ol.steps li,table.spec{box-shadow:none}
+    nav.toc{display:none}
+    section{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="brandline">Heathmedia · Prepared for Vacation Rentals Jersey Shore</p>
+    <h1>Getting launched on StackAdapt</h1>
+    <p class="lead">A plain step by step guide to set up the account, install the tracking pixel, and stand up the connected TV and geofencing campaigns for the summer flight. Written so anyone can follow it, with your tasks clearly marked.</p>
+    <p class="prepared">Prepared by <b>Charles, Heathmedia</b> · For <b>Duane and Whitney</b> · StackAdapt programmatic launch</p>
+  </div>
+
+  <div class="wrap">
+    <nav class="toc">
+      <h4>What this covers</h4>
+      <ol>
+        <li><a href="#why">Why StackAdapt, in one minute</a></li>
+        <li><a href="#shape">How the account is shaped</a></li>
+        <li><a href="#access">Your setup tasks</a></li>
+        <li><a href="#pixel">The pixel, locate or create</a></li>
+        <li><a href="#conv">Conversion tracking</a></li>
+        <li><a href="#build">What we will build</a></li>
+        <li><a href="#launch">Pre launch checklist</a></li>
+        <li><a href="#after">After launch</a></li>
+      </ol>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- A -->
+<section id="why">
+  <p class="kicker">A · The short version</p>
+  <h2>Why StackAdapt, in one minute</h2>
+  <p class="sub">StackAdapt is a programmatic advertising platform. It lets us place your video ads inside streaming TV apps, and place mobile ads on the phones of people who are physically at the shore, then quietly add everyone we reach into an audience we can market to again later.</p>
+  <p>This summer flight has one job. While families are at the Jersey Shore, get the Vacation Rentals brand in front of them on the big screen and on their phones, and build a large warm audience from everyone we reach. That audience then feeds the booking push that runs from January to July next year, which is when most of the bookings actually happen.</p>
+  <p>Because of that, success here is measured on how many of the right people we reach and how big the audience pool grows, not on instant bookings during the summer. People do not book next summer's rental while they are sitting on this summer's beach. We are planting, not harvesting.</p>
+</section>
+
+<!-- B -->
+<section id="shape">
+  <p class="kicker">B · The structure</p>
+  <h2>How the account is shaped</h2>
+  <p class="sub">One StackAdapt account for the whole business, with three separate campaigns inside it, one per market. Each market keeps its own targeting, its own videos and its own budget, so nothing bleeds across the three shore towns.</p>
+
+  <div class="grid2">
+    <div class="mcard"><h4>VR<b>LBI</b></h4><div class="kv"><span>Market</span> Long Beach Island</div><div class="kv"><span>Core zips</span> 08008, 08006</div><div class="kv"><span>Bridge fence</span> 1 causeway</div></div>
+    <div class="mcard"><h4>VR<b>WW</b></h4><div class="kv"><span>Market</span> Wildwood</div><div class="kv"><span>Core zip</span> 08260</div><div class="kv"><span>Bridge fence</span> 3 bridges</div></div>
+    <div class="mcard"><h4>VR<b>OCNJ</b></h4><div class="kv"><span>Market</span> Ocean City NJ</div><div class="kv"><span>Core zip</span> 08226</div><div class="kv"><span>Bridge fence</span> 4 bridges</div></div>
+    <div class="mcard"><h4>Two tactics<br>per market</h4><div class="kv"><span>CTV</span> streaming TV in target households</div><div class="kv"><span>Geofence</span> phones at beaches, boardwalks, attractions and bridges</div></div>
+  </div>
+
+  <div class="callout us"><div class="ch"><span class="pill us">We handle</span><h4>You do not build any of this</h4></div><p>We build and run all three campaigns. The sections below marked as your tasks are only the account, funding and tracking setup, which has to sit on your side because it touches your billing and your website. Once those are done, the campaign build is ours.</p></div>
+</section>
+
+<!-- C -->
+<section id="access">
+  <p class="kicker">C · Your tasks</p>
+  <h2>Your setup tasks</h2>
+  <p class="sub">Three items in total. You have already added our user access, thank you, so two remain, both on the account and billing side. Neither is technical beyond clicking through a few screens with the StackAdapt onboarding rep.</p>
+
+  <h3>1. Finish the onboarding demo</h3>
+  <div class="callout you"><div class="ch"><span class="pill you">Your action</span><h4>Complete the StackAdapt onboarding session</h4></div>
+    <p>StackAdapt gives every new advertiser a short guided session that opens the account and walks the basics. Book it and complete it. This is also where the rep sets your funding method and confirms the account is live. If we are already mid conversation with a rep, just confirm a time.</p>
+  </div>
+
+  <h3>2. Add Charles as a user <span class="donetag">Done</span></h3>
+  <div class="callout done"><div class="ch"><span class="pill done">Complete</span><h4>Charles already has access, thank you</h4></div>
+    <p>You have granted user access to charles@heathmedia.co.uk, so this step is handled. The only thing we will check once we are inside is that the role allows full campaign building. If it does not, we will tell you the exact permission to switch on, which is a one click change.</p>
+  </div>
+
+  <h3>3. Fund the account and set a ceiling</h3>
+  <div class="callout you"><div class="ch"><span class="pill you">Your action</span><h4>Set the funding method and an account spend cap</h4></div>
+    <p>StackAdapt runs on funds you load or a billing method you set with the rep, usually a card or an invoiced arrangement. With them, set an account level spend cap so the platform can never spend beyond a number you are comfortable with, across all three campaigns combined. We will then set each campaign's own daily budget underneath that ceiling.</p>
+    <p>We will confirm the total flight budget and the split across the three markets with you before anything goes live. Spend only begins when we launch.</p>
+  </div>
+</section>
+
+<!-- D -->
+<section id="pixel">
+  <p class="kicker">D · Tracking foundation</p>
+  <h2>The pixel, locate or create</h2>
+  <p class="sub">The pixel is one small piece of code on your website. It does two jobs for us. It lets StackAdapt recognise people who visit your site so we can build and grow the audience pool, and it lets us see when an ad led to a site visit or an inquiry. Without it, the campaigns still run, but we lose the audience building and the measurement, which are the whole point of this flight.</p>
+
+  <h3>First, check whether one already exists</h3>
+  <p>You have run programmatic before, so a StackAdapt pixel may already be on the site. Five minutes here can save a duplicate setup.</p>
+  <ol class="steps">
+    <li><b>Look in StackAdapt.</b><span class="d">In the left menu open the Pixels page. If a Universal Pixel is listed, it already exists. Note its ID, you are done creating and can skip to installing or verifying.</span></li>
+    <li><b>Look in Google Tag Manager.</b><span class="d">Open your GTM container and scan the tag list for anything named StackAdapt. If it is there and published, the pixel may already be live.</span></li>
+    <li><b>Ask the previous provider.</b><span class="d">If a past agency set up StackAdapt, ask whether an account and pixel exist under the business so we can take them over rather than start fresh.</span></li>
+  </ol>
+
+  <h3>If none exists, create the Universal Pixel</h3>
+  <div class="callout tech"><div class="ch"><span class="pill us">We can do this with you</span><h4>This is the one technical step, and we will sit on the call for it</h4></div><p>If you would rather, hand this section to whoever manages the website and we will guide them. It is a copy and paste, not a code change to your custom system.</p></div>
+  <ol class="steps">
+    <li><b>Open the Pixels page.</b><span class="d">In StackAdapt, left menu, Pixels.</span></li>
+    <li><b>Install the pixel.</b><span class="d">Click Install StackAdapt Pixel. A code snippet appears that contains your Universal Pixel ID. This single Universal Pixel covers the whole site and all three campaigns.</span></li>
+    <li><b>Copy the snippet.</b><span class="d">Copy the full snippet to hand to whoever installs it, or to paste into Google Tag Manager in the next step.</span></li>
+  </ol>
+
+  <h3>Install it through Google Tag Manager, the easy route</h3>
+  <p>You already use Google Tag Manager, which means the pixel can go live across every page of your custom site without touching the site's code. This is the recommended path.</p>
+  <ol class="steps">
+    <li><b>Open your GTM container.</b><span class="d">Go to tagmanager.google.com and open the Vacation Rentals container.</span></li>
+    <li><b>Create a new tag.</b><span class="d">Tags, then New, then click Tag Configuration and choose Custom HTML.</span></li>
+    <li><b>Paste the snippet.</b><span class="d">Paste the StackAdapt Universal Pixel snippet into the HTML box.</span></li>
+    <li><b>Fire it on every page.</b><span class="d">Click Triggering and choose All Pages, so the pixel loads everywhere.</span></li>
+    <li><b>Name and save.</b><span class="d">Name it <code>StackAdapt Universal Pixel</code> and Save.</span></li>
+    <li><b>Publish.</b><span class="d">Click Submit, then Publish, to push it live. The pixel is now active site wide.</span></li>
+  </ol>
+  <div class="callout us"><div class="ch"><span class="pill us">Alternative</span><h4>Direct install, if you prefer not to use GTM</h4></div><p>Your web developer can paste the same snippet into the site template just before the closing head tag, so it loads on every page. Either route works. GTM is simply faster and needs no developer.</p></div>
+</section>
+
+<!-- E conversions -->
+<section id="conv">
+  <p class="kicker">E · Measurement</p>
+  <h2>Conversion tracking</h2>
+  <p class="sub">On top of the site wide pixel, we set up one conversion event so we can see when an ad led to a real rental inquiry. We point it at the same inquiry action you already count as a conversion in Google Ads, so the two platforms stay consistent.</p>
+
+  <ol class="steps">
+    <li><b>Start a new event.</b><span class="d">On the StackAdapt Pixels page, click Create New, then Conversion Event.</span></li>
+    <li><b>Set it as a website page load.</b><span class="d">Choose Website as the install location and Page Load as the activation method.</span></li>
+    <li><b>Name it and categorise it.</b><span class="d">Name it something clear like <code>Rental Inquiry</code> and pick the closest conversion category, such as a lead or form submission.</span></li>
+    <li><b>Copy the unique ID.</b><span class="d">Create the event and copy its Conversion Event Unique ID.</span></li>
+    <li><b>Fire it on the confirmation page.</b><span class="d">We attach that ID to the inquiry confirmation or thank you page, either with a URL rule in StackAdapt or a small tag in GTM, so it counts only when an inquiry actually completes.</span></li>
+  </ol>
+
+  <div class="callout tech"><div class="ch"><span class="pill us">Expert note</span><h4>We will keep view through and click through both on</h4></div><p>People do not click an ad on a television. StackAdapt's default counts both view through and click through, which is exactly what we want, so a household that sees the streaming ad and later visits the site still gets credited. We confirm this is left on for every event.</p></div>
+
+  <div class="callout us"><div class="ch"><span class="pill us">We handle</span><h4>Verification</h4></div><p>Once the pixel and event are in, we test that both fire correctly using GTM preview mode and the live status on the StackAdapt Pixels page, and confirm data is flowing before we spend a cent.</p></div>
+</section>
+
+<!-- F build -->
+<section id="build">
+  <p class="kicker">F · The plan</p>
+  <h2>What we will build</h2>
+  <p class="sub">For each of the three markets, two coordinated tactics, weighted a little more heavily toward Wildwood and Ocean City where the audience opportunity is larger. You do not need to action anything here, it is for visibility.</p>
+
+  <h3>Connected TV, the streaming screen</h3>
+  <ul class="clean">
+    <li>Your 30 second and 15 second videos served inside streaming TV apps on smart TVs in households inside the target zip codes</li>
+    <li>Built from the 1080p 16 by 9 masters already produced. StackAdapt transcodes them to fit each streaming app, so one upload covers all of it</li>
+    <li>Frequency held to roughly three to four views per household per week, enough to be remembered, not enough to annoy</li>
+  </ul>
+
+  <h3>Mobile geofencing, the on the ground screen</h3>
+  <ul class="clean">
+    <li>Ads served to phones physically present at beaches, boardwalks, attractions, rental clusters and the bridges into each town</li>
+    <li>The bridges matter, one causeway into LBI, three into Wildwood, four into Ocean City. Fencing the spans and approach roads tags arriving families into the audience as they drive in</li>
+    <li>Everyone reached this way is added to the pool we remarket to through the booking season</li>
+  </ul>
+
+  <h3>Frequency, set by weekly turnover, not by day</h3>
+  <p>The cap is weekly rather than daily on purpose. Rental homes turn over to a fresh family most Saturdays, so across an eight week summer the true number of different families we reach is far larger than the number of homes suggests. A weekly cap keeps a steady presence with each family without wasting impressions.</p>
+
+  <table class="spec">
+    <tr><th>Creative we use</th><th>What it needs</th></tr>
+    <tr><td>CTV video</td><td>The existing 16 by 9 1080p masters, 30 second and 15 second. Already done. StackAdapt handles the rest.</td></tr>
+    <tr><td>Optional display retargeting</td><td>If we add banner retargeting later, simple brand images at 1200 by 628 and 600 by 600, no text baked into the image. We would produce these.</td></tr>
+    <tr><td>Landing pages</td><td>Each market points to its own site, vrlbi.com, vrww.com and vrocnj.com. Please confirm these are the pages you want traffic sent to.</td></tr>
+  </table>
+
+  <h3>How we will judge it</h3>
+  <p>Reach and unique households, frequency, video completion rate, growth of the retargeting audience, and view through site visits from people we showed the ads to. These are the right measures for an audience building flight. The booking return shows up later, in the season these audiences are built for.</p>
+</section>
+
+<!-- G launch -->
+<section id="launch">
+  <p class="kicker">G · Ready to go</p>
+  <h2>Pre launch checklist</h2>
+  <p class="sub">When every line below is ticked, we launch. Your lines are marked, the rest are ours.</p>
+
+  <div class="chk"><div class="box"></div><div class="t"><b>Onboarding session complete and account open</b><span class="who you">You</span></div></div>
+  <div class="chk"><div class="box on"></div><div class="t"><b>Charles added as a user with build access</b><span class="who you">Done</span></div></div>
+  <div class="chk"><div class="box"></div><div class="t"><b>Funding method set and account spend cap in place</b><span class="who you">You</span></div></div>
+  <div class="chk"><div class="box"></div><div class="t"><b>Universal Pixel located or created</b><span class="who you">You, with us</span></div></div>
+  <div class="chk"><div class="box"></div><div class="t"><b>Pixel installed site wide and published in GTM</b><span class="who you">You, with us</span></div></div>
+  <div class="chk"><div class="box"></div><div class="t"><b>Rental Inquiry conversion event live and firing on the confirmation page</b><span class="who us">Us</span></div></div>
+  <div class="chk"><div class="box"></div><div class="t"><b>Landing pages per market confirmed</b><span class="who you">You</span></div></div>
+  <div class="chk"><div class="box"></div><div class="t"><b>Total flight budget and per market split agreed</b><span class="who you">You, with us</span></div></div>
+  <div class="chk"><div class="box"></div><div class="t"><b>Start date confirmed</b><span class="who you">You</span></div></div>
+  <div class="chk"><div class="box"></div><div class="t"><b>Three campaigns built, targeting and creative loaded, pixel and tracking verified</b><span class="who us">Us</span></div></div>
+</section>
+
+<!-- H after -->
+<section id="after" style="border-bottom:none">
+  <p class="kicker">H · What happens next</p>
+  <h2>After launch</h2>
+  <p class="sub">The first stretch is a settling in period while the platform learns where your audience is and how to deliver efficiently. We watch it closely and adjust.</p>
+  <ul class="clean">
+    <li>We monitor reach, frequency and pool growth weekly and tune targeting and pacing as the data comes in</li>
+    <li>If budget ever tightens, we trim frequency rather than cut weeks, to protect the number of different families reached</li>
+    <li>The audience we build all summer becomes the retargeting backbone for the January to July booking push, alongside the YouTube audience and your guest database</li>
+    <li>You get clear updates the same way you do now, so you always know what is reaching whom and what it is building toward</li>
+  </ul>
+
+  <p style="margin-top:24px">Any questions on the account or pixel steps, send them over and I will walk you through whichever part you would like. Once your tasks are ticked, we take it from there.</p>
+  <p class="sign">Charles</p>
+  <p style="color:var(--slate);font-size:13px;margin-top:2px">Heathmedia · charles@heathmedia.co.uk</p>
+</section>
+
+</main>
+</body>
+</html>
