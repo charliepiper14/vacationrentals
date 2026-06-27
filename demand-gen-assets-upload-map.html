@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VRJS YouTube Upload Checklist · Every Asset</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#162642;--orange:#cc5b27;--orange-soft:#e07a45;--paper:#f7f5f1;--card:#fff;
+    --ink:#1a1f29;--slate:#5a6577;--line:#e3ddd2;--line-strong:#cbc3b4;
+    --done:#3f7d58;--done-bg:#eef6f1;--crit:#9d2b2b;--crit-bg:#f8e7e5;--warn:#b9601f;--warn-bg:#fbeede;
+    --shadow:0 1px 2px rgba(22,38,66,.06),0 8px 22px rgba(22,38,66,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;font-size:14.5px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+  .bar{position:sticky;top:0;z-index:50;background:rgba(247,245,241,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar-in{max-width:1040px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:14px}
+  .bar .mark{font-family:'Fraunces',serif;font-weight:700;color:var(--navy);font-size:14px;white-space:nowrap}
+  .bar .mark b{color:var(--orange)}
+  .progress{flex:1;height:8px;background:#e7e1d6;border-radius:99px;overflow:hidden;min-width:70px}
+  .progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--orange-soft));transition:width .35s}
+  .pct{font-variant-numeric:tabular-nums;font-weight:700;color:var(--navy);font-size:13px;min-width:62px;text-align:right}
+  .reset{border:1px solid var(--line-strong);background:#fff;color:var(--slate);font-size:12px;font-weight:600;padding:6px 11px;border-radius:8px;cursor:pointer}
+  .reset:hover{border-color:var(--orange);color:var(--orange)}
+
+  header.hero{background:var(--navy);color:#eef1f6;padding:40px 0 34px;position:relative;overflow:hidden}
+  header.hero::after{content:"";position:absolute;right:-90px;top:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(204,91,39,.32),transparent 62%)}
+  .brandline{text-transform:uppercase;letter-spacing:.26em;font-size:11px;font-weight:700;color:var(--orange-soft);margin:0 0 13px}
+  header.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(26px,4.2vw,40px);line-height:1.06;margin:0 0 12px;max-width:20ch}
+  header.hero p{margin:0;max-width:64ch;color:#c8d0dd;font-size:15.5px}
+
+  section{padding:30px 0;border-bottom:1px solid var(--line)}
+  h2{font-family:'Fraunces',serif;font-weight:600;font-size:23px;color:var(--navy);margin:0 0 4px}
+  .kicker{text-transform:uppercase;letter-spacing:.15em;font-size:11px;font-weight:700;color:var(--orange);margin:0 0 6px}
+  .sub{color:var(--slate);margin:6px 0 16px;max-width:72ch}
+
+  .settings{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:var(--shadow);font-size:13.5px}
+  .settings b{color:var(--navy)}
+  .settings .row{padding:4px 0}
+  .settings code{background:#eef0f4;padding:1px 6px;border-radius:5px;font-size:12.5px;color:var(--navy);font-weight:600}
+
+  .pf{display:flex;gap:11px;align-items:flex-start;padding:11px 14px;background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0}
+  .pf.crit{border-left:4px solid var(--crit)} .pf.warn{border-left:4px solid var(--warn)}
+  .pf .t{font-size:13.5px}.pf .t b{color:var(--navy)}
+  .bigcheck{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:2px solid var(--line-strong);border-radius:6px;cursor:pointer;flex:none;margin-top:1px;background:#fff;position:relative}
+  .bigcheck:checked{background:var(--done);border-color:var(--done)}
+  .bigcheck:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(43deg)}
+
+  /* channel */
+  .chan{margin:18px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:var(--shadow)}
+  .chan-top{display:flex;flex-wrap:wrap;gap:5px 18px;align-items:center;padding:14px 18px;background:var(--navy);color:#fff}
+  .chan-top .name{font-family:'Fraunces',serif;font-weight:600;font-size:18px}
+  .chan-top .name b{color:var(--orange-soft)}
+  .chan-top .kv{font-size:12px;color:#b9c2d2}.chan-top .kv b{color:#fff;font-weight:600}
+  .chan-top .meter{margin-left:auto;font-size:12px;font-weight:700;background:rgba(255,255,255,.12);padding:4px 11px;border-radius:99px;font-variant-numeric:tabular-nums}
+  .chan-body{padding:8px 16px 16px}
+  .hold-note{background:var(--warn-bg);color:var(--warn);font-size:12.5px;font-weight:600;padding:8px 12px;border-radius:8px;margin:10px 0}
+
+  /* edit block */
+  .edit{border:1px solid var(--line);border-radius:11px;margin:12px 0;overflow:hidden}
+  .edit-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;background:#fbfaf7;border-bottom:1px solid var(--line)}
+  .edit-h .et{font-family:'Fraunces',serif;font-weight:600;color:var(--navy);font-size:15px}
+  .edit-h .lead{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--orange);background:#fbeee6;padding:2px 8px;border-radius:5px}
+  .desc{padding:11px 14px;display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid var(--line)}
+  .desc .dl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);flex:none;padding-top:3px;width:64px}
+  .desc .dtext{flex:1;font-size:12.5px;color:var(--ink);line-height:1.45}
+
+  /* ratio row */
+  .rrow{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid #f1ede4}
+  .rrow:last-child{border-bottom:none}
+  .rrow.done{background:var(--done-bg)}
+  .rbadge{font-family:'Archivo';font-weight:700;font-size:11px;color:#fff;background:var(--navy);padding:3px 9px;border-radius:6px;flex:none;min-width:46px;text-align:center}
+  .rrow.done .rbadge{background:var(--done)}
+  .fname{font-family:'Archivo';font-weight:600;font-size:12px;color:var(--navy);flex:none}
+  .fname .rn{display:block;font-size:10.5px;color:var(--warn);font-weight:600}
+  .checks{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-left:auto}
+  .mc{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--slate);cursor:pointer;user-select:none}
+  .mc input{appearance:none;-webkit-appearance:none;width:17px;height:17px;border:2px solid var(--line-strong);border-radius:5px;cursor:pointer;background:#fff;position:relative}
+  .mc input:checked{background:var(--done);border-color:var(--done)}
+  .mc input:checked::after{content:"";position:absolute;left:4px;top:1px;width:4px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(43deg)}
+  .mc.kids input:checked,.mc.unl input:checked{background:var(--crit);border-color:var(--crit)}
+  .urlin{width:150px;border:1px solid var(--line);border-radius:7px;padding:5px 8px;font-family:'Archivo';font-size:11px;color:var(--navy)}
+  .urlin:focus{outline:none;border-color:var(--orange)}
+  .copy{border:1px solid var(--navy);background:var(--navy);color:#fff;font-weight:600;font-size:10.5px;padding:4px 10px;border-radius:6px;cursor:pointer;flex:none}
+  .copy:hover{background:var(--orange);border-color:var(--orange)}
+  .copy.ok{background:var(--done);border-color:var(--done)}
+
+  footer{padding:26px 0 54px;color:var(--slate);font-size:12.5px}
+  .sign{font-family:'Fraunces',serif;color:var(--navy);font-weight:600;font-size:14px}
+
+  @media(max-width:680px){
+    .checks{margin-left:0;width:100%}
+    .urlin{width:100%}
+    .bar .mark span{display:none}
+  }
+  @media print{.bar,.copy,.reset{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="mark">VRJS <b>·</b> Upload Checklist <span>· complete, 54 / 54</span></div>
+    <div class="progress"><span id="pbar"></span></div>
+    <div class="pct" id="ppct">0 / 0</div>
+    <button class="reset" id="reset">Reset</button>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="brandline">Heathmedia · Vacation Rentals Jersey Shore</p>
+    <h1>YouTube upload checklist, every single asset</h1>
+    <p>All 54 assets, three markets by three concepts by two lengths by three ratios. Each one has its title, its description and its own ticks. Work straight down it, tick as you go, paste each URL. Everything saves in this browser so you can stop and pick back up.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section>
+  <p class="kicker">Applies to every asset</p>
+  <h2>The constant settings</h2>
+  <p class="sub">Same on every upload, so the ticks per asset only cover the things that need confirming each time.</p>
+  <div class="settings">
+    <div class="row"><b>Visibility</b> Unlisted, never Private and never Public</div>
+    <div class="row"><b>Audience</b> No, it is not made for kids, on every single one</div>
+    <div class="row"><b>Title</b> the filename stem shown on each row, paste it exactly</div>
+    <div class="row"><b>Description</b> the block description, one per edit, copy button provided</div>
+    <div class="row"><b>Skip</b> thumbnail, playlists, cards, end screens. <b>Category</b> Travel and Events. <b>License</b> Standard. <b>Comments</b> off</div>
+    <div class="row"><b>Before campaign use</b> wait for HD to finish, then capture the URL</div>
+  </div>
+
+  <div style="margin-top:14px">
+    <div class="pf crit"><input type="checkbox" class="bigcheck" id="pf_lbi" checked><div class="t"><b>VRLBI channel ID confirmed as @vrlbi.</b> Resolved, LBI uploaded.</div></div>
+    <div class="pf warn"><input type="checkbox" class="bigcheck" id="pf_rename" checked><div class="t"><b>Wildwood Concept 3 30s corrected</b> from <code>VROWW</code> to <code>VRWW</code>. Resolved.</div></div>
+  </div>
+</section>
+
+<section>
+  <p class="kicker">Tick as you go</p>
+  <h2>Every asset by channel</h2>
+  <div style="background:#eef6f1;border:1px solid #cfe3d6;border-left:4px solid #3f7d58;border-radius:10px;padding:12px 15px;margin:0 0 14px;font-size:13.5px"><b style="color:#2f6b48">Affirmed and complete.</b> All 54 assets uploaded, set to not made for kids and Unlisted, processed to HD, with every YouTube URL captured and locked into this file. This is the permanent record for the Demand Gen build.</div><p class="sub">Per row, five ticks: Up, Kids, Unlisted, HD, URL. All confirmed. Every URL is filled below and baked into the file, so it survives a refresh, a new browser or hosting, independent of any temporary storage.</p>
+  <div id="app"></div>
+</section>
+
+<footer class="wrap">
+  <p>Every asset accounted for. The two red ticks, not made for kids and Unlisted, are the ones that decide whether the asset serves and feeds the audience pool, so they are flagged on every row.</p>
+  <p class="sign">Charles · Heathmedia</p>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  var URLS={"VRWW_1_30_16x9": "https://youtu.be/qVhItvYFpCQ", "VRWW_1_30_1x1": "https://youtube.com/shorts/qwH-K41_FAQ", "VRWW_1_30_9x16": "https://youtube.com/shorts/A6Up7UETHCc", "VRWW_1_15_16x9": "https://youtu.be/Xpv6iYquK_M", "VRWW_1_15_1x1": "https://youtube.com/shorts/TOzR9b4jadQ", "VRWW_1_15_9x16": "https://youtube.com/shorts/khoVdlHWQqs", "VRWW_2_30_16x9": "https://youtu.be/PXIqGyNTBLE", "VRWW_2_30_1x1": "https://youtube.com/shorts/hf_7ZWkVMlU", "VRWW_2_30_9x16": "https://youtube.com/shorts/d5swXH34eyM", "VRWW_2_15_16x9": "https://youtu.be/jh3yweM_XPI", "VRWW_2_15_1x1": "https://youtube.com/shorts/fEiJk8CTJmk", "VRWW_2_15_9x16": "https://youtube.com/shorts/X0V8FW8LamY", "VRWW_3_30_16x9": "https://youtu.be/YYccCoC0e_w", "VRWW_3_30_1x1": "https://youtube.com/shorts/0bMzfo3R4GE", "VRWW_3_30_9x16": "https://youtube.com/shorts/NklgToyhlCo", "VRWW_3_15_16x9": "https://youtu.be/H4izog-HzYw", "VRWW_3_15_1x1": "https://youtube.com/shorts/3zkpbpXg3_Q", "VRWW_3_15_9x16": "https://youtube.com/shorts/vwTqkQjXkUQ", "VROCNJ_1_30_16x9": "https://youtu.be/ShI3ANSIUtI", "VROCNJ_1_30_1x1": "https://youtube.com/shorts/TDHK5xwG28Q", "VROCNJ_1_30_9x16": "https://youtube.com/shorts/CWYAw6f9X_s", "VROCNJ_1_15_16x9": "https://youtu.be/XX-rkBrWKH0", "VROCNJ_1_15_1x1": "https://youtube.com/shorts/zAjeNReG_vI", "VROCNJ_1_15_9x16": "https://youtube.com/shorts/q1WyvFxhqJA", "VROCNJ_2_30_16x9": "https://youtu.be/Oq2lPrxIYbU", "VROCNJ_2_30_1x1": "https://youtube.com/shorts/MSPMMPWzKDY", "VROCNJ_2_30_9x16": "https://youtube.com/shorts/FbcZbE8vDDA", "VROCNJ_2_15_16x9": "https://youtu.be/T31mWe7P6fs", "VROCNJ_2_15_1x1": "https://youtube.com/shorts/LzAabbN2Li4", "VROCNJ_2_15_9x16": "https://youtube.com/shorts/2slOJyA47zY", "VROCNJ_3_30_16x9": "https://youtu.be/HlQvJO3bdNI", "VROCNJ_3_30_1x1": "https://youtube.com/shorts/0-dndig9rXM", "VROCNJ_3_30_9x16": "https://youtube.com/shorts/QzwMcochF9M", "VROCNJ_3_15_16x9": "https://youtu.be/702AzyB5WXg", "VROCNJ_3_15_1x1": "https://youtube.com/shorts/6r6aPU3ds2c", "VROCNJ_3_15_9x16": "https://youtube.com/shorts/K7S9VcLhCN8", "VRLBI_1_30_16x9": "https://youtu.be/FZ1Xq0mw_wg", "VRLBI_1_30_1x1": "https://youtube.com/shorts/JVxJbYmVCD4", "VRLBI_1_30_9x16": "https://youtube.com/shorts/F6u6wrCGdHU", "VRLBI_1_15_16x9": "https://youtu.be/fsY3DLPABLc", "VRLBI_1_15_1x1": "https://youtube.com/shorts/1KQYt8zZi2o", "VRLBI_1_15_9x16": "https://youtube.com/shorts/EG_W4BKiAU4", "VRLBI_2_30_16x9": "https://youtu.be/l3mUMRhBUt8", "VRLBI_2_30_1x1": "https://youtube.com/shorts/FydezOX_0Jg", "VRLBI_2_30_9x16": "https://youtube.com/shorts/Ku13DYxThgE", "VRLBI_2_15_16x9": "https://youtu.be/k5Ciapk26WY", "VRLBI_2_15_1x1": "https://youtube.com/shorts/VvnXL6W_xPA", "VRLBI_2_15_9x16": "https://youtube.com/shorts/dmiXkB45woc", "VRLBI_3_30_16x9": "https://youtu.be/vmjYn7udTCU", "VRLBI_3_30_1x1": "https://youtube.com/shorts/bbCiVtFUw5s", "VRLBI_3_30_9x16": "https://youtube.com/shorts/z8od7_oJ2lg", "VRLBI_3_15_16x9": "https://youtu.be/Sg96cRkRo08", "VRLBI_3_15_1x1": "https://youtube.com/shorts/iWHPyL2qm0M", "VRLBI_3_15_9x16": "https://youtube.com/shorts/ImqyltLNFFM"};
+  var AFFIRMED=true;
+  var MARKETS=[
+    {code:'VRWW',name:'Wildwood',handle:'@vrww',id:'UCapg33CzS0j1Thgec6GNK-A',ads:'534-978-7668',url:'vrww.com',desc:'Wildwood',rental:'Wildwood',
+      c1hook:'renting in Wildwood this week you probably paid too much',c2pair:'Wildwood attractions and homes'},
+    {code:'VROCNJ',name:'Ocean City NJ',handle:'@VROCNJ',id:'UCjrpRifMAHX6b_7VFosVdMA',ads:'737-859-6099',url:'vrocnj.com',desc:'Ocean City NJ',rental:'Ocean City',
+      c1hook:'renting in Ocean City this week you probably paid too much',c2pair:'Ocean City attractions and homes'},
+    {code:'VRLBI',name:'Long Beach Island',handle:'@vrlbi',id:'@vrlbi',ads:'929-062-0060',url:'vrlbi.com',desc:'Long Beach Island',rental:'LBI',
+      c1hook:'on the Island this week you probably paid too much',c2pair:'LBI views and homes'}
+  ];
+  var CONCEPTS=[{n:1,tag:'value / family'},{n:2,tag:'belonging'},{n:3,tag:'rent direct'}];
+  var LENGTHS=[30,15];
+  var RATIOS=['16x9','1x1','9x16'];
+  var FIELDS=[['up','Up'],['kids','Kids'],['unl','Unlisted'],['hd','HD'],['url','URL']];
+
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function descFor(m,c,len){
+    if(c===1)return 'Demand Gen ad asset for '+m.desc+' vacation rentals. Concept 1 opens on what a week really costs through the big platforms, '+m.c1hook+', then turns it into the payoff of booking direct and spending the saving on your family. '+len+' second cut. Book direct and save up to 27 percent at '+m.url+'. Unlisted ad asset, not for organic sharing.';
+    if(c===2)return 'Demand Gen ad asset for '+m.desc+' vacation rentals. Concept 2 leads on belonging, wishing this week wouldn\u2019t end, some places you visit, pairing '+m.c2pair+' with the feeling of a place you come back to. '+len+' second cut. Book direct at '+m.url+'. Unlisted ad asset, not for organic sharing.';
+    return 'Demand Gen ad asset for '+m.desc+' vacation rentals. Concept 3 is the rent direct angle, looking for your next '+m.rental+' rental, same house, rent direct, showing the same homes for less when you book with the owner. '+len+' second cut. Rent direct and save up to 27 percent at '+m.url+'. Unlisted ad asset, not for organic sharing.';
+  }
+  function stem(code,c,ratio,len){return code+'_Concept_'+c+'_'+ratio+'_-'+len;}
+  // source filename, accounting for the known VROWW typo on Wildwood C3 30s 16x9
+  function sourceName(m,c,ratio,len){return stem(m.code,c,ratio,len);}
+
+  var html='';
+  MARKETS.forEach(function(m){
+    html+='<div class="chan"><div class="chan-top">';
+    html+='<span class="name">'+m.name.replace(m.code,'')+' <b>'+m.code+'</b></span>';
+    html+='<span class="kv">Channel <b>'+m.handle+'</b></span>';
+    html+='<span class="kv">ID <b>'+esc(m.id)+'</b></span>';
+    html+='<span class="kv">Ads <b>'+m.ads+'</b></span>';
+    html+='<span class="meter" data-meter="'+m.code+'">0 / 18</span>';
+    html+='</div><div class="chan-body">';
+    if(m.hold)html+='<div class="hold-note">On hold until the VRLBI channel ID is confirmed</div>';
+    CONCEPTS.forEach(function(co){
+      LENGTHS.forEach(function(len){
+        var d=descFor(m,co.n,len);
+        var did='desc__'+m.code+'_'+co.n+'_'+len;
+        html+='<div class="edit"><div class="edit-h"><span class="et">'+m.code+' · Concept '+co.n+' · '+len+'s</span><span class="lead">'+co.tag+'</span></div>';
+        html+='<div class="desc"><span class="dl">Description</span><span class="dtext" id="'+did+'">'+esc(d)+'</span><button class="copy" data-copy="'+did+'">Copy</button></div>';
+        RATIOS.forEach(function(r){
+          var src=sourceName(m,co.n,r,len);
+          var title=stem(m.code,co.n,r,len);
+          var key=m.code+'_'+co.n+'_'+len+'_'+r;
+          var renamed=(src!==title);
+          html+='<div class="rrow" data-row="'+key+'" data-code="'+m.code+'">';
+          html+='<span class="rbadge">'+r+'</span>';
+          html+='<span class="fname">'+src+(renamed?'<span class="rn">title \u2192 '+title+'</span>':'')+'</span>';
+          html+='<button class="copy" data-copytext="'+esc(title)+'">Copy title</button>';
+          html+='<span class="checks">';
+          FIELDS.forEach(function(f){
+            var cls='mc'+(f[0]==='kids'?' kids':'')+(f[0]==='unl'?' unl':'');
+            html+='<label class="'+cls+'"><input type="checkbox" id="chk__'+key+'__'+f[0]+'" data-row="'+key+'" '+(AFFIRMED?'checked':'')+'>'+f[1]+'</label>';
+          });
+          html+='<input class="urlin" id="url__'+key+'" placeholder="youtu.be/\u2026" value="'+(URLS[key]||'')+'">';
+          html+='</span></div>';
+        });
+        html+='</div>';
+      });
+    });
+    html+='</div></div>';
+  });
+  document.getElementById('app').innerHTML=html;
+
+  // persistence
+  var KEY='vrjs_assetcheck_v1', store={};
+  try{store=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){store={};}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
+
+  var boxes=[].slice.call(document.querySelectorAll('input[type=checkbox]'));
+  var urls=[].slice.call(document.querySelectorAll('.urlin'));
+  boxes.forEach(function(b){if(b.id in store)b.checked=!!store[b.id];});
+  urls.forEach(function(u){if(u.id in store)u.value=store[u.id];});
+
+  function rowSync(key){
+    var row=document.querySelector('.rrow[data-row="'+key+'"]');if(!row)return;
+    var rb=[].slice.call(row.querySelectorAll('input[type=checkbox]'));
+    var all=rb.every(function(x){return x.checked;});
+    row.classList.toggle('done',all);
+  }
+  function meters(){
+    MARKETS.forEach(function(m){
+      var cb=boxes.filter(function(b){return b.id.indexOf('chk__'+m.code+'_')===0;});
+      var done=cb.filter(function(b){return b.checked;}).length;
+      var el=document.querySelector('[data-meter="'+m.code+'"]');
+      if(el)el.textContent=Math.round(done/5)+' / 18';
+    });
+  }
+  function progress(){
+    var done=boxes.filter(function(b){return b.checked;}).length;
+    var pc=boxes.length?Math.round(done/boxes.length*100):0;
+    document.getElementById('pbar').style.width=pc+'%';
+    document.getElementById('ppct').textContent=done+' / '+boxes.length;
+  }
+  function refreshAll(){
+    document.querySelectorAll('.rrow').forEach(function(r){rowSync(r.getAttribute('data-row'));});
+    meters();progress();
+  }
+
+  document.addEventListener('change',function(e){
+    var t=e.target;
+    if(t.type==='checkbox'){store[t.id]=t.checked;save();var k=t.getAttribute('data-row');if(k)rowSync(k);meters();progress();}
+  });
+  document.addEventListener('input',function(e){
+    if(e.target.classList.contains('urlin')){store[e.target.id]=e.target.value;save();}
+  });
+  document.addEventListener('click',function(e){
+    var b=e.target;if(b.tagName!=='BUTTON')return;
+    var text=null;
+    if(b.hasAttribute('data-copytext'))text=b.getAttribute('data-copytext');
+    else if(b.hasAttribute('data-copy')){var el=document.getElementById(b.getAttribute('data-copy'));if(el)text=el.textContent;}
+    if(text===null)return;
+    var done=function(){var o=b.textContent;b.textContent='Copied';b.classList.add('ok');setTimeout(function(){b.textContent=o;b.classList.remove('ok');},1200);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(function(){fb(text);done();});}
+    else{fb(text);done();}
+  });
+  function fb(text){try{var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);}catch(e){}}
+
+  document.getElementById('reset').addEventListener('click',function(){
+    if(!confirm('Clear all ticks and pasted URLs?'))return;
+    store={};save();boxes.forEach(function(b){b.checked=false;});urls.forEach(function(u){u.value='';});refreshAll();
+  });
+
+  refreshAll();
+})();
+</script>
+</body>
+</html>
