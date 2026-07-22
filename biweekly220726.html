@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VRJS Portfolio Performance Review | July 8 - July 21, 2026</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; background: white; }
+.header { background: linear-gradient(135deg, #162642 0%, #1a3354 100%); color: white; padding: 40px 80px; }
+.logo-container { margin-bottom: 28px; }
+.logo-container img { height: 56px; width: auto; }
+.header h1 { font-size: 40px; font-weight: 700; margin-bottom: 8px; color: white; }
+.header .subtitle { font-size: 19px; color: #d0d8e8; font-weight: 300; }
+.header .date-range { font-size: 15px; color: #cc5b27; font-weight: 600; margin-top: 8px; }
+.section { padding: 56px 80px; border-bottom: 1px solid #e0e0e0; }
+.section-alt { background: #f8f9fa; }
+.section-dark { background: linear-gradient(135deg, #162642 0%, #1a3354 100%); color: white; }
+h2 { font-size: 30px; color: #162642; margin-bottom: 28px; font-weight: 700; border-bottom: 3px solid #cc5b27; padding-bottom: 12px; }
+.section-dark h2 { color: white; }
+h3 { font-size: 21px; color: #162642; margin-top: 36px; margin-bottom: 18px; font-weight: 600; }
+.section-dark h3 { color: #cc5b27; }
+h4 { font-size: 16px; color: #162642; margin-top: 22px; margin-bottom: 10px; font-weight: 600; }
+.banner { padding: 24px 28px; border-radius: 10px; margin: 22px 0; text-align: center; }
+.banner h3 { margin: 0 0 8px 0; font-size: 22px; }
+.banner p { font-size: 16px; margin: 0; }
+.banner-success { background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; }
+.banner-success h3 { color: white; }
+.banner-info { background: linear-gradient(135deg, #162642 0%, #1a3354 100%); color: white; border: 2px solid #cc5b27; }
+.banner-info h3 { color: #cc5b27; }
+.insight { padding: 18px 22px; margin: 18px 0; border-radius: 6px; }
+.insight-orange { background: #fff8f0; border-left: 4px solid #cc5b27; }
+.insight-orange strong { color: #cc5b27; }
+.insight-green { background: #f0fff4; border-left: 4px solid #28a745; }
+.insight-green strong { color: #28a745; }
+.insight-blue { background: #f0f8ff; border-left: 4px solid #17a2b8; }
+.insight-blue strong { color: #17a2b8; }
+.section-dark .insight { background: rgba(255,255,255,0.07); border-left: 4px solid #cc5b27; }
+.section-dark .insight strong { color: #cc5b27; }
+.section-dark .insight p, .section-dark .insight li { color: #d0d8e8; }
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; margin: 24px 0; }
+.metric-card { background: white; padding: 22px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #cc5b27; }
+.section-dark .metric-card { background: rgba(255,255,255,0.08); border-left-color: #cc5b27; }
+.metric-label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; font-weight: 600; }
+.section-dark .metric-label { color: #99aacc; }
+.metric-value { font-size: 32px; font-weight: 700; color: #162642; margin-bottom: 4px; }
+.section-dark .metric-value { color: white; }
+.badge { font-size: 12px; font-weight: 600; display: inline-block; padding: 3px 9px; border-radius: 4px; }
+.badge-pos { background: #d4edda; color: #155724; }
+.badge-warn { background: #fff3cd; color: #856404; }
+.badge-neu { background: #e2e3e5; color: #383d41; }
+.account-header { display: flex; justify-content: space-between; align-items: center; padding: 22px 28px; border-radius: 10px; margin-bottom: 26px; color: white; }
+.account-name { font-size: 26px; font-weight: 700; }
+.account-sub { font-size: 13px; margin-top: 4px; opacity: 0.85; }
+.account-cpa { font-size: 44px; font-weight: 700; }
+.account-cpa-label { font-size: 12px; text-transform: uppercase; opacity: 0.8; }
+.campaign-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 18px; margin: 22px 0; }
+.campaign-card { background: #f8f9fa; padding: 22px; border-radius: 10px; border: 2px solid #e0e0e0; }
+.campaign-card.winner { border-color: #28a745; border-width: 3px; }
+.campaign-card.caution { border-color: #ffc107; border-width: 2px; }
+.campaign-name { font-size: 16px; font-weight: 700; color: #162642; margin-bottom: 14px; }
+.campaign-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.cm-label { font-size: 10px; color: #777; text-transform: uppercase; margin-bottom: 3px; }
+.cm-val { font-size: 19px; font-weight: 700; color: #162642; }
+.cm-val.green { color: #28a745; }
+.cm-val.amber { color: #856404; }
+.campaign-note { margin-top: 13px; font-size: 12px; color: #666; }
+.campaign-note.green { color: #155724; font-weight: 600; }
+.campaign-note.amber { color: #856404; }
+.status { display: inline-block; padding: 4px 12px; border-radius: 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; }
+.status-excellent { background: #d4edda; color: #155724; }
+.status-good { background: #d1ecf1; color: #0c5460; }
+.status-monitor { background: #e2e3e5; color: #383d41; }
+.table-wrap { overflow-x: auto; margin: 18px 0; }
+table { width: 100%; border-collapse: collapse; }
+th { background: #162642; color: white; padding: 12px 14px; text-align: left; font-size: 12px; text-transform: uppercase; font-weight: 600; }
+td { padding: 11px 14px; border-bottom: 1px solid #e8e8e8; font-size: 14px; }
+tr:hover { background: #f8f9fa; }
+tr.hl { background: #fff8f0; font-weight: 600; }
+tr.hl-green { background: #f0fff4; }
+.section-dark table th { background: rgba(255,255,255,0.15); }
+.section-dark table td { color: #d0d8e8; border-bottom-color: rgba(255,255,255,0.08); }
+.section-dark tr:hover { background: rgba(255,255,255,0.05); }
+.blist { list-style: none; margin: 12px 0; }
+.blist li { padding-left: 22px; position: relative; margin-bottom: 10px; line-height: 1.7; }
+.blist li:before { content: ""; position: absolute; left: 0; top: 12px; width: 7px; height: 2px; background: #cc5b27; }
+.section-dark .blist li { color: #d0d8e8; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
+.three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin: 20px 0; }
+.next-block { background: rgba(255,255,255,0.06); padding: 22px; border-radius: 10px; margin: 18px 0; border-left: 4px solid #cc5b27; }
+.next-block-lbi { border-left-color: #28a745; }
+.next-block-ww { border-left-color: #17a2b8; }
+.next-block-ocnj { border-left-color: #6f42c1; }
+.next-label { font-weight: 700; font-size: 15px; margin-bottom: 12px; }
+.label-lbi { color: #28a745; }
+.label-ww { color: #17a2b8; }
+.label-ocnj { color: #6f42c1; }
+.attribution-note { background: linear-gradient(135deg, #17a2b8 0%, #138496 100%); color: white; padding: 22px 26px; border-radius: 10px; margin: 22px 0; border-left: 6px solid #cc5b27; }
+.attribution-note strong { font-size: 16px; display: block; margin-bottom: 8px; color: #ffd6b8; }
+.attribution-note p { font-size: 15px; line-height: 1.7; }
+.dg-card { background: white; padding: 26px; border-radius: 10px; margin: 18px 0; border-top: 4px solid #cc5b27; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.section-dark .dg-card { background: rgba(255,255,255,0.05); border-top-color: #cc5b27; }
+.dg-card h4 { color: #cc5b27; margin-top: 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+.footer { background: #162642; color: white; padding: 28px 80px; text-align: center; font-size: 13px; }
+.footer a { color: #cc5b27; text-decoration: none; }
+@media(max-width:768px){ .section,.header,.footer { padding: 36px 24px; } .metric-grid,.campaign-grid,.two-col,.three-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-container">
+    <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Heathmedia">
+  </div>
+  <h1>Bi-Weekly Performance Review</h1>
+  <div class="subtitle">Vacation Rentals Jersey Shore - Portfolio</div>
+  <div class="date-range">July 8 - July 21, 2026 &nbsp;|&nbsp; Compared to June 24 - July 7, 2026</div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="section section-alt">
+  <h2>Executive Summary</h2>
+
+  <div class="banner banner-success">
+    <h3>Booking CPA $1.99 Against the $3.00 Target | Spend Up 15% and Every Account Gained Auction Share</h3>
+    <p>This was the fortnight the scaling steps went in, and the portfolio absorbed them cleanly. Booking spend rose 15.0% as five budget increases deployed across the three accounts, and the blended booking cost per conversion still landed at $1.99, a third inside your $3.00 rule. All three accounts sit inside their individual lines: VRLBI at $0.85, VRWW at $5.66, VROCNJ at $7.83. Impression share improved in all three markets, and in Ocean City the gap to Berger Realty has nearly halved. The summer flight added another 21,576 clicks to the site, taking the pool past 43,000 and clearing the 40,000 milestone we set at the last call.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">Booking CPA (excl. summer flight)</div>
+      <div class="metric-value" style="color:#28a745;">$1.99</div>
+      <span class="badge badge-pos">33.5% under $3.00 target</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Booking Conversions</div>
+      <div class="metric-value">929.05</div>
+      <span class="badge badge-warn">Conservative floor, still attributing</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Booking Spend Deployed</div>
+      <div class="metric-value">$1,852.57</div>
+      <span class="badge badge-pos">Up 15.0%, scaling absorbed</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Accounts Inside Target</div>
+      <div class="metric-value" style="color:#28a745;">3 of 3</div>
+      <span class="badge badge-pos">All individual targets held</span>
+    </div>
+  </div>
+
+  <div class="attribution-note">
+    <strong>Reading This Period Honestly: The Restatement Was Larger Than Usual, and It Matters</strong>
+    <p>At the last call the June 24 to July 7 fortnight read $2.25 blended on 717.20 conversions. That same window has now had time to mature and reads $1.40 on 1,152.35 conversions, a 60.7% upward restatement. The current fortnight reads $1.99, with its final days barely attributed at all. Rather than simply repeat that conversions restate upward, we tested it: splitting each period into halves and comparing the most matured week against its equal in the prior period. That test gives a different and more useful answer for each account, set out below, and it is what the plan for the fortnight ahead is built on.</p>
+  </div>
+
+  <h3>Portfolio Snapshot (Booking Campaigns, Summer Flight Excluded)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Account</th><th>Booking Spend</th><th>Conv</th><th>Booking CPA</th><th>Target</th><th>Headroom</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr class="hl-green">
+          <td><strong>VRLBI</strong></td><td>$629.35</td><td>743.27</td><td style="color:#28a745;font-weight:700;">$0.85</td>
+          <td>$2.50</td><td>66.1% under</td><td><span class="status status-excellent">Inside Target</span></td>
+        </tr>
+        <tr>
+          <td><strong>VRWW</strong></td><td>$604.53</td><td>106.81</td><td style="color:#28a745;font-weight:700;">$5.66</td>
+          <td>$7.00</td><td>19.1% under</td><td><span class="status status-excellent">Inside Target</span></td>
+        </tr>
+        <tr>
+          <td><strong>VROCNJ</strong></td><td>$618.69</td><td>78.97</td><td style="color:#28a745;font-weight:700;">$7.83</td>
+          <td>$10.00</td><td>21.7% under</td><td><span class="status status-excellent">Inside Target</span></td>
+        </tr>
+        <tr class="hl">
+          <td><strong>PORTFOLIO</strong></td><td><strong>$1,852.57</strong></td><td><strong>929.05</strong></td><td style="color:#28a745;font-weight:700;"><strong>$1.99</strong></td>
+          <td><strong>$3.00</strong></td><td>33.5% under</td><td><span class="status status-excellent">Inside Target</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:6px;">Summer flight spend of $2,952.54 sits on top of the $1,852.57 booking line for a total portfolio deployment of $4,805.11 this fortnight. The flight is read on reach and traffic in its own section, never on the booking CPA line.</p>
+
+  <h3>The Maturity Test: Three Accounts, Three Different Answers</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Account</th><th>Matured Week vs Equal Prior Week</th><th>Diagnosis</th><th>Response</th></tr></thead>
+      <tbody>
+        <tr class="hl-green">
+          <td><strong>VRLBI</strong></td><td style="color:#28a745;font-weight:700;">488.48 vs 488.00, level</td>
+          <td>Nothing has declined. The dip is entirely the unattributed tail</td><td>Keep scaling, the runway is proven</td>
+        </tr>
+        <tr>
+          <td><strong>VRWW</strong></td><td style="color:#856404;font-weight:700;">63.04 vs 78.25, down 19.4%</td>
+          <td>Genuine seasonal softening of booking intent, cushioned by target headroom</td><td>Press rank and quality, hold budget</td>
+        </tr>
+        <tr>
+          <td><strong>VROCNJ</strong></td><td style="color:#28a745;font-weight:700;">Week 2 recovered, up 3.2%</td>
+          <td>Weak first week, then a real recovery while still under-attributed</td><td>Build on the upswing, check one tracking day</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>The Portfolio Story This Period</h3>
+
+  <div class="insight insight-green">
+    <strong>Every Scaling Step Went In and Every Account Gained Auction Share</strong>
+    <p style="margin-top:10px;">Five budget increases deployed this fortnight: LBI Generic to $29.40, LBI PMax to $20.40, Wildwood PMax to $24.00, Ocean City Generic to $20.40 and Ocean City PMax to $28.80. Impression share rose in all three markets as a result, LBI from 33.99% to 37.91%, Wildwood from 23.98% to 25.06%, Ocean City from 13.74% to 16.64%. Booking spend is up 15.0% and the blended cost per conversion is still a third inside target. That is scaling absorbed cleanly, which is exactly what the penny-scaling cadence is designed to deliver.</p>
+  </div>
+
+  <div class="insight insight-green">
+    <strong>Ocean City Has Closed Most of the Gap to Berger Without the Conquest Campaign Even Built Yet</strong>
+    <p style="margin-top:10px;">At the last call we sat at 14.04% of the Ocean City auction against Berger Realty at 28.59%, a gap of 14.55 points and more than double our share. This fortnight we are at 17.12% and Berger is at 24.57%, a gap of 7.45 points. The gap has nearly halved on the back of the budget step and rank improvement alone. The conquest campaign is still to be built, so the lever that was designed to close this gap has not yet been pulled.</p>
+  </div>
+
+  <div class="insight insight-orange">
+    <strong>The Summer Flight Is Reaching Saturation in All Three Markets, and the Fix Is Not More Budget</strong>
+    <p style="margin-top:10px;">On a like for like daily basis the flight is now buying 24.1% less reach for the same money, with CPM up 30.4% across the portfolio. Critically, click-through rate went up, not down, in all three markets. That combination rules out creative fatigue and points squarely at a finite local audience being repeatedly served. This is the single most important strategic finding of the fortnight and it shapes the plan below: widen the geography into the feeder markets, tighten frequency and rotate creative, rather than pushing more spend into the same pool.</p>
+  </div>
+</div>
+
+<!-- VRLBI SECTION -->
+<div class="section">
+  <div class="account-header" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+    <div>
+      <div class="account-name">VRLBI - Long Beach Island</div>
+      <div class="account-sub">$0.85 Booking CPA | 66.1% Under Target | Scaling Absorbed With Volume Held Flat</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="account-cpa-label">Cost Per Lead</div>
+      <div class="account-cpa">$0.85</div>
+    </div>
+  </div>
+
+  <div class="banner banner-success">
+    <h3>$0.85 Booking CPA | Spend Up 10.8% With Conversion Volume Held Level | Impression Share to 37.91%</h3>
+    <p>Long Beach Island is the cleanest proof point in the portfolio this fortnight. The maturity test shows the most attributed week of this period at 488.48 conversions against 488.00 for the equal week of the prior period, which is level to within a tenth of a percent. In other words we increased spend 10.8% and held conversion volume exactly, with the apparent shortfall being nothing more than the days that have not finished attributing. Impression share climbed from 33.41% to 37.91% and top of page reached 95.51%, the strongest auction position of the engagement. Both campaigns remain flagged limited by budget, so the runway is still open.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">Booking Spend</div>
+      <div class="metric-value">$629.35</div>
+      <span class="badge badge-pos">Up 10.8%, absorbed cleanly</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Booking Conversions</div>
+      <div class="metric-value">743.27</div>
+      <span class="badge badge-warn">Floor, matured week level with prior</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Blended Booking CPA</div>
+      <div class="metric-value" style="color:#28a745;">$0.85</div>
+      <span class="badge badge-pos">66.1% under $2.50 target</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Generic Lost IS to Budget</div>
+      <div class="metric-value" style="color:#856404;">60.62%</div>
+      <span class="badge badge-warn">Scaling headroom remains</span>
+    </div>
+  </div>
+
+  <h3>Campaign Performance</h3>
+  <div class="campaign-grid">
+    <div class="campaign-card winner">
+      <div class="campaign-name">Generic - HM-VRLBI-Generic-21.02.25 <span class="status status-excellent">65% Under Target</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$374.48</div></div>
+        <div><div class="cm-label">Conv</div><div class="cm-val">425.46</div></div>
+        <div><div class="cm-label">CPA</div><div class="cm-val green">$0.88</div></div>
+      </div>
+      <div class="campaign-note green">Budget stepped $24.50 to $29.40 | Clicks 1,891, up 43.3% | CPC $0.20, down 21% | IS 37.91% from 33.99% | Lost IS budget 60.62% | Lost IS rank 1.47% | Opt score 59.52% | The step bought more clicks at a cheaper price</div>
+    </div>
+    <div class="campaign-card winner">
+      <div class="campaign-name">PMax - HM-VRLBI-PMax-03.03.25 <span class="status status-excellent">68% Under Target</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$254.87</div></div>
+        <div><div class="cm-label">Conv</div><div class="cm-val">317.81</div></div>
+        <div><div class="cm-label">CPA</div><div class="cm-val green">$0.80</div></div>
+      </div>
+      <div class="campaign-note green">Budget stepped $17.00 to $20.40 | Conv rate 29.59%, improved on prior 28.62% even on a floor reading | CPC $0.24 | IS 16.64% | Lost IS budget 50.16% from 14.17% | Lost IS rank 33.20% from 58.31% | Demand has outgrown the budget</div>
+    </div>
+  </div>
+
+  <h3>Impression Share - Generic Campaign</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>Current</th><th>Prior</th><th>Implication</th></tr></thead>
+      <tbody>
+        <tr class="hl-green"><td>Search Impression Share</td><td style="color:#28a745;font-weight:700;">37.91%</td><td>33.99%</td><td>Strongest position in the engagement, up nearly four points</td></tr>
+        <tr><td><strong>Lost IS (Budget)</strong></td><td style="color:#856404;font-weight:700;"><strong>60.62%</strong></td><td>63.46%</td><td><strong>Still six in ten auctions uncovered. The runway is real</strong></td></tr>
+        <tr class="hl-green"><td>Lost IS (Rank)</td><td style="color:#28a745;font-weight:700;">1.47%</td><td>2.54%</td><td>Quality improved further. Nothing is holding us back but budget</td></tr>
+        <tr><td>Avg. CPC</td><td style="color:#28a745;font-weight:700;">$0.20</td><td>$0.25</td><td>We scaled and the auction got cheaper, not more expensive</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Auction Intelligence</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Advertiser</th><th>Impression Share</th><th>Top of Page</th><th>Position Above Us</th></tr></thead>
+      <tbody>
+        <tr class="hl-green"><td><strong>VRLBI (You)</strong></td><td><strong>36.61%</strong></td><td style="color:#28a745;font-weight:700;">95.51%</td><td>-</td></tr>
+        <tr><td>vrbo.com</td><td>74.62%</td><td>91.42%</td><td>76.04%</td></tr>
+        <tr><td>airbnb.com</td><td>63.10%</td><td>86.51%</td><td>50.61%</td></tr>
+        <tr><td>vacationrenter.com</td><td>37.34%</td><td>75.70%</td><td>36.42%</td></tr>
+        <tr><td>rentbyowner.com</td><td>14.87%</td><td>61.38%</td><td>19.74%</td></tr>
+        <tr><td>hometogo.com</td><td>12.98%</td><td>47.04%</td><td>18.92%</td></tr>
+        <tr><td>seegersgrouplbi.com</td><td>12.78%</td><td>62.63%</td><td>27.02%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:6px;">Auction share rose from 33.41% to 36.61% with top of page at 95.51%, the strongest reading of the engagement. Seegers Group remains the only local direct competitor of scale, and vogo.com has dropped out of the visible field from 17.82% previously. The OTAs sit above on raw share as always and are a separate strategy from the direct-booking auction.</p>
+
+  <div class="insight insight-orange">
+    <strong>VRLBI Action Plan for the Fortnight</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Continue penny scaling both campaigns in 20% steps every 48 to 72 hours. Generic still leaves 60.62% of demand uncovered on budget with only 1.47% lost to rank, and the last step bought 43% more clicks at a 21% cheaper cost per click.</li>
+      <li>Prioritise PMax on the next step. Its lost impression share to budget jumped from 14.17% to 50.16% while its rank loss improved from 58.31% to 33.20%, which means demand has outgrown the budget rather than the campaign weakening.</li>
+      <li>Lift Generic optimisation score from 59.52%. Fresh headlines targeting the shoulder weeks and 2027 forward demand, since ad strength is the one soft metric on the account's strongest campaign.</li>
+      <li>Keep the standing by-owner, VRBO geo and realty negatives applied as hygiene through peak.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- VRWW SECTION -->
+<div class="section section-alt">
+  <div class="account-header" style="background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);">
+    <div>
+      <div class="account-name">VRWW - Wildwood</div>
+      <div class="account-sub">$5.66 Booking CPA | 19.1% Under Target | Auction Share Up, Seasonal Intent Softening</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="account-cpa-label">Cost Per Lead</div>
+      <div class="account-cpa">$5.66</div>
+    </div>
+  </div>
+
+  <div class="banner banner-success">
+    <h3>$5.66 Booking CPA, Comfortably Inside Target | Impression Share Up to 25.06% | Desktop Conversions Doubled</h3>
+    <p>Wildwood holds inside its $7.00 line with 19.1% of headroom while the market moves into peak stay season. This is the one account where the maturity test shows a real change rather than an attribution effect: the most attributed week is down 19.4% against its equal prior week, which is genuine seasonal softening of booking intent rather than anything breaking. The costs tell the same story from the other side. Cost per click held flat at $0.36 and impression share actually rose to 25.06%, so we are winning more auctions at the same price and the traffic is simply converting at a lower rate in late July. Desktop is the bright spot, with conversions almost doubling to 39.14 at a $4.66 cost per conversion.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">Booking Spend</div>
+      <div class="metric-value">$604.53</div>
+      <span class="badge badge-neu">Up 21.5% on PMax step</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Booking Conversions</div>
+      <div class="metric-value">106.81</div>
+      <span class="badge badge-warn">Floor, settles near 120</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Blended Booking CPA</div>
+      <div class="metric-value" style="color:#28a745;">$5.66</div>
+      <span class="badge badge-pos">19.1% under $7.00 target</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Desktop CPA</div>
+      <div class="metric-value" style="color:#28a745;">$4.66</div>
+      <span class="badge badge-pos">Conversions 19.72 to 39.14</span>
+    </div>
+  </div>
+
+  <h3>Campaign Performance</h3>
+  <div class="campaign-grid">
+    <div class="campaign-card winner">
+      <div class="campaign-name">Generic - HM-VRWW-Generic <span class="status status-good">17% Under Target</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$312.48</div></div>
+        <div><div class="cm-label">Conv</div><div class="cm-val">53.80</div></div>
+        <div><div class="cm-label">CPA</div><div class="cm-val amber">$5.81</div></div>
+      </div>
+      <div class="campaign-note amber">Clicks 868, up 34.6% | CPC $0.36, flat | IS 25.06% from 23.98% | Lost IS budget 0.00% | Lost IS rank 74.94% | Opt score 80.47% | Now flagged search volume limited, not budget limited</div>
+    </div>
+    <div class="campaign-card winner">
+      <div class="campaign-name">PMax - HM-VRWW-PMax-03.03.25 <span class="status status-excellent">21% Under Target</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$292.05</div></div>
+        <div><div class="cm-label">Conv</div><div class="cm-val">53.01</div></div>
+        <div><div class="cm-label">CPA</div><div class="cm-val green">$5.51</div></div>
+      </div>
+      <div class="campaign-note green">Budget stepped $20.00 to $24.00 | Conv rate 8.17% | CPC $0.47 | IS 12.71% | Lost IS budget 9.12% | Lost IS rank 78.17% | Opt score 94.24%, the highest in the portfolio | Flagged limited by budget</div>
+    </div>
+  </div>
+
+  <h3>Impression Share - Generic Campaign</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>Current</th><th>Prior</th><th>Implication</th></tr></thead>
+      <tbody>
+        <tr class="hl-green"><td>Search Impression Share</td><td style="color:#28a745;font-weight:700;">25.06%</td><td>23.98%</td><td>We are winning more of the auction, not less</td></tr>
+        <tr class="hl-green"><td>Lost IS (Budget)</td><td style="color:#28a745;font-weight:700;">0.00%</td><td>0.00%</td><td>Budget is not the constraint. Adding spend would not add volume</td></tr>
+        <tr><td><strong>Lost IS (Rank)</strong></td><td style="color:#856404;font-weight:700;"><strong>74.94%</strong></td><td>76.02%</td><td><strong>Improving slowly. Rank and quality remain the growth lever</strong></td></tr>
+        <tr><td>Avg. CPC</td><td>$0.36</td><td>$0.35</td><td>Costs held flat, so the change is demand quality, not price</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Auction Intelligence</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Advertiser</th><th>Impression Share</th><th>Top of Page</th><th>Position Above Us</th></tr></thead>
+      <tbody>
+        <tr class="hl-green"><td><strong>VRWW (You)</strong></td><td><strong>25.06%</strong></td><td style="color:#28a745;font-weight:700;">88.27%</td><td>-</td></tr>
+        <tr><td>vrbo.com</td><td>70.66%</td><td>91.54%</td><td>72.28%</td></tr>
+        <tr><td>airbnb.com</td><td>65.90%</td><td>88.67%</td><td>57.29%</td></tr>
+        <tr><td>vacationrenter.com</td><td>43.39%</td><td>76.23%</td><td>42.30%</td></tr>
+        <tr><td>booking.com</td><td>35.66%</td><td>77.19%</td><td>46.16%</td></tr>
+        <tr><td>expedia.com</td><td>21.63%</td><td>57.37%</td><td>30.29%</td></tr>
+        <tr><td>hometogo.com</td><td>21.30%</td><td>61.06%</td><td>37.12%</td></tr>
+        <tr><td>rentbyowner.com</td><td>16.52%</td><td>65.57%</td><td>32.55%</td></tr>
+        <tr><td>experiencevacationrentals.com</td><td>14.09%</td><td>72.40%</td><td>46.80%</td></tr>
+        <tr class="hl"><td>shoresummerrentals.com</td><td>Under 10%</td><td style="color:#cc5b27;font-weight:700;">94.11%</td><td style="color:#cc5b27;font-weight:700;">61.80%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:6px;">Shore Summer Rentals is the one to keep watching. They hold under 10% of the auction but reach top of page 94.11% of the time they enter it and sit above us in 61.80% of shared auctions. They run the same direct-booking model across the whole shore, so their entry into paid search is a structural development rather than a passing test.</p>
+
+  <div class="insight insight-orange">
+    <strong>VRWW Action Plan for the Fortnight</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Hold Generic at $27.00 daily. With nothing lost to budget and Google flagging search volume limited, a budget step cannot buy volume that is not there. Money is not the constraint on this campaign.</li>
+      <li>Press the rank lever instead, which is where the 74.94% of lost impression share sits. Fresh headline and description variants plus an asset touch-up, aimed at lifting ad strength and claiming more of that share at the same cost per click.</li>
+      <li>Give PMax the next budget step from $24.00. It is budget limited at 9.12%, carries the highest optimisation score in the portfolio at 94.24% and is the better home for incremental spend in this market.</li>
+      <li>Test a desktop bid adjustment. Desktop conversions nearly doubled to 39.14 at a $4.66 cost per conversion, materially better than the account blend, and that signal is now consistent enough to act on.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- VROCNJ SECTION -->
+<div class="section">
+  <div class="account-header" style="background: linear-gradient(135deg, #6f42c1 0%, #5a32a3 100%);">
+    <div>
+      <div class="account-name">VROCNJ - Ocean City NJ</div>
+      <div class="account-sub">$7.83 Booking CPA | 21.7% Under Target | Berger Gap Nearly Halved, Week Two Recovery</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="account-cpa-label">Cost Per Lead</div>
+      <div class="account-cpa">$7.83</div>
+    </div>
+  </div>
+
+  <div class="banner banner-success">
+    <h3>$7.83 Booking CPA | Auction Share Up to 17.12% While Berger Fell to 24.57% | Gap Nearly Halved</h3>
+    <p>Ocean City delivered the most significant competitive move of the fortnight. Our impression share rose from 14.04% to 17.12% while Berger Realty fell from 28.59% to 24.57%, closing the gap from 14.55 points to 7.45 points. That happened on the back of the budget step and rank improvement alone, before the conquest campaign has even been built. The period itself was a story of two halves: a weak first week, then a genuine recovery in week two to 59.57 conversions against the prior week's 57.71, achieved while those days were still under-attributed. The account is exiting the fortnight on an upswing.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">Booking Spend</div>
+      <div class="metric-value">$618.69</div>
+      <span class="badge badge-neu">Up 13.4%, both campaigns stepped</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Booking Conversions</div>
+      <div class="metric-value">78.97</div>
+      <span class="badge badge-warn">Floor, week two still attributing</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Blended Booking CPA</div>
+      <div class="metric-value" style="color:#28a745;">$7.83</div>
+      <span class="badge badge-pos">21.7% under $10.00 target</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Gap to Berger</div>
+      <div class="metric-value" style="color:#28a745;">7.45 pts</div>
+      <span class="badge badge-pos">Was 14.55 pts at last call</span>
+    </div>
+  </div>
+
+  <h3>Campaign Performance</h3>
+  <div class="campaign-grid">
+    <div class="campaign-card winner">
+      <div class="campaign-name">Generic - Last Minute <span class="status status-excellent">23% Under Target</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$261.83</div></div>
+        <div><div class="cm-label">Conv</div><div class="cm-val">33.88</div></div>
+        <div><div class="cm-label">CPA</div><div class="cm-val green">$7.73</div></div>
+      </div>
+      <div class="campaign-note green">Budget stepped $17.00 to $20.40 | Clicks 520, up 40.9% | IS 16.64% from 13.74% | Lost IS budget 30.66% from 54.31%, starvation materially relieved | Lost IS rank 52.70% | Opt score 64.37%</div>
+    </div>
+    <div class="campaign-card winner">
+      <div class="campaign-name">PMax - HM-VROCNJ-PMax-03.03.25 <span class="status status-excellent">21% Under Target</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$356.86</div></div>
+        <div><div class="cm-label">Conv</div><div class="cm-val">45.09</div></div>
+        <div><div class="cm-label">CPA</div><div class="cm-val green">$7.92</div></div>
+      </div>
+      <div class="campaign-note green">Budget stepped $24.00 to $28.80 | CPC $0.36 | IS 17.79% | Lost IS budget 19.86% from 10.96% | Lost IS rank 62.35% from 70.46%, rank improving | Opt score 90.73% | Flagged limited by budget</div>
+    </div>
+  </div>
+
+  <h3>Berger Realty - The Gap Is Closing</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Reading</th><th>Our Impression Share</th><th>Berger Impression Share</th><th>Gap</th><th>Ratio</th></tr></thead>
+      <tbody>
+        <tr><td>June 24 to July 7 (last deck)</td><td>14.04%</td><td style="color:#6f42c1;font-weight:700;">28.59%</td><td>14.55 pts</td><td>2.04x</td></tr>
+        <tr class="hl-green"><td><strong>July 8 to 21 (this deck)</strong></td><td style="color:#28a745;font-weight:700;"><strong>17.12%</strong></td><td style="color:#6f42c1;font-weight:700;"><strong>24.57%</strong></td><td style="color:#28a745;font-weight:700;"><strong>7.45 pts</strong></td><td style="color:#28a745;font-weight:700;"><strong>1.44x</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight insight-green">
+    <strong>Half the Gap Closed Before the Conquest Campaign Has Been Built</strong>
+    <p style="margin-top:10px;">We moved up three points and Berger came down four, which halved the gap in a single fortnight. Berger still reaches top of page 96.18% of the time it enters the auction and sits above us in 56.66% of shared auctions, with an overlap rate of 52.54%, so they remain the dominant direct competitor. The important point is that the dedicated lever built for this gap has not yet been deployed. Building the conquest campaign now presses into a competitor who is already giving ground, which is the most favourable moment to do it.</p>
+  </div>
+
+  <h3>Auction Intelligence</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Advertiser</th><th>Impression Share</th><th>Top of Page</th><th>Position Above Us</th></tr></thead>
+      <tbody>
+        <tr class="hl-green"><td><strong>VROCNJ (You)</strong></td><td><strong>17.12%</strong></td><td style="color:#28a745;font-weight:700;">90.03%</td><td>-</td></tr>
+        <tr class="hl"><td><strong>bergerrealty.com</strong></td><td style="color:#6f42c1;font-weight:700;">24.57%</td><td style="color:#6f42c1;font-weight:700;">96.18%</td><td style="color:#6f42c1;font-weight:700;">56.66%</td></tr>
+        <tr><td>vrbo.com</td><td>70.84%</td><td>89.45%</td><td>74.40%</td></tr>
+        <tr><td>airbnb.com</td><td>61.51%</td><td>85.89%</td><td>54.67%</td></tr>
+        <tr><td>vacationrenter.com</td><td>22.60%</td><td>60.77%</td><td>27.37%</td></tr>
+        <tr><td>booking.com</td><td>19.60%</td><td>73.52%</td><td>37.95%</td></tr>
+        <tr><td>rentbyowner.com</td><td>17.61%</td><td>64.49%</td><td>24.95%</td></tr>
+        <tr><td>hometogo.com</td><td>14.72%</td><td>56.46%</td><td>28.34%</td></tr>
+        <tr><td>expedia.com</td><td>13.04%</td><td>55.94%</td><td>29.29%</td></tr>
+        <tr><td>holidayhomes.com</td><td>11.59%</td><td>65.97%</td><td>24.24%</td></tr>
+        <tr><td>goldcoastsir.com</td><td>Under 10%</td><td>71.87%</td><td>50.96%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:6px;">Two new names entered the visible field this fortnight, Gold Coast Sotheby's International Realty and Vacasa, both under 10% share. Gold Coast is worth noting because it sits above us in 50.96% of the auctions it enters, a second realty-model competitor behind Berger.</p>
+
+  <h3>Search Term Watch</h3>
+  <div class="insight insight-green">
+    <strong>2027 Forward Booking Demand Has Appeared, the Earliest Signal in the Portfolio</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Queries for "ocean city nj rentals 2027" and "ocnj rentals 2027" surfaced this fortnight alongside the existing 2026 variants. This is the first 2027 demand seen in any of the three accounts and is a healthy early indicator of forward booking intent for the season after next. Retain and watch.</li>
+      <li>Search terms are clean across the top of the report. No by-owner leakage, no OTA brand terms and no realty intent terms in the paid mix, so the standing negative lists are doing their job.</li>
+      <li>One data point to check on our side. July 13 recorded 769 clicks and $121.30 of spend with zero conversions, which is out of pattern for the account. We are verifying it is a genuine quiet day rather than a tracking gap, and will confirm at the next call.</li>
+    </ul>
+  </div>
+
+  <div class="insight insight-orange">
+    <strong>VROCNJ Action Plan for the Fortnight</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Build and launch the Berger conquest campaign. Berger is giving ground for the first time, so this is the most favourable window we have had. Standalone search on branded Berger queries with direct-booking and save-up-to-27% messaging, funded within the existing Generic Last Minute envelope.</li>
+      <li>Continue penny scaling PMax from $28.80. It is budget limited at 19.86% with rank loss improving from 70.46% to 62.35%, and it carries a 90.73% optimisation score.</li>
+      <li>Lift Generic Last Minute ad strength from a 64.37% optimisation score. Its constraint has now rotated from budget to rank, with lost impression share to budget down from 54.31% to 30.66% but rank loss up to 52.70%, so creative and quality are the next lever rather than more money.</li>
+      <li>Verify the July 13 conversion tracking, then keep the standing realty and agency negatives applied through peak.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- DEMAND GEN -->
+<div class="section section-alt">
+  <h2>Summer Flight - Demand Gen Across All Three Markets</h2>
+
+  <div class="banner banner-info">
+    <h3>21,576 Clicks to Site This Fortnight, Pool Past 43,000 | Reach Is Getting More Expensive in Every Market</h3>
+    <p>The summer flight delivered another 21,576 clicks to the sites across 958,695 impressions, taking the cumulative pool past 43,000 and clearing the 40,000 milestone set at the last call. Ocean City also recorded the flight's first two conversions. The important finding is in the cost of reach. Comparing like for like on a daily basis, the flight is now buying 24.1% less reach for the same money, with CPM up 30.4%. Click-through rate rose in all three markets over the same period, which tells us the creative is working harder, not failing. What we are seeing is a finite local audience being reached repeatedly, and the response is to widen the net rather than spend more into it.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">Clicks to Site (Pool Traffic)</div>
+      <div class="metric-value" style="color:#cc5b27;">21,576</div>
+      <span class="badge badge-pos">Cumulative pool 43,190</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Impressions of Reach (approx.)</div>
+      <div class="metric-value">959K</div>
+      <span class="badge badge-warn">Reach per day down 24.1%</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Average CPC</div>
+      <div class="metric-value">$0.137</div>
+      <span class="badge badge-warn">Was $0.109 prior</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Flight Spend</div>
+      <div class="metric-value">$2,952.54</div>
+      <span class="badge badge-neu">Excluded from booking CPA</span>
+    </div>
+  </div>
+
+  <h3>Delivery by Market</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Market</th><th>Flight Spend</th><th>Impressions (approx.)</th><th>CPM</th><th>Clicks to Site</th><th>Avg CPC</th><th>CTR</th></tr></thead>
+      <tbody>
+        <tr><td><strong>VRLBI</strong></td><td>$713.44</td><td>202,000</td><td>$3.53</td><td>5,257</td><td>$0.136</td><td style="color:#28a745;font-weight:700;">2.60%</td></tr>
+        <tr><td><strong>VRWW</strong></td><td>$1,119.54</td><td>427,000</td><td style="color:#28a745;font-weight:700;">$2.62</td><td>8,283</td><td>$0.135</td><td>1.94%</td></tr>
+        <tr><td><strong>VROCNJ</strong></td><td>$1,119.56</td><td>329,000</td><td>$3.40</td><td>8,036</td><td>$0.139</td><td>2.44%</td></tr>
+        <tr class="hl"><td><strong>PORTFOLIO</strong></td><td><strong>$2,952.54</strong></td><td><strong>959,000</strong></td><td><strong>$3.08</strong></td><td><strong>21,576</strong></td><td><strong>$0.137</strong></td><td><strong>2.25%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:6px;">Wildwood remains the cheapest reach at a $2.62 CPM and the largest impression volume, in line with its heavier weighting. Clicks are the traffic driving the pool and the best in-platform proxy for it. Actual on-site sessions that fire the retargeting pixel typically run modestly below reported clicks, so the true cost per pooled visitor sits a little above the click cost. We will confirm the exact pooled-session figure from GA4 alongside the audience work described below.</p>
+
+  <h3>The Saturation Signal, Market by Market</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Market</th><th>Reach Per Day</th><th>CPM Movement</th><th>CTR Movement</th><th>Reading</th></tr></thead>
+      <tbody>
+        <tr><td><strong>VRLBI</strong></td><td style="color:#856404;font-weight:700;">Down 27.5%</td><td style="color:#856404;">Up 36.3%</td><td style="color:#28a745;font-weight:700;">Up 10.2%</td><td>Creative strengthening, audience thinning</td></tr>
+        <tr><td><strong>VRWW</strong></td><td style="color:#856404;font-weight:700;">Down 22.2%</td><td style="color:#856404;">Up 27.2%</td><td>Held at 1.94%</td><td>Cheapest reach, holding engagement</td></tr>
+        <tr><td><strong>VROCNJ</strong></td><td style="color:#856404;font-weight:700;">Down 24.4%</td><td style="color:#856404;">Up 30.8%</td><td style="color:#28a745;font-weight:700;">Up 3.4%</td><td>First flight conversions recorded</td></tr>
+        <tr class="hl"><td><strong>PORTFOLIO</strong></td><td style="color:#856404;font-weight:700;"><strong>Down 24.1%</strong></td><td style="color:#856404;"><strong>Up 30.4%</strong></td><td style="color:#28a745;font-weight:700;"><strong>Up 3.4%</strong></td><td><strong>Consistent across all three markets</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:6px;">Prior period figures are measured across eleven delivery days, since the flight launched on June 27, so all comparisons here are made on a per day basis to keep them like for like.</p>
+
+  <div class="insight insight-green">
+    <strong>Why Rising CPM With Rising Click-Through Is Good News, Not Bad</strong>
+    <p style="margin-top:10px;">If the creative were tiring we would see click-through fall as cost rose. We are seeing the opposite, so the ads are landing better than they did at launch. What is happening is that three small shore geographies contain a finite number of reachable households, and after four weeks of delivery we are serving the same people more often. That is exactly the point at which an audience build should widen rather than deepen. Three moves follow from it: extend geography into the Pennsylvania and North Jersey feeder markets where the families actually come from, tighten the frequency cap so budget buys new households rather than repeat impressions, and bring the second creative concept into rotation. All three widen the pool that next season's retargeting will draw against.</p>
+  </div>
+</div>
+
+<!-- STRATEGIC PLAN -->
+<div class="section section-dark">
+  <h2>Strategic Plan - Next Two Weeks</h2>
+
+  <div class="insight">
+    <strong>Overall Priority: Keep Scaling LBI, Build the Berger Conquest While Berger Is Retreating, Widen the Summer Flight</strong>
+    <p>Three of three accounts inside target, blended booking cost per conversion a third under your $3.00 rule, and auction share up in every market. The fortnight ahead has three clear jobs. Keep pushing budget into Long Beach Island where scaling has proven it can absorb spend without moving cost. Build the Berger conquest campaign now that Berger is giving ground for the first time. And widen the summer flight into the feeder markets before saturation eats further into the value of the pool.</p>
+  </div>
+
+  <div class="next-block next-block-lbi">
+    <div class="next-label label-lbi">VRLBI - Priority Actions</div>
+    <ul class="blist">
+      <li>Continue penny scaling in 20% steps every 48 to 72 hours, prioritising PMax where lost impression share to budget has jumped from 14.17% to 50.16%. Generic still leaves 60.62% uncovered on budget with only 1.47% lost to rank.</li>
+      <li>Refresh Generic headlines to lift a 59.52% optimisation score, targeting shoulder weeks and forward booking demand.</li>
+      <li>Hold the standing by-owner, VRBO geo and realty negatives.</li>
+    </ul>
+  </div>
+
+  <div class="next-block next-block-ocnj">
+    <div class="next-label label-ocnj">VROCNJ - Priority Actions</div>
+    <ul class="blist">
+      <li>Build and launch the Berger conquest campaign this fortnight. The gap has closed from 14.55 points to 7.45 points without it, and pressing a competitor who is already retreating is the most favourable timing we have had.</li>
+      <li>Continue penny scaling PMax from $28.80 daily, budget limited at 19.86% with rank loss improving.</li>
+      <li>Lift Generic Last Minute ad strength from 64.37%. Its constraint has rotated from budget to rank, so creative is now the lever rather than money.</li>
+      <li>Verify the July 13 zero-conversion day and confirm tracking integrity.</li>
+    </ul>
+  </div>
+
+  <div class="next-block next-block-ww">
+    <div class="next-label label-ww">VRWW - Priority Actions</div>
+    <ul class="blist">
+      <li>Hold Generic at $27.00. Nothing is lost to budget and Google flags search volume limited, so spend cannot buy volume that is not being searched.</li>
+      <li>Press rank instead, where 74.94% of impression share is lost. New headline and description variants plus an asset touch-up.</li>
+      <li>Give PMax the next step from $24.00. Budget limited at 9.12% with the portfolio's highest optimisation score at 94.24%.</li>
+      <li>Test a desktop bid adjustment on the back of desktop conversions nearly doubling at a $4.66 cost per conversion.</li>
+    </ul>
+  </div>
+
+  <div class="next-block">
+    <div class="next-label" style="color:#cc5b27;">Summer Flight - Priority Actions</div>
+    <ul class="blist">
+      <li>Extend geography into the Pennsylvania and North Jersey feeder markets. Reach per day is down 24.1% across the portfolio at a 30.4% higher CPM, and the local audience is where that ceiling sits.</li>
+      <li>Tighten the frequency cap so the same budget buys new households rather than repeat impressions against the same ones.</li>
+      <li>Rotate the second creative concept into the mix, holding the current lead concept while click-through remains strong.</li>
+      <li>Activate the GA4 audiences as signals into the PMax campaigns and confirm the pooled-session figure from GA4 at the same time.</li>
+    </ul>
+  </div>
+
+  <h3>Items to Confirm With You</h3>
+  <div class="insight">
+    <strong>Nothing Blocking, One Decision Worth Making Early</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Agreement to extend the summer flight geography into the Pennsylvania and North Jersey feeder markets. It uses the existing flight budget rather than new money, and it is the single most effective response to the saturation showing in all three markets.</li>
+      <li>Everything else is handed over and clear. Budgets, the flight measurement frame and the Ocean City rule all stand, so the heavy lifting stays with us.</li>
+    </ul>
+  </div>
+
+  <h3>Success Metrics for Next Report</h3>
+  <ul class="blist">
+    <li>VRLBI: Two further scaling steps absorbed, PMax lost impression share to budget falling back below 30%, blended cost per conversion holding inside $1.20.</li>
+    <li>VRWW: Rank loss on Generic below 72% as the asset work lands, PMax holding inside target after its next step.</li>
+    <li>VROCNJ: Berger conquest live with early conversion signal, our auction share closing above 18% against Berger, July 13 tracking confirmed.</li>
+    <li>Portfolio: Blended booking cost per conversion inside $2.00 once attribution matures, flight reach per day recovering as the feeder markets open up, cumulative pool past 60,000 clicks.</li>
+  </ul>
+
+  <h3>Portfolio Budget Snapshot</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line</th><th>14-Day Spend</th><th>Read On</th></tr></thead>
+      <tbody style="color:#d0d8e8;">
+        <tr><td><strong>Booking campaigns</strong></td><td>$1,852.57</td><td>CPA, $1.99 blended, a third inside target</td></tr>
+        <tr><td><strong>Summer flight (Demand Gen)</strong></td><td>$2,952.54</td><td>Reach and traffic, 21,576 site clicks</td></tr>
+        <tr style="background:rgba(204,91,39,0.2);"><td><strong>TOTAL DEPLOYED</strong></td><td><strong>$4,805.11</strong></td><td><strong>Booking engine plus audience build</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight">
+    <strong>Scaling Discipline Is Working</strong>
+    <p>Booking spend rose 15.0% this fortnight across five separate budget steps, and the blended cost per conversion still came in a third inside target while auction share rose in all three markets. That is the penny-scaling cadence doing exactly what it is designed to do, adding spend in increments the algorithms can absorb without disturbing cost. Booking spend and audience-build spend remain fully separated so neither read distorts the other.</p>
+  </div>
+</div>
+
+<!-- KEY METRICS SUMMARY -->
+<div class="section section-alt">
+  <h2>Key Metrics Summary</h2>
+  <div class="metric-grid">
+    <div class="metric-card" style="border-left-color:#28a745;">
+      <div class="metric-label">VRLBI Booking CPA</div>
+      <div class="metric-value" style="color:#28a745;">$0.85</div>
+      <span class="badge badge-pos">66.1% under $2.50 target</span>
+    </div>
+    <div class="metric-card" style="border-left-color:#17a2b8;">
+      <div class="metric-label">VRWW Booking CPA</div>
+      <div class="metric-value" style="color:#28a745;">$5.66</div>
+      <span class="badge badge-pos">19.1% under $7.00 target</span>
+    </div>
+    <div class="metric-card" style="border-left-color:#6f42c1;">
+      <div class="metric-label">VROCNJ Booking CPA</div>
+      <div class="metric-value" style="color:#28a745;">$7.83</div>
+      <span class="badge badge-pos">21.7% under $10.00 target</span>
+    </div>
+    <div class="metric-card" style="border-left-color:#cc5b27;">
+      <div class="metric-label">Portfolio Booking CPA</div>
+      <div class="metric-value" style="color:#28a745;">$1.99</div>
+      <span class="badge badge-pos">33.5% under $3.00 target</span>
+    </div>
+  </div>
+
+  <div style="background:white;padding:24px;border-radius:10px;margin-top:24px;border:2px solid #162642;">
+    <h3 style="margin-top:0;color:#162642;">Period Summary</h3>
+    <p style="font-size:16px;line-height:1.9;">This was the fortnight the scaling steps went in and the portfolio absorbed them. Five budget increases lifted booking spend 15.0% and the blended cost per conversion still landed at $1.99, a third inside the $3.00 rule, with all three accounts inside their individual lines and impression share up in every market. The prior fortnight has since matured from $2.25 to $1.40, a 60.7% conversion restatement, so today's figure is again the conservative end of the read.</p>
+    <p style="font-size:16px;line-height:1.9;margin-top:15px;"><strong>VRLBI</strong> gave the cleanest proof of the method. Its most attributed week came in level with the equal prior week to within a tenth of a percent, meaning spend rose 10.8% with conversion volume held exactly. Impression share reached 37.91% at 95.51% top of page, and the last budget step bought 43% more clicks at a 21% cheaper cost per click.</p>
+    <p style="font-size:16px;line-height:1.9;margin-top:15px;"><strong>VRWW</strong> holds inside target at $5.66 with impression share up to 25.06% and cost per click flat. This is the one account showing real seasonal softening rather than an attribution effect, which is why the plan there presses rank and quality instead of adding budget that the search volume would not support.</p>
+    <p style="font-size:16px;line-height:1.9;margin-top:15px;"><strong>VROCNJ</strong> delivered the competitive move of the period, closing the gap to Berger Realty from 14.55 points to 7.45 points as our share rose to 17.12% and theirs fell to 24.57%. The account also recovered strongly in week two, and 2027 forward booking queries appeared for the first time anywhere in the portfolio.</p>
+    <p style="font-size:16px;line-height:1.9;margin-top:15px;"><strong>Summer flight</strong> added 21,576 clicks to take the pool past 43,000 and logged its first conversions in Ocean City. Reach is becoming more expensive in all three markets while click-through rises, which points to a finite local audience rather than tiring creative. Widening into the feeder markets is the priority response and the main thing to agree at this call.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>Report prepared by Heathmedia | Google Ads Performance Marketing</p>
+  <p style="margin-top:8px;">Questions? <a href="mailto:info@leadguru.com">info@leadguru.com</a></p>
+  <p style="margin-top:12px;font-size:11px;color:#666;">2026 Heathmedia. All rights reserved.</p>
+</div>
+
+</div>
+</body>
+</html>
