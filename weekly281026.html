@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VRJS Portfolio Performance Review | September 30 - October 13, 2026</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1, "liga" 1, "calt" 1; }
+h1, h2, h3, h4, .header h1, .account-name, .banner h3, .campaign-name { font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.015em; }
+.metric-value, .account-cpa { font-family: 'Inter Display', 'Inter', sans-serif; letter-spacing: -0.02em; }
+.metric-value, .account-cpa, .cm-val, .account-cpa-label, td, th { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1, "kern" 1; }
+.container { max-width: 1200px; margin: 0 auto; background: white; }
+.header { background: linear-gradient(135deg, #162642 0%, #1a3354 100%); color: white; padding: 40px 80px; }
+.logo-container { margin-bottom: 28px; }
+.logo-container img { height: 56px; width: auto; }
+.wordmark { display:none; font-size:30px; font-weight:800; letter-spacing:-0.5px; }
+.wordmark .b { color:#cc5b27; }
+.header h1 { font-size: 40px; font-weight: 700; margin-bottom: 8px; color: white; }
+.header .subtitle { font-size: 19px; color: #d0d8e8; font-weight: 300; }
+.header .date-range { font-size: 15px; color: #cc5b27; font-weight: 600; margin-top: 8px; }
+.section { padding: 56px 80px; border-bottom: 1px solid #e0e0e0; }
+.section-alt { background: #f8f9fa; }
+.section-dark { background: linear-gradient(135deg, #162642 0%, #1a3354 100%); color: white; }
+h1,h2,h3,.banner h3,.account-name { text-wrap: balance; }
+h2 { font-size: 30px; color: #162642; margin-bottom: 28px; font-weight: 700; border-bottom: 3px solid #cc5b27; padding-bottom: 12px; }
+.section-dark h2 { color: white; }
+h3 { font-size: 21px; color: #162642; margin-top: 36px; margin-bottom: 18px; font-weight: 600; }
+.section-dark h3 { color: #cc5b27; }
+h4 { font-size: 16px; color: #162642; margin-top: 22px; margin-bottom: 10px; font-weight: 600; }
+.banner { padding: 24px 28px; border-radius: 10px; margin: 22px 0; text-align: center; }
+.banner h3 { margin: 0 0 8px 0; font-size: 22px; }
+.banner p { font-size: 16px; margin: 0; }
+.banner-success { background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; }
+.banner-success h3 { color: white; }
+.banner-info { background: linear-gradient(135deg, #162642 0%, #1a3354 100%); color: white; border: 2px solid #cc5b27; }
+.banner-info h3 { color: #cc5b27; }
+.insight { padding: 18px 22px; margin: 18px 0; border-radius: 6px; }
+.insight-orange { background: #fff8f0; border-left: 4px solid #cc5b27; }
+.insight-orange strong { color: #cc5b27; }
+.insight-green { background: #f0fff4; border-left: 4px solid #28a745; }
+.insight-green strong { color: #28a745; }
+.insight-blue { background: #f0f8ff; border-left: 4px solid #17a2b8; }
+.insight-blue strong { color: #17a2b8; }
+.section-dark .insight { background: rgba(255,255,255,0.07); border-left: 4px solid #cc5b27; }
+.section-dark .insight strong { color: #cc5b27; }
+.section-dark .insight p, .section-dark .insight li { color: #d0d8e8; }
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; margin: 24px 0; }
+.metric-card { background: white; padding: 22px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #cc5b27; }
+.section-dark .metric-card { background: rgba(255,255,255,0.08); border-left-color: #cc5b27; }
+.metric-label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; font-weight: 600; line-height: 1.35; min-height: 30px; }
+.section-dark .metric-label { color: #99aacc; }
+.metric-value { font-size: 32px; font-weight: 700; color: #162642; margin-bottom: 4px; }
+.section-dark .metric-value { color: white; }
+.badge { font-size: 12px; font-weight: 600; display: inline-block; padding: 3px 9px; border-radius: 4px; }
+.badge-pos { background: #d4edda; color: #155724; }
+.badge-warn { background: #fff3cd; color: #856404; }
+.badge-neu { background: #e2e3e5; color: #383d41; }
+.account-header { display: flex; justify-content: space-between; align-items: center; padding: 22px 28px; border-radius: 10px; margin-bottom: 26px; color: white; }
+.account-name { font-size: 26px; font-weight: 700; }
+.account-sub { font-size: 13px; margin-top: 4px; opacity: 0.85; }
+.account-cpa { font-size: 44px; font-weight: 700; }
+.account-cpa-label { font-size: 12px; text-transform: uppercase; opacity: 0.8; }
+.campaign-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 18px; margin: 22px 0; }
+.campaign-card { background: #f8f9fa; padding: 22px; border-radius: 10px; border: 2px solid #e0e0e0; }
+.campaign-card.winner { border-color: #28a745; border-width: 3px; }
+.campaign-card.caution { border-color: #ffc107; border-width: 2px; }
+.campaign-name { font-size: 16px; font-weight: 700; color: #162642; margin-bottom: 14px; }
+.campaign-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.cm-label { font-size: 10px; color: #777; text-transform: uppercase; margin-bottom: 3px; }
+.cm-val { font-size: 19px; font-weight: 700; color: #162642; }
+.cm-val.green { color: #28a745; }
+.cm-val.amber { color: #856404; }
+.campaign-note { margin-top: 13px; font-size: 12px; color: #666; }
+.campaign-note.green { color: #155724; font-weight: 600; }
+.campaign-note.amber { color: #856404; }
+.status { display: inline-block; padding: 4px 12px; border-radius: 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; }
+.status-excellent { background: #d4edda; color: #155724; }
+.status-good { background: #d1ecf1; color: #0c5460; }
+.status-monitor { background: #e2e3e5; color: #383d41; }
+.table-wrap { overflow-x: auto; margin: 18px 0; }
+table { width: 100%; border-collapse: collapse; }
+th { background: #162642; color: white; padding: 10px 13px; text-align: left; font-size: 12px; text-transform: uppercase; font-weight: 600; }
+td { padding: 9px 13px; border-bottom: 1px solid #e8e8e8; font-size: 13.5px; overflow-wrap: break-word; }
+tr:hover { background: #f8f9fa; }
+tr.hl { background: #fff8f0; font-weight: 600; }
+tr.hl-green { background: #f0fff4; }
+.section-dark table th { background: rgba(255,255,255,0.15); }
+.section-dark table td { color: #d0d8e8; border-bottom-color: rgba(255,255,255,0.08); }
+.section-dark tr:hover { background: rgba(255,255,255,0.05); }
+.blist { list-style: none; margin: 12px 0; }
+.blist li { padding-left: 22px; position: relative; margin-bottom: 10px; line-height: 1.7; }
+.blist li:before { content: ""; position: absolute; left: 0; top: 12px; width: 7px; height: 2px; background: #cc5b27; }
+.section-dark .blist li { color: #d0d8e8; }
+.next-block { background: rgba(255,255,255,0.06); padding: 22px; border-radius: 10px; margin: 18px 0; border-left: 4px solid #cc5b27; }
+.next-block-lbi { border-left-color: #28a745; }
+.next-block-ww { border-left-color: #17a2b8; }
+.next-block-ocnj { border-left-color: #6f42c1; }
+.next-label { font-weight: 700; font-size: 15px; margin-bottom: 12px; }
+.label-lbi { color: #28a745; }
+.label-ww { color: #17a2b8; }
+.label-ocnj { color: #6f42c1; }
+.attribution-note { background: linear-gradient(135deg, #17a2b8 0%, #138496 100%); color: white; padding: 22px 26px; border-radius: 10px; margin: 22px 0; border-left: 6px solid #cc5b27; }
+.attribution-note strong { font-size: 16px; display: block; margin-bottom: 8px; color: #ffd6b8; }
+.attribution-note p { font-size: 15px; line-height: 1.7; }
+.footer { background: #162642; color: white; padding: 28px 80px; text-align: center; font-size: 13px; }
+.footer a { color: #cc5b27; text-decoration: none; }
+@media(max-width:768px){ .section,.header,.footer { padding: 36px 24px; } .metric-grid,.campaign-grid { grid-template-columns: 1fr; } }
+@page { size: A4; margin: 13mm 12mm 14mm 12mm; }
+@media print {
+  body { background:#ffffff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .container { max-width:none; }
+  /* sections flow; generous but even internal spacing, never full-bleed to the paper */
+  .section { break-before: auto; page-break-before: auto; padding: 26px 30px; border-bottom: none; }
+  .header { padding: 30px 30px; }
+  .footer { padding: 16px 30px; break-inside: avoid; page-break-inside: avoid; }
+  .header, .header + .section { break-before: avoid; page-break-before: avoid; }
+  /* each account and the plan open on a fresh page, clear of the top margin */
+  .account-header, .section-dark { break-before: page; page-break-before: always; }
+  .account-header { break-after: avoid; page-break-after: avoid; }
+  /* a heading never sits alone at the foot of a page */
+  h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+  h2 { padding-top: 2px; }
+  /* keep self-contained modules whole, give them clear air */
+  .banner, .metric-card, .campaign-card, .attribution-note, .account-header, .insight, .next-block { break-inside: avoid; page-break-inside: avoid; }
+  .metric-grid, .campaign-grid { break-inside: auto; page-break-inside: auto; }
+  .metric-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px; }
+  .campaign-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px; }
+  .banner, .attribution-note, .insight, .next-block { margin-top: 12px; margin-bottom: 12px; }
+  /* tables flow across pages, rows stay whole, header repeats on each page */
+  .table-wrap, table { break-inside: auto; page-break-inside: auto; overflow: visible; }
+  tr { break-inside: avoid; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  tbody tr:first-child td { padding-top: 10px; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-container">
+    <img src="data:image/webp;base64,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" alt="Heathmedia" onerror="this.style.display='none';document.getElementById('wm').style.display='block';">
+    <div class="wordmark" id="wm">HEATH<span class="b">MEDIA</span></div>
+  </div>
+  <h1>Bi-Weekly Performance Review</h1>
+  <div class="subtitle">Vacation Rentals Jersey Shore - Portfolio</div>
+  <div class="date-range">Fortnight October 14 to 27, 2026 &nbsp;|&nbsp; versus September 30 to October 13 &nbsp;|&nbsp; With the 2027 Budget Schedule and StackAdapt Plan</div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="section section-alt">
+  <h2>Executive Summary</h2>
+
+  <div class="banner banner-success">
+    <h3>Portfolio Holds Under the Shutoff, Ocean City PMax Has Turned the Corner</h3>
+    <p>The fortnight booked 255 leads at a blended $5.96, 14.9% under the $7 off-season shutoff, on $1,518 of spend as the step-downs run. Every figure is a conservative floor that matures down, the 30 day already reads $5.05. The headline is Ocean City, the PMax line that dragged for a month has recovered onto its $8 target on the newest week. Long Beach Island holds as the anchor and we have started scaling it into its cheap, budget-limited demand ahead of 2027.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">Portfolio Fortnight CPL</div>
+      <div class="metric-value" style="color:#28a745;">$5.96</div>
+      <span class="badge badge-pos">14.9% under $7 shutoff, a floor</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Fortnight Leads</div>
+      <div class="metric-value">254.7</div>
+      <span class="badge badge-warn">Conservative floor, still attributing</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Fortnight Spend</div>
+      <div class="metric-value">$1,518</div>
+      <span class="badge badge-neu">Flat as step-downs run</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">30 Day Blended, Matured</div>
+      <div class="metric-value" style="color:#28a745;">$5.05</div>
+      <span class="badge badge-pos">27.9% under $7 shutoff</span>
+    </div>
+  </div>
+
+  <div class="attribution-note">
+    <strong>Reading the Fortnight Honestly: These Are Floors, Long Beach Island Most of All</strong>
+    <p>The newest days have barely attributed, so the whole fortnight reads as a floor while the 30 day has matured. Long Beach Island carries the heaviest tail, proven at 59 to 84% restatement, so its $4.49 is the least settled number on the page and matures toward $2. Blended cost restates down from $5.96 as the tail fills, the matured 30 day at $5.05 shows the direction of travel.</p>
+  </div>
+
+  <h3>Portfolio Snapshot: This Fortnight, with 30 Day Context</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Account</th><th>Fortnight Spend</th><th>Leads (floor)</th><th>Fortnight CPL</th><th>30 Day CPL</th><th>2027 Target</th><th>Read</th></tr>
+      </thead>
+      <tbody>
+        <tr class="hl-green">
+          <td><strong>VRLBI</strong></td><td>$721.99</td><td>160.80</td><td style="color:#856404;font-weight:700;">$4.49</td><td>$3.85</td>
+          <td>$2.50</td><td>Heavy floor, matures to about $2</td>
+        </tr>
+        <tr>
+          <td><strong>VRWW</strong></td><td>$267.51</td><td>47.18</td><td style="color:#856404;font-weight:700;">$5.67</td><td style="color:#28a745;font-weight:700;">$4.67</td>
+          <td>$5.00</td><td>30 day inside target, PMax soft on the week</td>
+        </tr>
+        <tr>
+          <td><strong>VROCNJ</strong></td><td>$528.86</td><td>46.76</td><td style="color:#856404;font-weight:700;">$11.31</td><td>$8.62</td>
+          <td>$7.00</td><td>PMax recovered to $8.44 on the 7 day</td>
+        </tr>
+        <tr class="hl">
+          <td><strong>PORTFOLIO</strong></td><td><strong>$1,518.36</strong></td><td><strong>254.74</strong></td><td style="color:#28a745;font-weight:700;"><strong>$5.96</strong></td><td style="color:#28a745;font-weight:700;"><strong>$5.05</strong></td>
+          <td><strong>$7 shutoff</strong></td><td>Under at every window</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:6px;">The prior fortnight, September 30 to October 13, has matured to a blended $4.87 on 324 leads, which is why it sits below this floor. The honest comparison is floor against matured, so this fortnight settles down toward the 30 day line as it fills in.</p>
+
+  <h3>The Three That Matter</h3>
+
+  <div class="insight insight-green">
+    <strong>Ocean City PMax Has Recovered onto Its $8 Target</strong>
+    <p style="margin-top:10px;">The one line that dragged the portfolio for a month has turned. Ocean City PMax came in at $8.44 on the 7 day against its $8 cap, with 22 leads, after a climb that peaked at $17.06 four weeks ago. We have locked the recovery in, stepping the budget from $28.80 to $23 a day and moving its target cost from $10 to $8. The account still reads $8.62 on the heavier 30 day because that window carries the old high cost, but the trajectory is down and fast.</p>
+  </div>
+
+  <div class="insight insight-blue">
+    <strong>Long Beach Island Scaling Begins, 2027 Demand Is Landing Hard</strong>
+    <p style="margin-top:10px;">Long Beach Island is the cheapest lead in the book, $3.85 on the 30 days against a $2.50 target and still budget limited, so it is leaving cheap demand unbought. We have started scaling it, stepping Generic from $29.40 to $35.28 a day, the first move of the 2027 build. Forward demand is here in force, "lbi rentals 2027" alone took 49 clicks in 30 days, the strongest December-surge signal of the three markets.</p>
+  </div>
+
+  <div class="insight insight-green">
+    <strong>Spend Flat and Inside the Shutoff While the Wind-Down Runs</strong>
+    <p style="margin-top:10px;">Spend held at $1,518 across the fortnight as the budgets ease in measured steps. Every account sits under the $7 off-season shutoff at every window, and the automated scripts stay armed to back spend off if any lead cost drifts toward the line. The controlled wind-down is working as designed, holding efficient presence through the quiet weeks while the pool is preserved for the booking season.</p>
+  </div>
+</div>
+
+<!-- VRLBI -->
+<div class="section">
+  <div class="account-header" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+    <div>
+      <div class="account-name">VRLBI - Long Beach Island</div>
+      <div class="account-sub">$4.49 Fortnight CPL, a Heavy Floor | New Target $2.50 | The Anchor, Now Scaling</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="account-cpa-label">Fortnight CPL</div>
+      <div class="account-cpa">$4.49</div>
+    </div>
+  </div>
+
+  <div class="banner banner-info">
+    <h3>161 Leads at a Floor That Matures Low, Both Lines Budget Limited, Generic Stepped Up</h3>
+    <p>Long Beach Island carries the heaviest attribution tail in the portfolio, so the $4.49 fortnight is the least settled figure on the page and the 30 day already reads $3.85, maturing toward $2. Both campaigns stayed budget limited, which is the point, cheap demand we were not buying. We have stepped Generic up from $29.40 to $35.28 a day to start capturing it, the first move of the 2027 scale-up, with the matured lead cost checked at 72 hours before the next step.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">Fortnight Spend</div>
+      <div class="metric-value">$721.99</div>
+      <span class="badge badge-neu">Generic stepped up</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Fortnight Leads</div>
+      <div class="metric-value">160.80</div>
+      <span class="badge badge-warn">Heavy floor, settles up</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">30 Day CPL</div>
+      <div class="metric-value" style="color:#856404;">$3.85</div>
+      <span class="badge badge-warn">Matures toward about $2</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">New 2027 Target</div>
+      <div class="metric-value" style="color:#28a745;">$2.50</div>
+      <span class="badge badge-pos">Held, volume prioritised</span>
+    </div>
+  </div>
+
+  <h3>Campaign Performance, Fortnight</h3>
+  <div class="campaign-grid">
+    <div class="campaign-card winner">
+      <div class="campaign-name">Generic - HM-VRLBI-Generic-21.02.25 <span class="status status-monitor">Scaling</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$448.21</div></div>
+        <div><div class="cm-label">Leads</div><div class="cm-val">102.33</div></div>
+        <div><div class="cm-label">CPL</div><div class="cm-val amber">$4.38</div></div>
+      </div>
+      <div class="campaign-note amber">30 day $3.62 | Budget stepped $29.40 to $35.28 | Still limited by budget | IS 29.40% | The cheap line we are scaling first</div>
+    </div>
+    <div class="campaign-card winner">
+      <div class="campaign-name">PMax - HM-VRLBI-PMax-03.03.25 <span class="status status-monitor">Floor</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$273.69</div></div>
+        <div><div class="cm-label">Leads</div><div class="cm-val">58.48</div></div>
+        <div><div class="cm-label">CPL</div><div class="cm-val amber">$4.68</div></div>
+      </div>
+      <div class="campaign-note amber">30 day $4.26 | Held at $20.40 a day | Budget limited | Both lines mature down on the account's long tail</div>
+    </div>
+  </div>
+
+  <h3>Auction Intelligence, 30 Day</h3>
+  <p style="font-size:13px;color:#666;margin:0 0 10px;">Overlap rate is how often a rival shows in the same auction as us. Above us is how often they take a higher slot when we both appear. We outrank is how often we rank above them or show when they do not.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Advertiser</th><th>Impr. Share</th><th>Overlap Rate</th><th>Above Us</th><th>Top of Page</th><th>We Outrank</th></tr></thead>
+      <tbody>
+        <tr class="hl-green"><td><strong>VRLBI (You)</strong></td><td><strong>10.37%</strong></td><td>-</td><td>-</td><td style="color:#28a745;font-weight:700;">89.38%</td><td>-</td></tr>
+        <tr><td>vrbo.com</td><td>55.25%</td><td>74.93%</td><td style="color:#856404;">50.18%</td><td>87.96%</td><td>6.47%</td></tr>
+        <tr><td>airbnb.com</td><td>50.54%</td><td>69.82%</td><td>29.85%</td><td>82.45%</td><td>8.21%</td></tr>
+        <tr><td>vacationrenter.com</td><td>20.37%</td><td>30.40%</td><td>18.27%</td><td>74.20%</td><td>9.80%</td></tr>
+        <tr><td>hometogo.com</td><td>Under 10%</td><td>13.33%</td><td>11.00%</td><td>60.94%</td><td>10.22%</td></tr>
+        <tr><td>rentbyowner.com</td><td>Under 10%</td><td>13.69%</td><td>10.06%</td><td>60.78%</td><td>10.23%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight insight-blue">
+    <strong>What the LBI Auction Is Telling Us</strong>
+    <p style="margin-top:10px;">Two OTAs own this auction, vrbo at 55.25% share and airbnb at 50.54%, and vrbo takes the higher slot in half the auctions we both enter. Our own 10.37% is deliberately low while we hold a dormant budget, but the quality signal is intact, we hit top of page 89.38% of the time we show, ahead of every rival bar vrbo. Presence here is a budget choice, not a rank problem, so as we scale back up for 2027 the top-of-page strength means share returns quickly without a bidding fight.</p>
+  </div>
+
+  <div class="insight insight-orange">
+    <strong>VRLBI Action Plan</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Generic stepped from $29.40 to $35.28, the first 2027 scale move into cheap budget-limited demand, check matured CPL at 72 hours then step again while it holds under target</li>
+      <li>Hold PMax at $20.40 and keep the automated scripts armed against the $7 shutoff</li>
+      <li>First account to scale in the January launch, the biggest weight in the 2027 plan</li>
+    </ul>
+  </div>
+</div>
+
+<!-- VRWW -->
+<div class="section section-alt">
+  <div class="account-header" style="background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);">
+    <div>
+      <div class="account-name">VRWW - Wildwood</div>
+      <div class="account-sub">$4.67 on 30 Days, Inside the New $5 | Generic the Efficient Driver | PMax the Soft Line</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="account-cpa-label">30 Day CPL</div>
+      <div class="account-cpa">$4.67</div>
+    </div>
+  </div>
+
+  <div class="banner banner-success">
+    <h3>Inside Target on the 30 Day, Generic Holding at $3.54</h3>
+    <p>Wildwood reads $5.67 on the fortnight floor and $4.67 on the matured 30 day, inside its new $5 target. Generic is the efficient engine at $3.54 on the 30 days, pacing to demand and limited by search volume not budget. PMax is the only soft spot, $5.66 on the 30 day and higher on the newest week, a line to watch rather than act on while it is the least matured.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">Fortnight CPL (floor)</div>
+      <div class="metric-value" style="color:#856404;">$5.67</div>
+      <span class="badge badge-warn">Floor, matures down</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">30 Day CPL</div>
+      <div class="metric-value" style="color:#28a745;">$4.67</div>
+      <span class="badge badge-pos">6.6% under $5 target</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Generic CPL, 30 Day</div>
+      <div class="metric-value" style="color:#28a745;">$3.54</div>
+      <span class="badge badge-pos">The efficient driver</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Own Impression Share</div>
+      <div class="metric-value" style="color:#28a745;">29%</div>
+      <span class="badge badge-pos">Strongest of the three</span>
+    </div>
+  </div>
+
+  <h3>Campaign Performance, Fortnight</h3>
+  <div class="campaign-grid">
+    <div class="campaign-card winner">
+      <div class="campaign-name">Generic - HM-VRWW-Generic <span class="status status-excellent">Efficient</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$90.68</div></div>
+        <div><div class="cm-label">Leads</div><div class="cm-val">18.62</div></div>
+        <div><div class="cm-label">CPL</div><div class="cm-val green">$4.87</div></div>
+      </div>
+      <div class="campaign-note green">30 day $3.54 | Limited by search volume, so spend cannot force demand that is not there | IS about 29% | The engine of the account</div>
+    </div>
+    <div class="campaign-card caution">
+      <div class="campaign-name">PMax - HM-VRWW-PMax-03.03.25 <span class="status status-monitor">Soft, Watch</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">Spend</div><div class="cm-val">$176.85</div></div>
+        <div><div class="cm-label">Leads</div><div class="cm-val">28.57</div></div>
+        <div><div class="cm-label">CPL</div><div class="cm-val amber">$6.19</div></div>
+      </div>
+      <div class="campaign-note amber">30 day $5.66, improving from $6.70 | $9.29 on the raw 7 day, the least matured week | Held, trim in November if still over $5 matured</div>
+    </div>
+  </div>
+
+  <div class="insight insight-blue">
+    <strong>Wildwood Auction and 2027 Demand</strong>
+    <p style="margin-top:10px;">The auction insights card was not in this week's export, so the last validated read stands, Wildwood is our strongest own-share market at 28.25% and top of page 90.28%, ahead of every local and direct rival with the two OTAs leading as they do everywhere. I will refresh the full competitor table next cycle. Forward demand is live, "north wildwood rentals 2027" and "wildwood crest rentals 2027" are clicking, the early read on the December surge.</p>
+  </div>
+
+  <div class="insight insight-orange">
+    <strong>VRWW Action Plan</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Lean on Generic at $3.54 while it is the efficient driver, it is demand capped so no budget change forces more</li>
+      <li>Hold PMax and watch it, trim toward the floor in November if it stays above $5 on matured data</li>
+      <li>Keep the competitor and own-brand negatives applied, in line with the no-brand rule, into next season</li>
+    </ul>
+  </div>
+</div>
+
+<!-- VROCNJ -->
+<div class="section">
+  <div class="account-header" style="background: linear-gradient(135deg, #6f42c1 0%, #5a32a3 100%);">
+    <div>
+      <div class="account-name">VROCNJ - Ocean City NJ</div>
+      <div class="account-sub">PMax Recovered to $8.44 on the 7 Day | New Target $7 | Last Minute Now Seasonal</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="account-cpa-label">7 Day Blended</div>
+      <div class="account-cpa">$7.78</div>
+    </div>
+  </div>
+
+  <div class="banner banner-success">
+    <h3>The PMax Drag Has Turned, Recovery Landed on the $8 Target</h3>
+    <p>Ocean City is the turnaround of the fortnight. PMax, the line that climbed for a month to $17.06, has recovered to $8.44 on the 7 day against its $8 cap, with 22 leads. The account blends $7.78 on the 7 day and $8.62 on the heavier 30 day that still carries the old high cost. We have locked it in, stepping the budget to $23 a day and the target cost to $8. On Duane's steer, Generic Last Minute is now a seasonal campaign, paused for the off-season.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">7 Day Blended CPL</div>
+      <div class="metric-value" style="color:#28a745;">$7.78</div>
+      <span class="badge badge-pos">PMax at target, recovering</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">PMax CPL, 7 Day</div>
+      <div class="metric-value" style="color:#28a745;">$8.44</div>
+      <span class="badge badge-pos">On its $8 cap, from $17.06</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">30 Day Blended</div>
+      <div class="metric-value" style="color:#856404;">$8.62</div>
+      <span class="badge badge-warn">Carries the old PMax cost</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Last Minute</div>
+      <div class="metric-value" style="color:#6f42c1;">Seasonal</div>
+      <span class="badge badge-neu">Paused Oct to May</span>
+    </div>
+  </div>
+
+  <h3>Campaign Performance</h3>
+  <div class="campaign-grid">
+    <div class="campaign-card winner">
+      <div class="campaign-name">PMax - HM-VROCNJ-PMax-03.03.25 <span class="status status-good">Recovered</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">7d Leads</div><div class="cm-val">22.00</div></div>
+        <div><div class="cm-label">7d CPL</div><div class="cm-val green">$8.44</div></div>
+        <div><div class="cm-label">30d CPL</div><div class="cm-val amber">$14.11</div></div>
+      </div>
+      <div class="campaign-note green">Recovered from a $17.06 peak four weeks ago | Budget stepped to $23, target cost $10 to $8 to lock it in | 30 day still carries the old cost and matures down</div>
+    </div>
+    <div class="campaign-card caution">
+      <div class="campaign-name">Generic - Last Minute <span class="status status-monitor">Seasonal, Paused</span></div>
+      <div class="campaign-metrics">
+        <div><div class="cm-label">30d Leads</div><div class="cm-val">82.79</div></div>
+        <div><div class="cm-label">30d CPL</div><div class="cm-val green">$4.64</div></div>
+        <div><div class="cm-label">Status</div><div class="cm-val amber">Paused</div></div>
+      </div>
+      <div class="campaign-note amber">Efficient in season but thinning off-season, $7.97 on the fortnight | Per Duane, last-minute intent only exists June to September, so paused October to May</div>
+    </div>
+  </div>
+
+  <div class="insight insight-blue">
+    <strong>Ocean City Auction and the Last Minute Change</strong>
+    <p style="margin-top:10px;">The auction insights card was not in this week's export, so the last validated read stands, Ocean City leads Berger Realty on impression share, 25.44% against 18.91%, a full reversal of the summer gap, with the conquest held for the 2027 opener. I will refresh the Berger table next cycle. On the campaign structure, Duane confirmed that nobody visits October to May looking for a last-minute rental, so Generic Last Minute is now a seasonal campaign, live June to September only and paused the rest of the year. For the January to July booking window Ocean City needs a forward-booking generic line instead, aimed at plan-ahead searches like "ocean city nj rentals 2027", which is being built for the January launch.</p>
+  </div>
+
+  <div class="insight insight-orange">
+    <strong>VROCNJ Action Plan</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>Hold PMax on its $23 budget and $8 target now the recovery has landed, let the 30 day mature down to the line</li>
+      <li>Last Minute paused for the off-season, built back for June, a forward-booking generic line built for January in its place</li>
+      <li>Hold the Berger conquest as the 2027 opener and keep the standing realty and agency negatives applied</li>
+    </ul>
+  </div>
+</div>
+
+<!-- FLIGHT STATUS -->
+<div class="section section-alt">
+  <h2>Summer Flight and the Audience Pool</h2>
+  <div class="banner banner-info">
+    <h3>The Flight Is Off, the Pool Is Banked and Waiting for the Booking Season</h3>
+    <p>The Demand Gen flight stopped on schedule at the first weekend of October after reaching saturation through August, reach halving month on month at flat spend. That audience is now a first-party asset carried into the January to July window for lookalikes and reactivation, and it costs nothing to hold. Reactivation goes live from mid-December ahead of the post-Christmas surge, with the StackAdapt integration detailed below.</p>
+  </div>
+</div>
+
+<!-- 2027 BUDGET SCHEDULE -->
+<div class="section">
+  <h2>2027 Budget Schedule, the Scale-Up</h2>
+
+  <div class="banner banner-info">
+    <h3>Last Season Was Underspent, 2027 Scales into the Proven Efficiency</h3>
+    <p>Every account ran under target the whole of 2026 while budget limited, Long Beach Island at 83 cents to $3.59 against $2.50, Wildwood at $4.39 against $5, Ocean City at $5.62 against $7. We were buying leads below cost and running out of budget to buy more. In Duane's own rule, when the lead cost is low we spend more. So 2027 roughly doubles Google booking media, from about $38,000 to about $74,300, weighted hard to the cheapest market and the January to March booking peak, reached through disciplined steps so cost holds as spend climbs.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card" style="border-left-color:#28a745;">
+      <div class="metric-label">2027 Google Booking Media</div>
+      <div class="metric-value" style="color:#28a745;">$74,300</div>
+      <span class="badge badge-pos">About double 2026</span>
+    </div>
+    <div class="metric-card" style="border-left-color:#28a745;">
+      <div class="metric-label">Booking Window, Jan to Jul</div>
+      <div class="metric-value">$55,400</div>
+      <span class="badge badge-neu">About 75% of the year</span>
+    </div>
+    <div class="metric-card" style="border-left-color:#17a2b8;">
+      <div class="metric-label">Long Beach Island Share</div>
+      <div class="metric-value">$30,500</div>
+      <span class="badge badge-pos">41%, the cheapest lead</span>
+    </div>
+    <div class="metric-card" style="border-left-color:#6f42c1;">
+      <div class="metric-label">Peak Month, January</div>
+      <div class="metric-value">$9,300</div>
+      <span class="badge badge-neu">Launch of main season</span>
+    </div>
+  </div>
+
+  <h3>The Phase Plan</h3>
+  <p style="font-size:14px;color:#444;margin-bottom:14px;">Scale is staged so it lands where it pays and never jumps faster than the accounts can absorb.</p>
+  <ul class="blist">
+    <li><strong>Phase 1, foundation, mid-December.</strong> Reactivate from the floor, re-warm the CTV pool, Berger conquest built and ready on Ocean City</li>
+    <li><strong>Phase 2, launch, January.</strong> Step hard into the post-Christmas surge, the start of main season and the single biggest lever in the year</li>
+    <li><strong>Phase 3, peak dominance, February to March.</strong> Run at the highest sustained spend, push impression share while leads are cheapest</li>
+    <li><strong>Phase 4, spring, April to May.</strong> Sustain into Memorial Day and the early last-minute ramp</li>
+    <li><strong>Phase 5, in-season, June to August.</strong> Last-minute search live, CTV summer flight on top building next year's pool</li>
+    <li><strong>Phase 6, wind-down, September to November.</strong> Ease to a lean floor, Ocean City forward-booking generic stays on through the trough</li>
+  </ul>
+
+  <h3>Month by Month, Ranked by Booking-Conversion Priority</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Month</th><th>Priority</th><th>LBI/day</th><th>WW/day</th><th>OCNJ/day</th><th>Portfolio/day</th><th>Month Spend</th></tr>
+      </thead>
+      <tbody>
+        <tr class="hl"><td><strong>January</strong></td><td>1</td><td>$130</td><td>$85</td><td>$85</td><td><strong>$300</strong></td><td><strong>$9,300</strong></td></tr>
+        <tr><td>February</td><td>2</td><td>$130</td><td>$85</td><td>$85</td><td>$300</td><td>$8,400</td></tr>
+        <tr><td>March</td><td>3</td><td>$120</td><td>$80</td><td>$80</td><td>$280</td><td>$8,680</td></tr>
+        <tr><td>April</td><td>4</td><td>$100</td><td>$72</td><td>$72</td><td>$244</td><td>$7,320</td></tr>
+        <tr><td>May</td><td>5</td><td>$100</td><td>$72</td><td>$72</td><td>$244</td><td>$7,564</td></tr>
+        <tr><td>June</td><td>6</td><td>$90</td><td>$70</td><td>$72</td><td>$232</td><td>$6,960</td></tr>
+        <tr><td>July</td><td>7</td><td>$90</td><td>$70</td><td>$72</td><td>$232</td><td>$7,192</td></tr>
+        <tr><td>August</td><td>9</td><td>$65</td><td>$48</td><td>$52</td><td>$165</td><td>$5,115</td></tr>
+        <tr><td>September</td><td>10</td><td>$50</td><td>$38</td><td>$40</td><td>$128</td><td>$3,840</td></tr>
+        <tr><td>October</td><td>12</td><td>$35</td><td>$28</td><td>$22</td><td>$85</td><td>$2,635</td></tr>
+        <tr><td>November</td><td>11</td><td>$35</td><td>$28</td><td>$22</td><td>$85</td><td>$2,550</td></tr>
+        <tr><td>December</td><td>8</td><td>$60</td><td>$48</td><td>$45</td><td>$153</td><td>$4,743</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:6px;">Daily figures are the per-account level paced toward once ramped. These are scaled ceilings reached through 20% steps every 48 to 72 hours, spend climbs to them only while lead cost holds under target, max spend not must spend.</p>
+
+  <div class="insight insight-green">
+    <strong>Where the Weight Sits, and How It Stays Disciplined</strong>
+    <p style="margin-top:10px;">Long Beach Island takes the biggest lift at 41% of the plan, it is the cheapest lead and was budget limited all season, so every extra dollar converts at the portfolio's best rate. Wildwood and Ocean City scale moderately inside their targets, Ocean City with the Berger conquest launched as the opener and a forward-booking generic line for the booking window in place of seasonal Last Minute. The 2026 lesson holds, aggressive overnight jumps spike cost, so the higher ceilings are reached by method, every climb governed by the target with the $7 shutoff armed through the trough.</p>
+  </div>
+</div>
+
+<!-- STACKADAPT -->
+<div class="section section-alt">
+  <h2>StackAdapt CTV and Geofencing, 2027</h2>
+
+  <div class="banner banner-info">
+    <h3>The Programmatic Layer That Fills the Booking Pool</h3>
+    <p>Connected TV and mobile geofencing through StackAdapt, billed direct to VRJS, built to fill the retargeting pool that feeds the January to July booking window. It is an awareness and audience-build layer judged on reach and pool growth, never on last-click cost. The payoff lands in the next booking window at a cost per booking well under cold search.</p>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">Summer Flight</div>
+      <div class="metric-value">8 weeks</div>
+      <span class="badge badge-neu">Mid-June to mid-August</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Weekly Budget</div>
+      <div class="metric-value">$7,200</div>
+      <span class="badge badge-neu">About $57,600 across the flight</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">December Reactivation</div>
+      <div class="metric-value">$3-5k</div>
+      <span class="badge badge-pos">Re-warms the pool pre-surge</span>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Frequency</div>
+      <div class="metric-value">3-4/wk</div>
+      <span class="badge badge-neu">Unique reach, fresh families</span>
+    </div>
+  </div>
+
+  <h3>The Plan</h3>
+  <ul class="blist">
+    <li><strong>Timing.</strong> An 8-week summer flight across the in-season window when the most unique families cycle through the rentals, plus a lighter reactivation burst from mid-December to re-warm the pool ahead of the post-Christmas surge</li>
+    <li><strong>Budget.</strong> Hold about $7,200 a week, roughly $57,600 across the flight, funded from reallocated Google underspend rather than the booking budget, heavier on Wildwood and Ocean City where awareness is the constraint. Flexes to a ceiling, if budget tightens we cut frequency not weeks</li>
+    <li><strong>Markets and geofencing.</strong> One StackAdapt account, a campaign per market, bridges fenced as arrival capture and boardwalks, beaches and main draws fenced for dwell-time capture, CTV by household and zip with the geofences on the mobile line</li>
+    <li><strong>Creative.</strong> 30s and 15s spots for CTV at broadcast quality, 6s cuts for retargeting still to be delivered, three concepts carried across all formats, Home Away from Home, Skip Booking Fees, Location and Attractions</li>
+    <li><strong>Measurement.</strong> Primary on reach and unique households, pixel on all three sites capturing visitors into the pool, view-through and click-through both on, kept entirely separate from the Google booking CPA line</li>
+  </ul>
+
+  <div class="insight insight-green">
+    <strong>The Piece That Joins It to Google</strong>
+    <p style="margin-top:10px;">The point of the pool is to spend it. For 2027 the CTV and site audiences export into Google as Customer Match and audience signals, so the warm Shore audience is retargeted through Demand Gen and fed into Search and PMax during the booking window. The sequence is simple, the summer flight builds the pool, it is held as a first-party asset through the autumn at no cost, the December burst re-warms it, and Google retargets it hard through the January to July window at the lowest cost per booking in the plan.</p>
+  </div>
+</div>
+
+<!-- STRATEGIC PLAN -->
+<div class="section section-dark">
+  <h2>Strategic Plan, Q4 Wind-Down into the 2027 Launch</h2>
+
+  <div class="insight">
+    <strong>Overall Priority: Hold the Floors, Scale the Cheap Demand, Build the January Launch</strong>
+    <p>Year one closed strong with every market under target. The plan through Q4 is a measured hold on the floors against the $7 shutoff, led by the GA4 seven-day inquiry trend, while we begin scaling Long Beach Island into its cheap budget-limited demand. Reactivation is live from mid-December for the post-Christmas surge, and the full year of data plus the banked pool feed a more aggressive, better-timed 2027.</p>
+  </div>
+
+  <div class="next-block">
+    <div class="next-label" style="color:#cc5b27;">Where the Moves Sit Now</div>
+    <ul class="blist">
+      <li>Ocean City PMax recovery locked in, budget to $23 and target cost to $8, Generic Last Minute paused as a seasonal campaign on Duane's steer</li>
+      <li>Long Beach Island Generic stepped up $29.40 to $35.28, the first 2027 scale move, matured CPL checked at 72 hours before the next step</li>
+      <li>Wildwood held, Generic efficient and demand capped, PMax watched into November</li>
+      <li>Automated scripts armed across all three to ease spend if any lead cost drifts toward the $7 shutoff</li>
+    </ul>
+  </div>
+
+  <div class="next-block next-block-ocnj">
+    <div class="next-label label-ocnj">The 2027 Build</div>
+    <ul class="blist">
+      <li>Month-by-month budget schedule locked, about $74,300 of Google booking media, weighted to Long Beach Island and the January to March peak</li>
+      <li>StackAdapt CTV plan set, 8-week summer flight and December reactivation, pool integrated into Google as Customer Match</li>
+      <li>Ocean City forward-booking generic line built for the January launch, Berger conquest held as the season opener</li>
+      <li>Reactivation of the summer pool live from mid-December, ahead of the December 26 booking surge</li>
+    </ul>
+  </div>
+
+  <h3>What We Need From You</h3>
+  <div class="insight">
+    <strong>Two to Confirm</strong>
+    <ul class="blist" style="margin-top:10px;">
+      <li>A nod on the 2027 budget shape, the scale-up to about $74,300 weighted to Long Beach Island and the booking window</li>
+      <li>Confirmation the StackAdapt spend ceiling and the 6s retargeting creative are on track for the mid-December reactivation</li>
+    </ul>
+  </div>
+</div>
+
+<!-- KEY METRICS -->
+<div class="section section-alt">
+  <h2>Key Metrics Summary</h2>
+  <div class="metric-grid">
+    <div class="metric-card" style="border-left-color:#28a745;">
+      <div class="metric-label">VRLBI Fortnight CPL</div>
+      <div class="metric-value" style="color:#856404;">$4.49</div>
+      <span class="badge badge-warn">Floor, matures toward $2 vs $2.50</span>
+    </div>
+    <div class="metric-card" style="border-left-color:#17a2b8;">
+      <div class="metric-label">VRWW 30 Day CPL</div>
+      <div class="metric-value" style="color:#28a745;">$4.67</div>
+      <span class="badge badge-pos">6.6% under $5 target</span>
+    </div>
+    <div class="metric-card" style="border-left-color:#6f42c1;">
+      <div class="metric-label">VROCNJ PMax, 7 Day</div>
+      <div class="metric-value" style="color:#28a745;">$8.44</div>
+      <span class="badge badge-pos">Recovered onto $8 cap</span>
+    </div>
+    <div class="metric-card" style="border-left-color:#cc5b27;">
+      <div class="metric-label">Portfolio 30 Day CPL</div>
+      <div class="metric-value" style="color:#28a745;">$5.05</div>
+      <span class="badge badge-pos">27.9% under $7 shutoff</span>
+    </div>
+  </div>
+
+  <div style="background:white;padding:24px;border-radius:10px;margin-top:24px;border:2px solid #162642;">
+    <h3 style="margin-top:0;color:#162642;">Period Summary</h3>
+    <p style="font-size:16px;line-height:1.8;">The fortnight held to plan, 255 leads at a blended $5.96 against the $7 off-season shutoff, maturing to $5.05 on the 30 day. The turnaround is Ocean City, PMax recovered onto its $8 target on the newest week after a month of drag, and we have locked it in with the budget and target step. Long Beach Island holds as the anchor and we have started scaling it into its cheap, budget-limited demand, the first move of the 2027 build. Wildwood sits inside its $5 on the matured data with PMax the one soft line to watch.</p>
+    <p style="font-size:16px;line-height:1.8;margin-top:14px;">On Duane's steer, Ocean City Generic Last Minute is now a seasonal campaign, paused October to May, with a forward-booking generic line built for the booking window instead. The 2027 budget schedule and the StackAdapt plan are set, a scale-up to about $74,300 of Google booking media weighted to Long Beach Island and the January to March peak, with the CTV pool feeding the booking window through Customer Match.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Heathmedia &nbsp;|&nbsp; Vacation Rentals Jersey Shore &nbsp;|&nbsp; Bi-Weekly Performance Review, October 14 to 27, 2026<br>
+  Prepared by Charles Piper &nbsp;|&nbsp; <a href="https://charliepiper14.github.io/vacationrentals/">charliepiper14.github.io/vacationrentals</a>
+</div>
+
+</div>
+</body>
+</html>
